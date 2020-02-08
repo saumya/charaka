@@ -27,6 +27,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Reference
 
  - [My first vue app][1]
+ - [Vue Router][v-2]
+
+
+
 
 
 
@@ -42,3 +46,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 [1]: https://github.com/saumya/Vue101
+[v-2]: https://router.vuejs.org/
