@@ -8,9 +8,11 @@
     <HelloWorld msg="Welcome to " appName="Charaka"/>
 
     <router-link :to="{ name:'HelloWorld', params:{ msg:'YoYoYo!', appName:'Charaka' } }">Home</router-link>
+    
     <router-link to="/one">First</router-link>
     <router-link to="/two">Second</router-link>
     
+    <router-link to="/vue">Vue Help</router-link>
     <div> =============== Below Only ! =============== </div>
     <router-view></router-view>  
     <div> =============== Above Only ! =============== </div>  
@@ -41,5 +43,14 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   */
+}
+a{
+  /*
+  background-color: brown;
+  color: aliceblue;
+  */
+  background-color: #ccc;
+  padding: 0.1em;
+  margin-right: 0.1em;
 }
 </style>
