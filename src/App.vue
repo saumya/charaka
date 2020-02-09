@@ -22,13 +22,12 @@
     
   </div>
 </template>
-
+<!-- code -->
 <script>
 
-//import HelloWorld from './components/HelloWorld.vue'
-import WelcomeHome from './components/WelcomeHome.comp.vue'
-
-import MenuTop from './components/MenuTop.comp.vue'
+//import HelloWorld from './components/HelloWorld'
+import WelcomeHome from './components/WelcomeHome.comp'
+import MenuTop from './components/MenuTop.comp'
 
 export default {
   name: 'app',
@@ -38,7 +37,7 @@ export default {
 }
 
 </script>
-
+<!-- style -->
 <style>
 #app {
   /*
