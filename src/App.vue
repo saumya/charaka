@@ -7,6 +7,7 @@
 
     <!-- <HelloWorld msg="Welcome to " appName="Charaka" /> -->
     <WelcomeHome greet="Hi" message="enjoy the demo" />
+    <MenuTop />
 
     <router-link :to="{ name:'HelloWorld', params:{ msg:'YoYoYo!', appName:'Charaka' } }">Home</router-link>
     <!-- <router-link to="/">Home</router-link> -->
@@ -27,10 +28,12 @@
 //import HelloWorld from './components/HelloWorld.vue'
 import WelcomeHome from './components/WelcomeHome.comp.vue'
 
+import MenuTop from './components/MenuTop.comp.vue'
+
 export default {
   name: 'app',
   components: {
-    WelcomeHome
+    WelcomeHome, MenuTop
   }
 }
 

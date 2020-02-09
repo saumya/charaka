@@ -7,6 +7,11 @@ import VueHelp from '../components/VueHelp.comp'
 import One from '../components/One.comp'
 import Two from '../components/Two.comp'
 
+import HomeAppAdmin from '../components/Home.AppAdmin'
+import HomeClinicAdmin from '../components/Home.ClinicAdmin'
+import HomeDoctor from '../components/HomeDoctor'
+import HomePatient from '../components/HomePatient'
+
 Vue.use(Router)
 
 export default new Router({
@@ -19,6 +24,12 @@ export default new Router({
         },
         { path: '/vue', component: VueHelp },
         { path: '/one', component: One },
-        { path: '/two', component: Two }
+        { path: '/two', component: Two },
+
+        { path: '/clinic_admin', component: HomeClinicAdmin },
+        { path: '/app_admin', component: HomeAppAdmin },
+        { path: '/doctor', component: HomeDoctor },
+        { path: '/patient', component: HomePatient }
+
     ]
 });
