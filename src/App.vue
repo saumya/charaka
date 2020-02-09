@@ -8,8 +8,8 @@
     <!-- <HelloWorld msg="Welcome to " appName="Charaka" /> -->
     <WelcomeHome greet="Hi" message="enjoy the demo" />
 
-    <!-- <router-link :to="{ name:'HelloWorld', params:{ msg:'YoYoYo!', appName:'Charaka' } }">Home</router-link> -->
-    
+    <router-link :to="{ name:'HelloWorld', params:{ msg:'YoYoYo!', appName:'Charaka' } }">Home</router-link>
+    <!-- <router-link to="/">Home</router-link> -->
     <router-link to="/one">First</router-link>
     <router-link to="/two">Second</router-link>
 
