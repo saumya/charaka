@@ -5,14 +5,16 @@
     <HelloWorld msg="Welcome to " appName="Charaka"/>
     -->
 
-    <HelloWorld msg="Welcome to " appName="Charaka"/>
+    <!-- <HelloWorld msg="Welcome to " appName="Charaka" /> -->
+    <WelcomeHome greet="Hi" message="enjoy the demo" />
 
-    <router-link :to="{ name:'HelloWorld', params:{ msg:'YoYoYo!', appName:'Charaka' } }">Home</router-link>
+    <!-- <router-link :to="{ name:'HelloWorld', params:{ msg:'YoYoYo!', appName:'Charaka' } }">Home</router-link> -->
     
     <router-link to="/one">First</router-link>
     <router-link to="/two">Second</router-link>
-    
+
     <router-link to="/vue">Vue Help</router-link>
+
     <div> =============== Below Only ! =============== </div>
     <router-view></router-view>  
     <div> =============== Above Only ! =============== </div>  
@@ -22,12 +24,13 @@
 
 <script>
 
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './components/HelloWorld.vue'
+import WelcomeHome from './components/WelcomeHome.comp.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    WelcomeHome
   }
 }
 
@@ -43,6 +46,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   */
+  background-color: rgb(248, 215, 215);
 }
 a{
   /*
