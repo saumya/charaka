@@ -1,21 +1,23 @@
 <template>
     <div>
-        
-        <div>
-            <aside class="menu">
-                <p class="menu-label">
-                    Navigate
-                </p>
-                <ul class="menu-list">
-                    <li><a>My History</a></li>
-                    <li><a>New Appointment</a></li>
-                </ul>
-            </aside>
-        </div>
+
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-menu is-active">
+                <div class="navbar-start">
+                    <a class="navbar-item"> Home </a>
+                    <a class="navbar-item"> New Appointment </a>
+                </div>
+                <div class="navbar-end">
+                    <a class="navbar-item"> My Profile </a>
+                </div>
+            </div>
+        </nav>
+
+
         <div>
             Patient Home : TODO
         </div>
-        
+
     </div>
 </template>
 
