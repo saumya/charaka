@@ -9,16 +9,20 @@
     <WelcomeHome greet="Hi" message="enjoy the demo" />
     <MenuTop />
 
+    <!--
     <router-link :to="{ name:'HelloWorld', params:{ msg:'YoYoYo!', appName:'Charaka' } }">Home</router-link>
+    -->
     <!-- <router-link to="/">Home</router-link> -->
+    <!--
     <router-link to="/one">First</router-link>
     <router-link to="/two">Second</router-link>
 
     <router-link to="/vue">Vue Help</router-link>
+    -->
 
-    <div> =============== Below Only ! =============== </div>
+    <div> =============== vvvvvvvv =============== </div>
     <router-view></router-view>  
-    <div> =============== Above Only ! =============== </div>  
+    <div> =============== ^^^^^^ =============== </div>  
     
   </div>
 </template>
