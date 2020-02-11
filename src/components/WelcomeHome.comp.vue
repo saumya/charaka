@@ -1,7 +1,7 @@
 <!-- WelcomeHome -->
 <template>
     <div id="welcomeHome">
-        <span>{{greet}}</span> User <span>{{message}}</span>. Thank you.
+        <span>{{greet}}</span> User <span>{{message}}</span>. Thank you.{{version}}
     </div>
 </template>
 
@@ -11,6 +11,12 @@ export default {
     props:{
         message: String,
         greet: String
+    },
+    data: function(){
+        return({
+            name: 'WelcomeHome-1.0.0',
+            version: '1.0.0'
+        })
     }
 }
 </script>
