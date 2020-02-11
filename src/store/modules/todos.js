@@ -22,6 +22,12 @@ const state = {
     },{
         id: 2,
         title: 'UX fixing'
+    },{
+        id: 3,
+        title: 'Application Flow'
+    },{
+        id: 4,
+        title: 'sample data integration'
     }]
 };
 const getters = {
