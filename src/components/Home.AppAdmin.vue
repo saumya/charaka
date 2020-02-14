@@ -9,6 +9,7 @@
                 </div>
                 <div class="navbar-end">
                     <a class="navbar-item"> Application Notifications </a>
+                    <button v-on:click="counter += 1">Add 1</button>
                 </div>
             </div>
         </nav>
