@@ -28,15 +28,22 @@ import { mapGetters } from 'vuex';
 
 export default {
     name: 'HomeAppAdmin',
+    data: function(){
+        return({
+            count:0
+        });
+    },
     computed: mapGetters(['allTodos']),
     methods:{
         greet: function () {
-            alert('Greet');
+            //alert('Greet');
+            window.console.log('Greet');
         },
         hello: function(event){
             //console.log(event);
-            alert(event.target);
+            //alert(event.target);
             //alert('Hello');
+            window.console.log(event);
         }
     }
 }
