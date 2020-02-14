@@ -13,7 +13,10 @@
             </div>
         </nav>
         <div>Application admin : TODO</div>
+
         <button v-on:click="greet">Greet</button>
+        <button v-on:click="hello($event)">Greet Event</button>
+        
         <div class="todos">
             <div v-for="todo in allTodos" v-bind:key="todo.id" class="todo">{{todo.title}}</div>
         </div>
@@ -29,6 +32,11 @@ export default {
     methods:{
         greet: function () {
             alert('Greet');
+        },
+        hello: function(event){
+            //console.log(event);
+            alert(event.target);
+            //alert('Hello');
         }
     }
 }
