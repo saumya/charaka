@@ -9,11 +9,11 @@
                 </div>
                 <div class="navbar-end">
                     <a class="navbar-item"> Application Notifications </a>
-                    <button v-on:click="counter += 1">Add 1</button>
                 </div>
             </div>
         </nav>
         <div>Application admin : TODO</div>
+        <button v-on:click="greet">Greet</button>
         <div class="todos">
             <div v-for="todo in allTodos" v-bind:key="todo.id" class="todo">{{todo.title}}</div>
         </div>
@@ -25,6 +25,11 @@ import { mapGetters } from 'vuex';
 
 export default {
     name: 'HomeAppAdmin',
-    computed: mapGetters(['allTodos'])
+    computed: mapGetters(['allTodos']),
+    methods:{
+        greet: function () {
+            alert('Greet');
+        }
+    }
 }
 </script>
