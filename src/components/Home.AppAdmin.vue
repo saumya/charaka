@@ -16,6 +16,7 @@
 
         <button v-on:click="greet">Greet</button>
         <button v-on:click="hello($event)">Greet Event</button>
+        <button v-on:click="(count++)">Increase Counter {{count}}</button>
         
         <div class="todos">
             <div v-for="todo in allTodos" v-bind:key="todo.id" class="todo">{{todo.title}}</div>
@@ -44,6 +45,9 @@ export default {
             //alert(event.target);
             //alert('Hello');
             window.console.log(event);
+        },
+        onCount: function(){
+            window.console.log('onCount');
         }
     }
 }
