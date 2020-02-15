@@ -15,9 +15,9 @@
         <div>Application admin : TODO</div>
 
         <button v-on:click="greet">Greet</button>
-        <button v-on:click="hello($event)">Greet Event</button>
+        <button v-on:click="hello('one',$event)">Greet Event</button>
         <button v-on:click="(count++)">Increase Counter {{count}}</button>
-        
+        <div> The count = {{count}} </div>
         <div class="todos">
             <div v-for="todo in allTodos" v-bind:key="todo.id" class="todo">{{todo.title}}</div>
         </div>
@@ -42,11 +42,12 @@ export default {
             window.console.log('count',this.count);
             this.count++;
         },
-        hello: function(event){
+        hello: function(data, event){
             //console.log(event);
             //alert(event.target);
             //alert('Hello');
             window.console.log(event);
+            window.console.log(data);
         },
         onCount: function(){
             window.console.log('onCount');
