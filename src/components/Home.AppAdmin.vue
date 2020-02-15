@@ -39,6 +39,8 @@ export default {
         greet: function () {
             //alert('Greet');
             window.console.log('Greet');
+            window.console.log('count',this.count);
+            this.count++;
         },
         hello: function(event){
             //console.log(event);
