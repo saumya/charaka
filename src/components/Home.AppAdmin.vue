@@ -3,7 +3,7 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-menu is-active">
                 <div class="navbar-start">
-                    <a class="navbar-item"> Dashboard </a>
+                    <a class="navbar-item"> App Admin </a>
                     <a class="navbar-item"> Users </a>
                     <a class="navbar-item"> Clinics </a>
                 </div>
@@ -18,6 +18,36 @@
         <button v-on:click="hello('one',$event)">Greet Event</button>
         <button v-on:click="(count++)">Increase Counter {{count}}</button>
         <div> The count = {{count}} </div>
+
+        <section class="section">
+            <div class="buttons">
+                <button class="button is-info" v-on:click="onNewClinicUI">New Clinic</button>
+                <button class="button is-info" v-on:click="onActivateClinicUI">Activate Clinic</button>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-info" type="text" placeholder="Clinic Name">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-info" type="text" placeholder="Clinic Admin Name">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-info" type="text" placeholder="Admin Password">
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="button is-info" v-on:click="onRegisterNewClinic">Register A New Clinic</button>
+            </div>
+        </section>
+
         <div class="todos">
             <div v-for="todo in allTodos" v-bind:key="todo.id" class="todo">{{todo.title}}</div>
         </div>
@@ -51,6 +81,15 @@ export default {
         },
         onCount: function(){
             window.console.log('onCount');
+        },
+        onNewClinicUI: function(){
+            window.console.log('onNewClinicUI');
+        },
+        onActivateClinicUI: function(){
+            window.console.log('onActivateClinicUI');
+        },
+        onRegisterNewClinic: function(){
+            window.console.log('onRegisterNewClinic');
         }
     }
 }
