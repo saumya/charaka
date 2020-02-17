@@ -12,7 +12,7 @@
                 </div>
             </div>
         </nav>
-        <div>Application admin : TODO</div>
+        <div>Application admin : TODO </div>
 
         <button v-on:click="greet">Greet</button>
         <button v-on:click="hello('one',$event)">Greet Event</button>
