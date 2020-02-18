@@ -3,12 +3,12 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-menu is-active">
                 <div class="navbar-start">
-                    <a class="navbar-item"> App Admin </a>
-                    <a class="navbar-item"> Users </a>
-                    <a class="navbar-item"> Clinics </a>
+                    <a class="navbar-item" v-on:click="onMenuAppAdmin"> App Admin </a>
+                    <a class="navbar-item" v-on:click="onMenuUsers"> Users </a>
+                    <a class="navbar-item" v-on:click="onMenuClinics"> Clinics </a>
                 </div>
                 <div class="navbar-end">
-                    <a class="navbar-item"> Application Notifications </a>
+                    <a class="navbar-item" v-on:click="onMenuAppConfig"> App Configs </a>
                 </div>
             </div>
         </nav>
@@ -82,6 +82,20 @@ export default {
         onCount: function(){
             window.console.log('onCount');
         },
+        
+        onMenuAppAdmin: function(){
+            window.console.log('onMenuAppAdmin');
+        },
+        onMenuUsers: function(){
+            window.console.log('onMenuUsers');
+        },
+        onMenuClinics: function(){
+            window.console.log('onMenuClinics');
+        },
+        onMenuAppConfig: function(){
+            window.console.log('onMenuAppConfig');
+        },
+
         onNewClinicUI: function(){
             window.console.log('onNewClinicUI');
         },
