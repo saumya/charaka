@@ -25,8 +25,8 @@
                 <button class="button is-info" v-on:click="onActivateClinicUI">Activate Clinic</button>
             </div>
         </section>
-
-        <section class="section">
+        <!-- Register New Clinic -->
+        <section class="section" id="clinic_register_ui" v-bind:style="{display:ui_register_clinic_visibility}">
             <div class="field">
                 <div class="control">
                     <input class="input is-info" type="text" placeholder="Clinic Name">
@@ -47,6 +47,19 @@
                 <button class="button is-info" v-on:click="onRegisterNewClinic">Register A New Clinic</button>
             </div>
         </section>
+        <!-- Register New Clinic / -->
+        <!-- Activate Clinic -->
+        <section class="section" id="clinic_actiavte_ui" v-bind:style="{display:ui_activate_clinic_visibility}">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-info" type="text" placeholder="Clinic Name">
+                </div>
+            </div>
+            <div class="buttons">
+                <button class="button is-info">Activate A Clinic</button>
+            </div>
+        </section>
+        <!-- Activate Clinic / -->
 
         <div class="todos">
             <div v-for="todo in allTodos" v-bind:key="todo.id" class="todo">{{todo.title}}</div>
@@ -61,7 +74,9 @@ export default {
     name: 'HomeAppAdmin',
     data: function(){
         return({
-            count:0
+            count:0,
+            ui_activate_clinic_visibility:'none',
+            ui_register_clinic_visibility:'none'
         });
     },
     computed: mapGetters(['allTodos']),
@@ -98,9 +113,16 @@ export default {
 
         onNewClinicUI: function(){
             window.console.log('onNewClinicUI');
+
+            this.ui_register_clinic_visibility = 'block';
+            this.ui_activate_clinic_visibility = 'none';
         },
         onActivateClinicUI: function(){
             window.console.log('onActivateClinicUI');
+            window.console.log( 'this.displayX', this.displayX );
+
+            this.ui_register_clinic_visibility = 'none';
+            this.ui_activate_clinic_visibility = 'block';
         },
         onRegisterNewClinic: function(){
             window.console.log('onRegisterNewClinic');
