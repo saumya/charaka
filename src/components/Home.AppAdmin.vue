@@ -29,17 +29,17 @@
         <section class="section" id="clinic_register_ui" v-bind:style="{display:ui_register_clinic_visibility}">
             <div class="field">
                 <div class="control">
-                    <input class="input is-info" type="text" placeholder="Clinic Name">
+                    <input class="input is-info" type="text" placeholder="Clinic Name" v-model="newClinic.name"> 
                 </div>
             </div>
             <div class="field">
                 <div class="control">
-                    <input class="input is-info" type="text" placeholder="Clinic Admin Name">
+                    <input class="input is-info" type="text" placeholder="Clinic Admin Name" v-model="newClinic.adminName">
                 </div>
             </div>
             <div class="field">
                 <div class="control">
-                    <input class="input is-info" type="text" placeholder="Admin Password">
+                    <input class="input is-info" type="text" placeholder="Admin Password" v-model="newClinic.adminPassword">
                 </div>
             </div>
 
@@ -76,7 +76,13 @@ export default {
         return({
             count:0,
             ui_activate_clinic_visibility:'none',
-            ui_register_clinic_visibility:'none'
+            ui_register_clinic_visibility:'none',
+            newClinic: { 
+                    name: 'XYZ Clinic',
+                    adminName: 'XYZ Admin Name',
+                    adminPassword: 'XYZ Admin Password'
+                },
+            activate:'todo'
         });
     },
     computed: mapGetters(['allTodos']),
@@ -126,6 +132,8 @@ export default {
         },
         onRegisterNewClinic: function(){
             window.console.log('onRegisterNewClinic');
+            window.console.log( this.newClinic.name, this.newClinic.adminName, this.newClinic.adminPassword );
+            // TODO: make the REST call and register the clinic
         }
     }
 }
