@@ -52,11 +52,12 @@
         <section class="section" id="clinic_actiavte_ui" v-bind:style="{display:ui_activate_clinic_visibility}">
             <div class="field">
                 <div class="control">
-                    <input class="input is-info" type="text" placeholder="Clinic Name">
+                    <input class="input is-info" type="text" placeholder="Clinic Name" v-model="activateClinic.name">
                 </div>
             </div>
             <div class="buttons">
-                <button class="button is-info">Activate A Clinic</button>
+                <button class="button is-dark" v-on:click="onSearchClinincWithName">Search Clinic With Name</button>
+                <button class="button is-primary" v-on:click="onActivateTheNewClinic">Activate</button>
             </div>
         </section>
         <!-- Activate Clinic / -->
@@ -82,6 +83,9 @@ export default {
                     adminName: 'XYZ Admin Name',
                     adminPassword: 'XYZ Admin Password'
                 },
+            activateClinic:{
+                name:'nothing'
+            },
             activate:'todo'
         });
     },
@@ -119,14 +123,11 @@ export default {
 
         onNewClinicUI: function(){
             window.console.log('onNewClinicUI');
-
             this.ui_register_clinic_visibility = 'block';
             this.ui_activate_clinic_visibility = 'none';
         },
         onActivateClinicUI: function(){
             window.console.log('onActivateClinicUI');
-            window.console.log( 'this.displayX', this.displayX );
-
             this.ui_register_clinic_visibility = 'none';
             this.ui_activate_clinic_visibility = 'block';
         },
@@ -134,6 +135,12 @@ export default {
             window.console.log('onRegisterNewClinic');
             window.console.log( this.newClinic.name, this.newClinic.adminName, this.newClinic.adminPassword );
             // TODO: make the REST call and register the clinic
+        },
+        onSearchClinincWithName:function(){
+            window.console.log( 'onSearchClinincWithName',this.activateClinic.name )
+        },
+        onActivateTheNewClinic: function(){
+            window.console.log( 'onactivateTheNewClinic',this.activateClinic.name )
         }
     }
 }
