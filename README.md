@@ -1,5 +1,7 @@
 # charaka
 
+Building a Vue App for a test of the framework.
+
 ## Project setup
 ```
 npm install
