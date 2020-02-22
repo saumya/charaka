@@ -1,6 +1,6 @@
 # charaka
 
-Building a Vue App for a test of the framework.
+A sample app to manage an office. Made with VueJS.
 
 ## Project setup
 ```
