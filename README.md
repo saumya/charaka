@@ -1,6 +1,6 @@
 # charaka
 
-A sample app to manage an office. Made with VueJS.
+A sample app to manage an office.
 
 ## Project setup
 ```
