@@ -1,6 +1,6 @@
 # charaka
 
-A VueJS Application.
+A VueJS Application. Using REST calls, Routers and State engines.
 Sample app to manage an office.
 
 ## Project setup
