@@ -3,7 +3,7 @@
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-menu is-active">
                 <div class="navbar-start">
-                    <a class="navbar-item" v-on:click="onMenuAppAdmin"> App Admin </a>
+                    <a class="navbar-item" v-on:click="onMenuAppAdmin"> Application </a>
                     <a class="navbar-item" v-on:click="onMenuUsers"> Users </a>
                     <a class="navbar-item" v-on:click="onMenuClinics"> Clinics </a>
                 </div>
