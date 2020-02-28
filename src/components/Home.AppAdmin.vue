@@ -70,6 +70,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import apiconfig from '../api.js';
 
 export default {
     name: 'HomeAppAdmin',
@@ -135,6 +136,37 @@ export default {
             window.console.log('onRegisterNewClinic');
             window.console.log( this.newClinic.name, this.newClinic.adminName, this.newClinic.adminPassword );
             // TODO: make the REST call and register the clinic
+            //window.console.log( apiconfig );
+            // CreateGroup
+            const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.post.create_group;
+            const fetch_data = {
+                method: 'POST',
+                mode: 'cors',
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                }),
+                body: JSON.stringify({
+                    'groupName': this.newClinic.name,
+                    'userName': this.newClinic.adminName,
+                    'userPassword': this.newClinic.adminPassword
+                })
+            };
+            //
+            fetch( url_1, fetch_data ).then(function(resultData){
+                window.console.log(' RESULT ');
+                //window.console.log( resultData );
+                resultData.json().then(function(rData){
+                    //window.console.log('data');
+                    window.console.log(rData);
+                }).catch(function(error_2){
+                    window.console.log('ERROR : 2');
+                    window.console.log( error_2 );
+                });
+            }).catch(function(error){
+                window.console.log('ERROR : 1');
+                window.console.log(error);
+            });
+            
         },
         onSearchClinincWithName:function(){
             window.console.log( 'onSearchClinincWithName',this.activateClinic.name )
