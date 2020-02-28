@@ -46,6 +46,18 @@
             <div class="buttons">
                 <button class="button is-info" v-on:click="onRegisterNewClinic">Register A New Clinic</button>
             </div>
+            
+            <article class="message">
+                <div class="message-header">
+                    <p>Message</p>
+                    <!-- <button class="delete" aria-label="delete"></button> -->
+                </div>
+                <div class="message-body">
+                    <!-- TO be filled by App -->
+                    {{ ui_message }}
+                </div>
+            </article>
+
         </section>
         <!-- Register New Clinic / -->
         <!-- Activate Clinic -->
@@ -76,6 +88,7 @@ export default {
     name: 'HomeAppAdmin',
     data: function(){
         return({
+            ui_message: 'Welcome to AppAdmin',
             count:0,
             ui_activate_clinic_visibility:'none',
             ui_register_clinic_visibility:'none',
@@ -126,6 +139,8 @@ export default {
             window.console.log('onNewClinicUI');
             this.ui_register_clinic_visibility = 'block';
             this.ui_activate_clinic_visibility = 'none';
+            // UI show
+            this.ui_message = 'Register a New clinic to begin with. Fill in with Clinic Name, Admin name and password.';
         },
         onActivateClinicUI: function(){
             window.console.log('onActivateClinicUI');
@@ -136,6 +151,7 @@ export default {
             window.console.log('onRegisterNewClinic');
             window.console.log( this.newClinic.name, this.newClinic.adminName, this.newClinic.adminPassword );
             // TODO: make the REST call and register the clinic
+            this.ui_message = 'New Clinic Registration. We are processing your request.';
             //window.console.log( apiconfig );
             // CreateGroup
             const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.post.create_group;
@@ -152,19 +168,23 @@ export default {
                 })
             };
             //
+            var that = this;
             fetch( url_1, fetch_data ).then(function(resultData){
                 window.console.log(' RESULT ');
                 //window.console.log( resultData );
                 resultData.json().then(function(rData){
                     //window.console.log('data');
                     window.console.log(rData);
+                    that.ui_message = 'SUCCESS : New Clinic Registration. '+ JSON.stringify(rData) ;
                 }).catch(function(error_2){
                     window.console.log('ERROR : 2');
                     window.console.log( error_2 );
+                    that.ui_message = 'FAIL : New Clinic Registration. ' + error_2; 
                 });
             }).catch(function(error){
                 window.console.log('ERROR : 1');
                 window.console.log(error);
+                that.ui_message = 'FAIL : New Clinic Registration. ' + error; 
             });
             
         },
