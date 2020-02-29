@@ -64,11 +64,15 @@
         <section class="section" id="clinic_actiavte_ui" v-bind:style="{display:ui_activate_clinic_visibility}">
             <div class="field">
                 <div class="control">
+                    <p>Clininc Id</p>
+                    <input class="input is-info" type="text" placeholder="Clinic Id" v-model="activateClinic.cid">
+                    <p>Clininc Name</p>
                     <input class="input is-info" type="text" placeholder="Clinic Name" v-model="activateClinic.name">
                 </div>
             </div>
             <div class="buttons">
-                <button class="button is-dark" v-on:click="onSearchClinincWithName">Search Clinic With Name</button>
+                <button class="button is-dark" v-on:click="onSearchClinincWithId">Search By Id</button>
+                <button class="button is-dark" v-on:click="onSearchClinincWithName">Search By Name</button>
                 <button class="button is-primary" v-on:click="onActivateTheNewClinic">Activate</button>
             </div>
         </section>
@@ -98,6 +102,7 @@ export default {
                     adminPassword: 'XYZ Admin Password'
                 },
             activateClinic:{
+                cid:0,
                 name:'nothing'
             },
             activate:'todo'
@@ -187,6 +192,9 @@ export default {
                 that.ui_message = 'FAIL : New Clinic Registration. ' + error; 
             });
             
+        },
+        onSearchClinincWithId: function(){
+            window.console.log( 'onSearchClinincWithId',this.activateClinic.cid )
         },
         onSearchClinincWithName:function(){
             window.console.log( 'onSearchClinincWithName',this.activateClinic.name )
