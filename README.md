@@ -1,7 +1,12 @@
 # charaka
 
 A VueJS Application. Using REST calls, Routers and State engines.
-This Sample app to manage an office.
+
+Work in progress for the Admin UI.
+TODO:
+ - Office Admin
+ - User Admin
+ - User UI
 
 ## Project setup
 ```
