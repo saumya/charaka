@@ -4,13 +4,13 @@ A VueJS Application. Using REST calls, Routers and State engines.
 
 Work in progress for the Admin UI.
 
-TODO:
+### TODO
 
  - Office Admin
  - User Admin
  - User UI
 
- 
+
 
 ## Project setup
 ```
