@@ -66,15 +66,18 @@
                 <div class="control">
                     <p>Clininc Id</p>
                     <input class="input is-info" type="text" placeholder="Clinic Id" v-model="activateClinic.cid">
+                    <!--
                     <p>Clininc Name</p>
                     <input class="input is-info" type="text" placeholder="Clinic Name" v-model="activateClinic.name">
+                    -->
                 </div>
             </div>
             <div class="buttons">
                 <button class="button is-dark" v-on:click="onSearchClinincWithId">Search By Id</button>
-                <button class="button is-dark" v-on:click="onSearchClinincWithName">Search By Name</button>
-                <button class="button is-primary" v-on:click="onActivateTheNewClinic">Activate</button>
+                <!-- <button class="button is-dark" v-on:click="onSearchClinincWithName">Search By Name</button> -->
+                
             </div>
+            <button class="button is-primary" v-on:click="onActivateTheNewClinic">Activate</button>
         </section>
         <!-- Activate Clinic / -->
 
