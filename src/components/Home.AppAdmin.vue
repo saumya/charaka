@@ -197,7 +197,10 @@ export default {
             
         },
         onSearchClinincWithId: function(){
-            window.console.log( 'onSearchClinincWithId',this.activateClinic.cid )
+            window.console.log( 'onSearchClinincWithId',this.activateClinic.cid );
+            //TODO:
+            // Fetch API
+            // Make the clininc with ID as Active
         },
         onSearchClinincWithName:function(){
             window.console.log( 'onSearchClinincWithName',this.activateClinic.name )
