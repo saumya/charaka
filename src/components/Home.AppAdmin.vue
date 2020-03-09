@@ -201,6 +201,7 @@ export default {
             //TODO:
             // Fetch API
             // Make the clininc with ID as Active
+            
         },
         onSearchClinincWithName:function(){
             window.console.log( 'onSearchClinincWithName',this.activateClinic.name )
