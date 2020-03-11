@@ -10,7 +10,9 @@ Work in progress for the Admin UI.
  - Office Admin
  - User Admin
  - User UI
+
  - integrate with API
+ - Check the integration and tweak the API & UI both
 
 
 
