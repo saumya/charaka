@@ -14,6 +14,11 @@ Work in progress for the Admin UI.
  - integrate with API
  - Check the integration and tweak the API & UI both
 
+ - Need to work on at least 3 apps
+  - Patient
+  - Doctor
+  - Clinic
+
 
 
 ## Project setup
