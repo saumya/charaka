@@ -18,6 +18,8 @@ Work in progress for the Admin UI.
   - Patient
   - Doctor
   - Clinic
+ 
+ - Any other changes and further research for the WIP
 
 
 
