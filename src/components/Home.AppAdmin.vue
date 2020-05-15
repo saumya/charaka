@@ -64,7 +64,7 @@
         <section class="section" id="clinic_actiavte_ui" v-bind:style="{display:ui_activate_clinic_visibility}">
             <div class="field">
                 <div class="control">
-                    <p>Clininc Id</p>
+                    <p>Clinin Id</p>
                     <input class="input is-info" type="text" placeholder="Clinic Id" v-model="activateClinic.cid">
                     <!--
                     <p>Clininc Name</p>
@@ -77,7 +77,21 @@
                 <!-- <button class="button is-dark" v-on:click="onSearchClinincWithName">Search By Name</button> -->
                 
             </div>
-            <button class="button is-primary" v-on:click="onActivateTheNewClinic">Activate</button>
+            <div class="buttons">
+                <button class="button is-primary" v-on:click="onActivateTheNewClinic">Activate</button>
+            </div>
+
+            <article class="message">
+                <div class="message-header">
+                    <p>Message</p>
+                    <!-- <button class="delete" aria-label="delete"></button> -->
+                </div>
+                <div class="message-body">
+                    <!-- TO be filled by App -->
+                    {{ ui_message }}
+                </div>
+            </article>
+
         </section>
         <!-- Activate Clinic / -->
 
@@ -154,6 +168,9 @@ export default {
             window.console.log('onActivateClinicUI');
             this.ui_register_clinic_visibility = 'none';
             this.ui_activate_clinic_visibility = 'block';
+
+            // UI show
+            this.ui_message = 'Activate a Clinic by searching for Clinic Id.';
         },
         onRegisterNewClinic: function(){
             window.console.log('onRegisterNewClinic');
@@ -198,10 +215,29 @@ export default {
         },
         onSearchClinincWithId: function(){
             window.console.log( 'onSearchClinincWithId',this.activateClinic.cid );
-            //TODO:
-            // Fetch API
             // Make the clininc with ID as Active
-            
+            const url_1 = apiconfig.global.uri 
+                            + apiconfig.global.version 
+                            + apiconfig.get.group_by_id 
+                            + (this.activateClinic.cid);
+            const fetch_data = {};
+            var that = this;
+            fetch( url_1, fetch_data ).then(function(resultData){
+                window.console.log('====== RESULT ======');
+                resultData.json().then((rData)=>{
+                    window.console.log(rData);
+                    that.ui_message = 'SUCCESS : Found. '+ JSON.stringify(rData) ;
+                }).catch((error2)=>{
+                    window.console.log('========= Error2 ========');
+                    window.console.log(error2);
+                    window.console.log('========= Error2 / ========');
+                });
+                window.console.log('====== RESULT / ======')
+            }).catch(function(error1){
+                window.console.log('========= Error1 ========');
+                window.console.log(error1);
+                window.console.log('========= Error1 / ========');
+            });
         },
         onSearchClinincWithName:function(){
             window.console.log( 'onSearchClinincWithName',this.activateClinic.name )

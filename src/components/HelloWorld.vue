@@ -1,6 +1,15 @@
 <template>
   <div class="hello">
     <h1>{{ msg }} <strong>{{appName}}</strong> </h1>
+    <div>
+      <div>All functionality are as follows.</div>
+      <div>Make a clinic(Group)</div>
+      <div>Activate the clinic(Group)</div>
+
+      <div>Persons</div>
+      <div>Doctors</div>
+      <div>Schedules</div>
+    </div>
   </div>
 </template>
 
