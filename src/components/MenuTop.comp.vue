@@ -1,6 +1,7 @@
 <!-- HTML -->
 <template>
     <div>
+        <router-link to="/">Home</router-link>
         <router-link to="/app_admin">App Admin</router-link>
         <router-link to="/clinic_admin">Clinic Admin</router-link>
         <router-link to="/doctor">Doctor</router-link>
