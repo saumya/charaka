@@ -226,7 +226,14 @@ export default {
                 window.console.log('====== RESULT ======');
                 resultData.json().then((rData)=>{
                     window.console.log(rData);
-                    that.ui_message = 'SUCCESS : Found. '+ JSON.stringify(rData) ;
+                    window.console.log( 'rData.id',rData.id );
+                    //that.ui_message = 'SUCCESS : Found. '+ JSON.stringify(rData) ;
+                    if(rData.id===undefined){
+                        that.ui_message = 'No Clinic with that id! '+ JSON.stringify(rData) ;
+                    }else{
+                        that.activateClinic.name = rData.group_name;
+                        that.ui_message = 'SUCCESS : Found. '+ JSON.stringify(rData) ;
+                    }
                 }).catch((error2)=>{
                     window.console.log('========= Error2 ========');
                     window.console.log(error2);
@@ -243,7 +250,7 @@ export default {
             window.console.log( 'onSearchClinincWithName',this.activateClinic.name )
         },
         onActivateTheNewClinic: function(){
-            window.console.log( 'onactivateTheNewClinic',this.activateClinic.name )
+            window.console.log( 'onactivateTheNewClinic : name=',this.activateClinic.name, ', id=',this.activateClinic.cid )
         }
     }
 }
