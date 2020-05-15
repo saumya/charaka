@@ -17,6 +17,6 @@ export default {
 <!-- Style -->
 <style scoped>
 a {
-  color: #42b983;
+  color: #007741;
 }
 </style>
