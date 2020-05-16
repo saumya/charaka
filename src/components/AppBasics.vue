@@ -66,6 +66,13 @@
             
         </section>
         <!-- Register New Clinic / -->
+        <!-- Update Clinic -->
+        <section class="section" id="clinic_update_ui" v-bind:style="{display:section_visibility.ui_update}">
+            <ClinicForm title="UPDATE" clinic="clinic"></ClinicForm>
+        </section>
+        <!-- Update Clinic / -->
+
+
         <section class="section">
             <article class="message">
                 <div class="message-header">

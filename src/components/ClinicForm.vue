@@ -1,6 +1,13 @@
 <template>
     <div class="comp_form">
-        <label>{{ title }}</label>
+        <!-- <label>{{ title }}</label> -->
+        {{messages.info_message}}
+        <div class="field" v-if="(title==='UPDATE')">
+            <div class="control">
+                <label>Clinic Id</label>
+                <input class="input is-info" type="text" placeholder="Clinic Id" v-model="clinic.id"> 
+            </div>
+        </div>
         <div class="field">
             <div class="control">
                 <label>Clinic Name</label>
@@ -51,6 +58,9 @@
     </div>
 </template>
 <script>
+import { mapState } from 'vuex';
+//import { store } from vuex;
+
 export default {
     name: "ClinicForm",
     data: function(){
@@ -62,6 +72,7 @@ export default {
         });
     },
     props:['title','clinic'],
+    computed: mapState(['messages']),
     methods: {
         onRegisterNewClinic: function(event){
             window.console.log('onRegisterNewClinic',event);
