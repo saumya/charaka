@@ -1,7 +1,7 @@
 <template>
     <div class="comp_form">
         <!-- <label>{{ title }}</label> -->
-        {{messages.info_message}}
+        {{ messages_from_store.info_message }}
         <div class="field" v-if="(title==='UPDATE')">
             <div class="control">
                 <label>Clinic Id</label>
@@ -72,7 +72,9 @@ export default {
         });
     },
     props:['title','clinic'],
-    computed: mapState(['messages']),
+    computed: mapState({ 
+        messages_from_store : 'messages' 
+        }),
     methods: {
         onRegisterNewClinic: function(event){
             window.console.log('onRegisterNewClinic',event);
