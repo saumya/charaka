@@ -9,7 +9,12 @@
             </div>
         </section>
         <!-- Register New Clinic -->
+        
+        
+
         <section class="section" id="clinic_register_ui" v-bind:style="{display:section_visibility.ui_create}">
+            <ClinicForm title="CREATE" clinic="clinic"></ClinicForm>
+            <!--
             <div class="comp_form">
 
             
@@ -56,6 +61,9 @@
             </div>
 
             </div>
+            -->
+            
+            
         </section>
         <!-- Register New Clinic / -->
         <section class="section">
@@ -76,8 +84,11 @@
 </template>
 
 <script>
+import ClinicForm from './ClinicForm'
+
 export default {
     name: 'AppBasics',
+    components: { ClinicForm },
     data: function(){
         return({
             ui_message: 'Welcome to Clinic Management. This section allows you to CREATE, READ, UPDATE, DELETE clinics.',
