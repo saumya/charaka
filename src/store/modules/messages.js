@@ -6,7 +6,9 @@ const state = {
 }
 
 const getters = {
-
+    count_dummy_items: state=>{
+        return state.dummy_List.length;
+    }
 };
 const actions = {
 

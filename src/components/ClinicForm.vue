@@ -6,6 +6,7 @@
             <li v-for="(value, index) in messages.dummy_List" v-bind:key="index">
                 {{ value }}
             </li>
+            Total <b> {{ count_dummy_items }} </b> items there from VueX Store!
         </ul>
 
         <div class="field" v-if="(title==='UPDATE')">
@@ -64,7 +65,7 @@
     </div>
 </template>
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 //import { store } from vuex;
 
 export default {
@@ -83,6 +84,9 @@ export default {
             'messages'
         ]),
         // more stuff
+        ...mapGetters([
+            'count_dummy_items'
+        ]),
     },
     methods: {
         onRegisterNewClinic: function(event){
