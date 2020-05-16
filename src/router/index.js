@@ -12,6 +12,8 @@ import HomeClinicAdmin from '../components/Home.ClinicAdmin'
 import HomeDoctor from '../components/HomeDoctor'
 import HomePatient from '../components/HomePatient'
 
+import AppBasics from '../components/AppBasics'
+
 Vue.use(Router)
 
 export default new Router({
@@ -29,7 +31,9 @@ export default new Router({
         { path: '/clinic_admin', component: HomeClinicAdmin },
         { path: '/app_admin', component: HomeAppAdmin },
         { path: '/doctor', component: HomeDoctor },
-        { path: '/patient', component: HomePatient }
+        { path: '/patient', component: HomePatient },
+
+        { path: '/app_basics', component: AppBasics }
 
     ]
 });
