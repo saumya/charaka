@@ -2,6 +2,12 @@
     <div class="comp_form">
         <!-- <label>{{ title }}</label> -->
         {{ messages.info_message }}
+        <ul>
+            <li v-for="(value, index) in messages.dummy_List" v-bind:key="index">
+                {{ value }}
+            </li>
+        </ul>
+
         <div class="field" v-if="(title==='UPDATE')">
             <div class="control">
                 <label>Clinic Id</label>
