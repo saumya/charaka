@@ -10,18 +10,24 @@
         </section>
         <!-- Register New Clinic -->
         <section class="section" id="clinic_register_ui" v-bind:style="{display:section_visibility.ui_create}">
+            <div class="comp_form">
+
+            
             <div class="field">
                 <div class="control">
+                    <label>Clinic Name</label>
                     <input class="input is-info" type="text" placeholder="Clinic Name" v-model="clinic.name"> 
                 </div>
             </div>
             <div class="field">
                 <div class="control">
+                    <label>Clinic Admin Name</label>
                     <input class="input is-info" type="text" placeholder="Clinic Admin Name" v-model="clinic.adminName">
                 </div>
             </div>
             <div class="field">
                 <div class="control">
+                    <label>Clinic Admin Password</label>
                     <input class="input is-info" type="text" placeholder="Admin Password" v-model="clinic.adminPassword">
                 </div>
             </div>
@@ -48,9 +54,8 @@
             <div class="buttons">
                 <button class="button is-info" v-on:click="onRegisterNewClinic">Register A New Clinic</button>
             </div>
-            
-            
 
+            </div>
         </section>
         <!-- Register New Clinic / -->
         <section class="section">
