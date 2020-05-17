@@ -75,7 +75,7 @@
     </div>
 </template>
 <script>
-import { mapState, mapGetters, mapMutations } from 'vuex';
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 //import { store } from vuex;
 import store from '../store'
 
@@ -104,6 +104,7 @@ export default {
     },
     methods: {
         ...mapMutations([ 'INCREMENT_COUNT' ]),
+        ...mapActions([ 'updateCount' ]),
         onCounterUp: event=>{
             window.console.log('onCounterUp',event);
             //this.$store.commit('INCREMENT_COUNT'); //NOT WORKING !! $store is 'undefined'
@@ -123,10 +124,11 @@ export default {
             // imported 'store' and now it works here
             //
             const incrementBy = 4;
-            //----- Mutation ---------
+            //----- Mutation --------- Synchronous
             //store.commit('INCREMENT_COUNT', incrementBy);
-            //----- Actions ---------
+            //----- Actions --------- Asynchronous
             store.dispatch('updateCount',incrementBy);
+            //store.updateCount(incrementBy);
         },
         onRegisterNewClinic: function(event){
             window.console.log('onRegisterNewClinic',event);
