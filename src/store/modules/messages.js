@@ -18,14 +18,15 @@ const getters = {
     }
 };
 const actions = {
-    updateCount({commit},value){
-       // if(state.user){
-            commit('INCREMENT_COUNT',value);
-        //}
+    updateCount({state,commit},value){
+        window.console.log('---ACTION---','updateCount');
+        window.console.log('state',state);
+        commit('INCREMENT_COUNT',value);
     },
 };
 const mutations = {
     INCREMENT_COUNT (state, incrementBy){
+        window.console.log('---MUTAION---','INCREMENT_COUNT');
         state.count += incrementBy;
     }
 };

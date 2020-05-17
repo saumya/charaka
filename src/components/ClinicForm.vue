@@ -5,7 +5,7 @@
         <h3>below</h3>
         <h3>>>> {{ computedMessage }}</h3> <!-- Using Computed -->
         <h3>above</h3>
-        <h3>Counter Value {{ count_value }}</h3>
+        
         <ul>
             <li v-for="(value, index) in messages.dummy_List" v-bind:key="index">
                 {{ value }}
@@ -64,6 +64,8 @@
             <button class="button is-info" v-on:click="onUpdateClinic">Update Clinic</button>
         </div>
 
+
+        <h3>Counter Value {{ count_value }}</h3>
         <div class="buttons">
             <button class="button is-info" v-on:click="onCounterUp">Counter ++</button>
         </div>
@@ -73,8 +75,9 @@
     </div>
 </template>
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 //import { store } from vuex;
+import store from '../store'
 
 export default {
     name: "ClinicForm",
@@ -91,9 +94,7 @@ export default {
         localComputed(){
             return 'LocalComputedPropertyExample'
         },
-        ...mapState([
-            'messages'
-        ]),
+        ...mapState([ 'messages' ]),
         ...mapGetters([
             'count_dummy_items', 'count_value'
         ]),
@@ -102,6 +103,7 @@ export default {
         }
     },
     methods: {
+        ...mapMutations([ 'INCREMENT_COUNT' ]),
         onCounterUp: event=>{
             window.console.log('onCounterUp',event);
             //this.$store.commit('INCREMENT_COUNT'); //NOT WORKING !! $store is 'undefined'
@@ -112,6 +114,19 @@ export default {
 
             //const incrementBy = 4;
             //this.$store.dispatch('updateCount',incrementBy); //NOT WORKING !! $store is 'undefined'
+
+            //this.INCREMENT_COUNT(3);
+            //window.console.log( 'this', this );
+
+            
+            // WORKING Example. 
+            // imported 'store' and now it works here
+            //
+            const incrementBy = 4;
+            //----- Mutation ---------
+            //store.commit('INCREMENT_COUNT', incrementBy);
+            //----- Actions ---------
+            store.dispatch('updateCount',incrementBy);
         },
         onRegisterNewClinic: function(event){
             window.console.log('onRegisterNewClinic',event);
