@@ -1,7 +1,11 @@
 <template>
     <div class="comp_form">
         <!-- <label>{{ title }}</label> -->
-        {{ messages.info_message }}
+        <h3>{{ messages.info_message }}</h3> <!-- using mapState -->
+        <h3>below</h3>
+        <h3>>>> {{ computedMessage }}</h3> <!-- Using Computed -->
+        <h3>above</h3>
+        <h3>Counter Value {{ count_value }}</h3>
         <ul>
             <li v-for="(value, index) in messages.dummy_List" v-bind:key="index">
                 {{ value }}
@@ -59,6 +63,10 @@
         <div class="buttons" v-if="(title==='UPDATE')">
             <button class="button is-info" v-on:click="onUpdateClinic">Update Clinic</button>
         </div>
+
+        <div class="buttons">
+            <button class="button is-info" v-on:click="onCounterUp">Counter ++</button>
+        </div>
     
 
 
@@ -80,15 +88,31 @@ export default {
     },
     props:['title','clinic'],
     computed: {
+        localComputed(){
+            return 'LocalComputedPropertyExample'
+        },
         ...mapState([
             'messages'
         ]),
-        // more stuff
         ...mapGetters([
-            'count_dummy_items'
+            'count_dummy_items', 'count_value'
         ]),
+        computedMessage(store){
+            return store.get_infoMessage
+        }
     },
     methods: {
+        onCounterUp: event=>{
+            window.console.log('onCounterUp',event);
+            //this.$store.commit('INCREMENT_COUNT'); //NOT WORKING !! $store is 'undefined'
+            //window.console.log('store', $store);
+            
+            //const incrementBy = 4;
+            //this.$store.commit('INCREMENT_COUNT', incrementBy);
+
+            //const incrementBy = 4;
+            //this.$store.dispatch('updateCount',incrementBy); //NOT WORKING !! $store is 'undefined'
+        },
         onRegisterNewClinic: function(event){
             window.console.log('onRegisterNewClinic',event);
         },
