@@ -74,7 +74,7 @@
 
         <h3>Counter Value {{ count_value }}</h3>
         <div class="buttons">
-            <button class="button is-info" v-on:click="onCounterUp">Counter ++</button>
+            <button class="button is-info" @click="onCounterUp">Counter ++</button>
         </div>
     
 
