@@ -13,7 +13,7 @@
         
 
         <section class="section" id="clinic_register_ui" v-bind:style="{display:section_visibility.ui_create}">
-            <ClinicForm title="CREATE" clinic="clinic"></ClinicForm>
+            <ClinicForm title="CREATE" :clinic="clinic"></ClinicForm>
             <!--
             <div class="comp_form">
 
@@ -68,7 +68,7 @@
         <!-- Register New Clinic / -->
         <!-- Update Clinic -->
         <section class="section" id="clinic_update_ui" v-bind:style="{display:section_visibility.ui_update}">
-            <ClinicForm title="UPDATE" clinic="clinic"></ClinicForm>
+            <ClinicForm title="UPDATE" :clinic="clinic"></ClinicForm>
         </section>
         <!-- Update Clinic / -->
 
@@ -82,6 +82,7 @@
                 <div class="message-body">
                     <!-- TO be filled by App -->
                     {{ ui_message }}
+                    <div> {{ get_general_message }} </div>
                 </div>
             </article>
         </section>
@@ -91,11 +92,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import ClinicForm from './ClinicForm'
 
 export default {
     name: 'AppBasics',
     components: { ClinicForm },
+    computed: {
+        ...mapGetters([
+            'get_general_message'
+        ])
+    },
     data: function(){
         return({
             ui_message: 'Welcome to Clinic Management. This section allows you to CREATE, READ, UPDATE, DELETE clinics.',

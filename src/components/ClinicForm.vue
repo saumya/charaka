@@ -1,10 +1,12 @@
 <template>
     <div class="comp_form">
-        <!-- <label>{{ title }}</label> -->
+        <label>{{ title }} {{clinic}}</label>
         <h3>{{ messages.info_message }}</h3> <!-- using mapState -->
         <h3>below</h3>
         <h3>>>> {{ computedMessage }}</h3> <!-- Using Computed -->
         <h3>above</h3>
+        <h3>{{getNewClinic}}</h3>
+        <h3>General Message | {{get_general_message}}</h3>
         
         <ul>
             <li v-for="(value, index) in messages.dummy_List" v-bind:key="index">
@@ -76,7 +78,6 @@
 </template>
 <script>
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
-//import { store } from vuex;
 import store from '../store'
 
 export default {
@@ -86,7 +87,8 @@ export default {
             section_visibility:{
                 ui_create: 'none',
                 ui_update: 'none'
-            }
+            },
+            
         });
     },
     props:['title','clinic'],
@@ -94,9 +96,10 @@ export default {
         localComputed(){
             return 'LocalComputedPropertyExample'
         },
-        ...mapState([ 'messages' ]),
+        ...mapState(['messages', 'clinics']),
         ...mapGetters([
-            'count_dummy_items', 'count_value'
+            'count_dummy_items', 'count_value', 'get_general_message',
+            'getNewClinic'
         ]),
         computedMessage(store){
             return store.get_infoMessage
@@ -104,7 +107,7 @@ export default {
     },
     methods: {
         ...mapMutations([ 'INCREMENT_COUNT' ]),
-        ...mapActions([ 'updateCount' ]),
+        ...mapActions([ 'updateCount', 'registerNewClinic' ]),
         onCounterUp: event=>{
             window.console.log('onCounterUp',event);
             //this.$store.commit('INCREMENT_COUNT'); //NOT WORKING !! $store is 'undefined'
@@ -132,6 +135,9 @@ export default {
         },
         onRegisterNewClinic: function(event){
             window.console.log('onRegisterNewClinic',event);
+            //window.console.log('clinic', this.clinic);
+
+            store.dispatch( 'registerNewClinic', this.clinic);
         },
         onUpdateClinic: function(event){
             window.console.log('onUpdateClinic',event);

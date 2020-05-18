@@ -5,6 +5,7 @@ import Vue from 'vue';
 //
 import todos from './modules/todos';
 import messages from './modules/messages';
+import clinics from './modules/clinics';
 
 //
 Vue.use(Vuex);
@@ -13,6 +14,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     modules: {
         todos,
-        messages
+        messages,
+        clinics
     }
 });

@@ -15,9 +15,16 @@ const getters = {
     },
     get_infoMessage: state=>{
         return state.info_message;
+    },
+    get_general_message: state=>{
+        return state.general_message
     }
 };
 const actions = {
+    updateInfoMessage(payload){
+        window.console.log('---ACTION---','updateInfoMessage');
+        window.console.log(payload);
+    },
     updateCount({state,commit},value){
         window.console.log('---ACTION---','updateCount');
         window.console.log('state',state);
@@ -25,6 +32,9 @@ const actions = {
     },
 };
 const mutations = {
+    UPDATE_INFO_MESSAGE (state,message){
+        state.general_message = message;
+    },
     INCREMENT_COUNT (state, incrementBy){
         window.console.log('---MUTAION---','INCREMENT_COUNT');
         state.count += incrementBy;
