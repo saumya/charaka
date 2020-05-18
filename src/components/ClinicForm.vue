@@ -113,8 +113,10 @@ export default {
     methods: {
         ...mapMutations([ 'INCREMENT_COUNT' ]),
         ...mapActions([ 'updateCount', 'registerNewClinic', 'updateClinic' ]),
-        onCounterUp: event=>{
+        onCounterUp: (event)=>{
+            //window.console.log('onCounterUp');
             window.console.log('onCounterUp',event);
+            
             //this.$store.commit('INCREMENT_COUNT'); //NOT WORKING !! $store is 'undefined'
             //window.console.log('store', $store);
             
@@ -137,6 +139,8 @@ export default {
             //----- Actions --------- Asynchronous
             store.dispatch('updateCount',incrementBy);
             //store.updateCount(incrementBy);
+            //this.$store.updateCount(incrementBy);
+            //this.$store.dispatch('updateCount',incrementBy);
         },
         onRegisterNewClinic: function(event){
             window.console.log('onRegisterNewClinic',event);
