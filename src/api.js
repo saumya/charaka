@@ -12,12 +12,13 @@ const apiconfig = {
     put:{
         update_group : '/updateGroup/'
     },
+    delete: {
+        delete_group : '/deleteGroup/'
+    },
     get:{
         all_groups : '/getAllGroups/',
         group_by_id : '/getGroupWithId/'
-    },
-    delete:{}
-    
+    }
 }
 
 export default apiconfig;

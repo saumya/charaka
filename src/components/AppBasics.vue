@@ -71,6 +71,16 @@
             <ClinicForm title="UPDATE" :clinic="clinic"></ClinicForm>
         </section>
         <!-- Update Clinic / -->
+        <!-- DELETE Clinic -->
+        <section class="section" id="clinic_delete_ui" v-bind:style="{display:section_visibility.ui_delete}">
+            <ClinicSearchForm title="DELETE"></ClinicSearchForm>
+        </section>
+        <!-- DELETE Clinic / -->
+        <!-- READ Clinic  -->
+        <section class="section" id="clinic_read_ui" v-bind:style="{display:section_visibility.ui_read}">
+            <ClinicSearchForm title="READ"></ClinicSearchForm>
+        </section>
+        <!-- READ Clinic / -->
 
 
         <section class="section">
@@ -93,11 +103,12 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import ClinicForm from './ClinicForm'
+import ClinicForm from './ClinicForm';
+import ClinicSearchForm from './ClinicSearchForm';
 
 export default {
     name: 'AppBasics',
-    components: { ClinicForm },
+    components: { ClinicForm, ClinicSearchForm },
     computed: {
         ...mapGetters([
             'get_general_message'
