@@ -48,7 +48,7 @@ const actions = {
             //commit('REGISTER_NEW_CLINIC', resultData);
             resultData.json().then(function(rData){
                 commit('REGISTER_NEW_CLINIC', rData); // Mutation >>
-                commit('UPDATE_INFO_MESSAGE', 'Registration SUCCESS.'); // Mutation >>
+                commit('UPDATE_INFO_MESSAGE', 'Registration SUCCESS.'+JSON.stringify(rData) ); // Mutation >>
             }).catch(function(error_3){
                 window.console.log('ERROR : 2'); 
                 window.console.log(error_3);
