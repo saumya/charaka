@@ -17,6 +17,9 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import store from '../store'
+
 export default {
   name: 'ClinicSearchForm',
   props:['title'],
@@ -26,12 +29,15 @@ export default {
       });
   },
   methods:{
-      onSearch: function(){
-        window.console.log('onSearch', this.userSelectedClinicId);
-      },
-      onDelete: function(){
-        window.console.log('onDelete', this.userSelectedClinicId);
-      }
+    ...mapActions([ 'searchClinicWithId', 'deleteClinicWithId' ]),
+    onSearch: function(){
+      window.console.log('onSearch', this.userSelectedClinicId);
+      store.dispatch('searchClinicWithId', this.userSelectedClinicId);
+    },
+    onDelete: function(){
+      window.console.log('onDelete', this.userSelectedClinicId);
+      store.dispatch('deleteClinicWithId', this.userSelectedClinicId);
+    }
   },
 }
 </script>
