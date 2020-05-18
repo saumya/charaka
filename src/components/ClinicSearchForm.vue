@@ -18,7 +18,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import store from '../store'
+//import store from '../store'
 
 export default {
   name: 'ClinicSearchForm',
@@ -32,11 +32,15 @@ export default {
     ...mapActions([ 'searchClinicWithId', 'deleteClinicWithId' ]),
     onSearch: function(){
       window.console.log('onSearch', this.userSelectedClinicId);
-      store.dispatch('searchClinicWithId', this.userSelectedClinicId);
+      //window.console.log('onSearch: this.$store=', this.$store);
+      //store.dispatch('searchClinicWithId', this.userSelectedClinicId);
+
+      this.$store.dispatch('searchClinicWithId', this.userSelectedClinicId);
     },
     onDelete: function(){
       window.console.log('onDelete', this.userSelectedClinicId);
-      store.dispatch('deleteClinicWithId', this.userSelectedClinicId);
+      //store.dispatch('deleteClinicWithId', this.userSelectedClinicId);
+      this.$store.dispatch('deleteClinicWithId', this.userSelectedClinicId);
     }
   },
 }
