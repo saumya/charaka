@@ -1,19 +1,24 @@
 <template>
     <div class="comp_form">
+        
+        <h5>{{ title }}</h5>
+         
         <label>{{ title }} {{clinic}}</label>
-        <h3>{{ messages.info_message }}</h3> <!-- using mapState -->
+        <h3>Using 'mapState' = {{ messages.info_message }}</h3> 
         <h3>below</h3>
-        <h3>>>> {{ computedMessage }}</h3> <!-- Using Computed -->
+        <h3>Using 'computed' = {{ computedMessage }}</h3> 
         <h3>above</h3>
         <h3>{{getNewClinic}}</h3>
         <h3>General Message | {{get_general_message}}</h3>
         
+        <!--
         <ul>
             <li v-for="(value, index) in messages.dummy_List" v-bind:key="index">
                 {{ value }}
             </li>
             Total <b> {{ count_dummy_items }} </b> items there from VueX Store!
         </ul>
+        -->
 
         <div class="field" v-if="(title==='UPDATE')">
             <div class="control">
@@ -107,7 +112,7 @@ export default {
     },
     methods: {
         ...mapMutations([ 'INCREMENT_COUNT' ]),
-        ...mapActions([ 'updateCount', 'registerNewClinic' ]),
+        ...mapActions([ 'updateCount', 'registerNewClinic', 'updateClinic' ]),
         onCounterUp: event=>{
             window.console.log('onCounterUp',event);
             //this.$store.commit('INCREMENT_COUNT'); //NOT WORKING !! $store is 'undefined'
@@ -141,6 +146,9 @@ export default {
         },
         onUpdateClinic: function(event){
             window.console.log('onUpdateClinic',event);
+            window.console.log( JSON.stringify(this.clinic) );
+            
+            store.dispatch('updateClinic', this.clinic);
         }
     }
 }

@@ -9,11 +9,13 @@ const apiconfig = {
     post:{
         create_group : '/createGroup/'
     },
+    put:{
+        update_group : '/updateGroup/'
+    },
     get:{
         all_groups : '/getAllGroups/',
         group_by_id : '/getGroupWithId/'
     },
-    put:{},
     delete:{}
     
 }

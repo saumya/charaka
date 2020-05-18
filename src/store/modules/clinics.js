@@ -54,11 +54,47 @@ const actions = {
                 window.console.log(error_3);
             })
         }).catch(function(error_2){
-            window.console.log('ERROR : 2');
+            window.console.log('ERROR : 1');
             window.console.log(error_2);
         });
         //
         //commit('REGISTER_NEW_CLINIC', result);
+    }, // registerNewClinic/
+    updateClinic: ({state,commit},payload) => {
+        window.console.log('---ACTION---','updateClinic');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        window.console.log('2. payload =', payload);
+        commit('UPDATE_INFO_MESSAGE', 'UPDATE clinic in Progress');
+        const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.put.update_group;
+        const fetch_data = {
+            method: 'PUT',
+            mode: 'cors',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify({
+                'groupId': payload.id,
+                'groupName': payload.name,
+                'userName': payload.adminName,
+                'userPassword': payload.adminPassword
+            })
+        };
+        fetch( url_1, fetch_data ).then(function(resultData){
+            window.console.log('UPDATE : then');
+            resultData.json().then(rData=>{
+                window.console.log('UPDATE : SUCCESS :');
+                window.console.log(rData);
+                // Mutation
+                commit('UPDATE_CLINIC', rData); 
+                commit('UPDATE_INFO_MESSAGE', 'Registration SUCCESS.'+JSON.stringify(rData) );
+            }).catch(error_2=>{
+                window.console.log('UPDATE: ERROR : 2');
+                window.console.log(error_2);
+            });
+        }).catch(function(error_1){
+            window.console.log('ERROR : 1');
+            window.console.log(error_1);
+        });
     }
 };
 const mutations = {
@@ -67,7 +103,13 @@ const mutations = {
         window.console.log('---MUTAION---', state.reference_name, newClinicResult);
         state.newClinic = newClinicResult;
         state.clinic_message = 'SUCCESS: New Clinic registered.'
+    },
+    UPDATE_CLINIC: (state, clinicResult)=>{
+        window.console.log('---MUTAION---','UPDATE_CLINIC');
+        state.newClinic = clinicResult;
+        state.clinic_message = 'SUCCESS: Clinic updated.';
     }
+
 };
 //
 export default { state, getters, actions, mutations }
