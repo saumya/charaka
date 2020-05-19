@@ -4,15 +4,16 @@ A VueJS Application. Using REST calls, Routers and State engines.
 
 Work in progress for the Admin UI.
 
+### wip
+
+ - Integrating with API 
+
 ### TODO
 
  - Application Admin
  - Office Admin
  - User Admin
  - User UI
-
- - integrate with API
- - Check the integration and tweak the API & UI both
 
  - Need to work on at least 3 apps
   - Patient
