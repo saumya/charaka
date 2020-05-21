@@ -41,16 +41,34 @@
         </section>
         <!-- READ Doctor / -->
 
+        <section class="section">
+            <article class="message">
+                <div class="message-header">
+                    <p>Message</p>
+                    <!-- <button class="delete" aria-label="delete"></button> -->
+                </div>
+                <div class="message-body">
+                    <div>{{ ui_message }}</div>
+                    <div> {{ get_general_message }} </div>
+                </div>
+            </article>
+        </section>
+
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     name: 'HomeDoctor',
     components:{},
-    computed:{},
+    computed:{
+        ...mapGetters(['get_general_message'])
+    },
     data: function(){
         return({
+            ui_message: 'Welcome to Doctor Management. This section allows you to CREATE, READ, UPDATE, DELETE doctors.',
             section_visibility:{
                 ui_create: 'none',
                 ui_read: 'none',
