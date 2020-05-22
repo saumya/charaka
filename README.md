@@ -7,7 +7,7 @@ Work in progress for the Admin UI.
 An application to use the API from another server and show UI here.
 
 ### wip
-
+ - Developing UI for different Admin tasks
  - Integrating with API 
 
 ### TODO
