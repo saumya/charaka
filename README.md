@@ -9,6 +9,12 @@ An application to use the API from another server and show UI here.
 ### wip
  - Developing UI for different Admin tasks
  - Integrating with API 
+ - Done
+  - UI CRUD Groups
+  - UI CRUD Doctors
+ - Next todo
+  - UI CRUD Patient
+  - UI CRUD Schedule
 
 Component boiler plate
 
@@ -35,6 +41,16 @@ a {
   color: #42b983;
 }
 </style>
+```
+
+For Store Modules
+
+```
+const state = {};
+const getters = {};
+const actions = {};
+const mutations = {};
+export default { state, getters, actions, mutations }
 ```
 
 ### TODO

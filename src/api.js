@@ -8,21 +8,25 @@ const apiconfig = {
     },
     post:{
         create_group : '/createGroup/',
-        create_doctor : '/createDoctor/'
+        create_doctor : '/createDoctor/',
+        create_patient : '/createPerson/'
     },
     put:{
         update_group : '/updateGroup/',
-        update_doctor : '/updateDoctor/'
+        update_doctor : '/updateDoctor/',
+        update_patient : '/updatePerson/'
     },
     delete: {
         delete_group : '/deleteGroup/',
-        delete_doctor : '/deleteDoctor/'
+        delete_doctor : '/deleteDoctor/',
+        delete_patient : '/deletePerson/'
     },
     get:{
         all_groups : '/getAllGroups/',
         group_by_id : '/getGroupWithId/',
         all_doctors : '/getAllDoctors/', //API is YET to be created!
-        doctor_by_id : '/getDoctorWithId/'
+        doctor_by_id : '/getDoctorWithId/',
+        patient_by_id : '/getPersonWithId/'
     }
 }
 
