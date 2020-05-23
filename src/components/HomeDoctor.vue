@@ -22,12 +22,12 @@
 
         <!-- Register New Doctor -->
         <section class="section" id="clinic_register_ui" v-bind:style="{display:section_visibility.ui_create}">
-            <DoctorForm title="CREATE" :doctor="{}"></DoctorForm>
+            <DoctorForm title="CREATE"></DoctorForm>
         </section>
         <!-- Register New Doctor / -->
         <!-- Update Doctor -->
         <section class="section" id="clinic_update_ui" v-bind:style="{display:section_visibility.ui_update}">
-            <DoctorForm title="UPDATE" :doctor="{}"></DoctorForm>
+            <DoctorForm title="UPDATE"></DoctorForm>
         </section>
         <!-- Update Doctor / -->
         <!-- DELETE Doctor -->
@@ -49,6 +49,7 @@
                 </div>
                 <div class="message-body">
                     <div>{{ ui_message }}</div>
+                    <div>The last action is as follows.</div>
                     <div> {{ get_general_message }} </div>
                 </div>
             </article>
@@ -83,18 +84,22 @@ export default {
         onCreate: function(){
             window.console.log('onCreate');
             this.makeThisVisible(1);
+            this.ui_message = "CREATE a new Doctor.";
         },
         onRead: function(){
             window.console.log('onRead');
             this.makeThisVisible(2);
+            this.ui_message = "READ a Doctor.";
         },
         onUpdate: function(){
             window.console.log('onUpdate');
             this.makeThisVisible(3);
+            this.ui_message = "UPDATE a Doctor.";
         },
         onDelete: function(){
             window.console.log('onDelete');
             this.makeThisVisible(4);
+            this.ui_message = "DELETE a Doctor.";
         },
         // ui_type = 1 | 2 | 3 | 4
         // 1=CREATE, 2=READ, 3=UPDATE, 4=DELETE

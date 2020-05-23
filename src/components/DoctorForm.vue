@@ -46,6 +46,9 @@
 </template>
 
 <script>
+
+import store from '../store'
+
 export default {
   name: 'DoctorForm',
   data: function(){
@@ -71,10 +74,14 @@ export default {
       onRegisterNewDoctor: function(){
           window.console.log('Doctor : CREATE');
           window.console.log('doctor : ', JSON.stringify(this.doctor));
+
+          store.dispatch( 'createDoctor', this.doctor);
       },
       onUpdateDoctor: function(){
           window.console.log('Doctor : UPDATE');
           window.console.log('doctor : ', JSON.stringify(this.doctor));
+
+          store.dispatch('updateDoctor', this.doctor);
       }
   }
 }
