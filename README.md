@@ -10,6 +10,33 @@ An application to use the API from another server and show UI here.
  - Developing UI for different Admin tasks
  - Integrating with API 
 
+Component boiler plate
+
+```
+<template>
+  <div class="one">
+    <h1>One</h1>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'One',
+  data: function(){ return({  }) },
+  props:['title'],
+  computed:{},
+  methods:{}
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+a {
+  color: #42b983;
+}
+</style>
+```
+
 ### TODO
 
  - Application Admin

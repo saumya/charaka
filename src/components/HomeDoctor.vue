@@ -22,12 +22,12 @@
 
         <!-- Register New Doctor -->
         <section class="section" id="clinic_register_ui" v-bind:style="{display:section_visibility.ui_create}">
-            Create
+            <DoctorForm title="CREATE" :doctor="{}"></DoctorForm>
         </section>
         <!-- Register New Doctor / -->
         <!-- Update Doctor -->
         <section class="section" id="clinic_update_ui" v-bind:style="{display:section_visibility.ui_update}">
-            Update
+            <DoctorForm title="UPDATE" :doctor="{}"></DoctorForm>
         </section>
         <!-- Update Doctor / -->
         <!-- DELETE Doctor -->
@@ -60,9 +60,11 @@
 <script>
 import { mapGetters } from 'vuex';
 
+import DoctorForm from './DoctorForm'
+
 export default {
     name: 'HomeDoctor',
-    components:{},
+    components:{ DoctorForm },
     computed:{
         ...mapGetters(['get_general_message'])
     },
