@@ -90,7 +90,66 @@ const actions = {
             window.console.log('ERROR : 1');
             window.console.log(error_1);
         });
-    }
+    },
+    searchDoctorWithId: function({state, commit},payload){
+        window.console.log('---ACTION---','searchDoctorWithId');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        window.console.log('2. payload =', payload);
+        
+        commit('UPDATE_INFO_MESSAGE', 'Doctor : SEARCH in Progress');// MUTAION from messages.js module
+
+        const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.get.doctor_by_id + payload;
+        fetch( url_1 ).then(function(resultData){
+            resultData.json().then(function(rData){
+                window.console.log('UPDATE : SUCCESS :');
+                window.console.log(rData);
+                //Mutation
+                commit('UPDATE_INFO_MESSAGE', 'Doctor : Search SUCCESS.'+JSON.stringify(rData) ); 
+            }).catch(function(error_2){
+                window.console.log('ERROR : 2');
+                window.console.log(error_2);
+            });
+        }).catch(function(error_1){
+            window.console.log('ERROR : 1');
+            window.console.log(error_1);
+        });
+    },
+    deleteDoctorWithId: function({state, commit},payload){
+        window.console.log('---ACTION---','deleteDoctorWithId');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        window.console.log('2. payload =', payload);
+        
+        commit('UPDATE_INFO_MESSAGE', 'Doctor : DELETE in Progress');// MUTAION from messages.js module
+        
+        const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.delete.delete_doctor;
+        const fetch_data = {
+            method: 'DELETE',
+            mode: 'cors',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify({
+                'doctorId': payload
+            })
+        };
+        fetch( url_1, fetch_data ).then(function(resultData){
+            window.console.log('UPDATE : then');
+            resultData.json().then(rData=>{
+                window.console.log('UPDATE : SUCCESS :');
+                window.console.log(rData);
+                // Mutation
+                //commit('UPDATE_CLINIC', rData); 
+                commit('UPDATE_INFO_MESSAGE', 'Doctor : DELETE SUCCESS.'+JSON.stringify(rData) );
+            }).catch(error_2=>{
+                window.console.log('DELETE: ERROR : 2');
+                window.console.log(error_2);
+            });
+        }).catch(function(error_1){
+            window.console.log('ERROR : 1');
+            window.console.log(error_1);
+        });
+    },
+    
 
 };
 const mutations = {

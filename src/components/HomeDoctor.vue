@@ -32,12 +32,12 @@
         <!-- Update Doctor / -->
         <!-- DELETE Doctor -->
         <section class="section" id="clinic_delete_ui" v-bind:style="{display:section_visibility.ui_delete}">
-            Delete
+            <DoctorSearchForm title="DELETE"></DoctorSearchForm>
         </section>
         <!-- DELETE Doctor / -->
         <!-- READ Doctor  -->
         <section class="section" id="clinic_read_ui" v-bind:style="{display:section_visibility.ui_read}">
-            Read
+            <DoctorSearchForm title="READ"></DoctorSearchForm>
         </section>
         <!-- READ Doctor / -->
 
@@ -62,10 +62,11 @@
 import { mapGetters } from 'vuex';
 
 import DoctorForm from './DoctorForm'
+import DoctorSearchForm from './DoctorSearchForm'
 
 export default {
     name: 'HomeDoctor',
-    components:{ DoctorForm },
+    components:{ DoctorForm, DoctorSearchForm },
     computed:{
         ...mapGetters(['get_general_message'])
     },
