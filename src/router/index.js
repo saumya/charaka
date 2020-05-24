@@ -9,6 +9,8 @@ import Two from '../components/Two.comp'
 
 import HomeAppAdmin from '../components/Home.AppAdmin'
 import HomeClinicAdmin from '../components/Home.ClinicAdmin'
+
+import HomeClinic from '../components/HomeClinic'
 import HomeDoctor from '../components/HomeDoctor'
 import HomePatient from '../components/HomePatient'
 
@@ -30,6 +32,8 @@ export default new Router({
 
         { path: '/clinic_admin', component: HomeClinicAdmin },
         { path: '/app_admin', component: HomeAppAdmin },
+
+        { path: '/clinic', component: HomeClinic },
         { path: '/doctor', component: HomeDoctor },
         { path: '/patient', component: HomePatient },
 
