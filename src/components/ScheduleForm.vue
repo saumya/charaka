@@ -15,6 +15,17 @@
             </div>
         </div>
         <div class="field">
+            <label>Select Timing</label>
+            <div class="control">
+                <div class="select">
+                    <select class="is-hovered" v-model="schedule.isMorning">
+                        <option value="1">is Morning</option>
+                        <option value="0">is Evening</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="field">
             <div class="control">
                 <label>Person Id</label>
                 <input class="input is-info" type="text" placeholder="Person Id" v-model="schedule.personId"> 
@@ -32,6 +43,7 @@
                 <input class="input is-info" type="text" placeholder="Group Id" v-model="schedule.groupId"> 
             </div>
         </div>
+        
 
        
 
