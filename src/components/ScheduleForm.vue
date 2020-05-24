@@ -1,5 +1,10 @@
 <template>
     <div class="scheduleForm">
+
+
+        
+
+
         <!-- title = CREATE | UPDATE -->
         <div class="field" v-if="(title==='UPDATE')">
             <div class="control">
@@ -8,6 +13,7 @@
             </div>
         </div>
 
+        <!--
         <div class="field">
             <div class="control">
                 <label>Schedule date</label>
@@ -23,6 +29,25 @@
                         <option value="0">is Evening</option>
                     </select>
                 </div>
+            </div>
+        </div>
+        -->
+        <div class="field">
+            <div class="control">
+                <label>Schedule Time and Date</label>
+            </div>
+        </div>
+        <div class="field has-addons">
+            <div class="control">
+                <div class="select is-info">
+                    <select v-model="schedule.isMorning">
+                        <option value="1">is Morning</option>
+                        <option value="0">is Evening</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control is-expanded">
+                <input class="input is-info" type="date" placeholder="Schedule Date" v-model="schedule.sDate"> 
             </div>
         </div>
         <div class="field">
