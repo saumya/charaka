@@ -3,8 +3,7 @@
     <div>
         <router-link to="/">Home</router-link>
         
-        <router-link to="/app_basics"> Basics(Clinics)</router-link>
-        
+        <!-- <router-link to="/app_basics"> Basics(Clinics)</router-link> -->
         <!-- <router-link to="/app_admin">App Admin</router-link> -->
         <!-- <router-link to="/clinic_admin">Clinics Admin </router-link> -->
 
