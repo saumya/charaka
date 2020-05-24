@@ -8,6 +8,7 @@ import messages from './modules/messages';
 import clinics from './modules/clinics';
 import doctors from './modules/doctors';
 import patients from './modules/patients';
+import schedules from './modules/schedules';
 
 //
 Vue.use(Vuex);
@@ -19,6 +20,7 @@ export default new Vuex.Store({
         messages,
         clinics,
         doctors,
-        patients
+        patients,
+        schedules
     }
 });

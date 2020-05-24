@@ -52,7 +52,7 @@ export default {
         return({
             schedule:{
               id: 3,
-              name: "Xyz Last",
+              name: "Appointment",
               sDate: "2020-05-08",
               isMorning: "0",
               doctorId: "3",
@@ -66,7 +66,7 @@ export default {
             window.console.log('Schedule : CREATE');
             window.console.log('Schedule : ', JSON.stringify(this.schedule));
 
-            this.$store.dispatch( 'createSchedule', this.schedule);
+            this.$store.dispatch('createSchedule', this.schedule);
         },
         onUpdatePatient: function(){
             window.console.log('Schedule : UPDATE');
