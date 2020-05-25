@@ -13,10 +13,14 @@ const state = {
         activated_from:'2',
         activated_to:'3'
     },
+    allClinics:[]
 };
 const getters = {
     getNewClinic: state=>{
         return state.newClinic
+    },
+    getAllClinicsData: state=>{
+        return state.allClinics
     }
 };
 const actions = {
@@ -39,8 +43,11 @@ const actions = {
             }),
             body: JSON.stringify({
                 'groupName': payload.name,
-                'userName': payload.adminName,
-                'userPassword': payload.adminPassword
+                'adminUserName': payload.adminName,
+                'adminPassword': payload.adminPassword,
+                'activatedOn': payload.activated_on,
+                'activeFrom': payload.activated_from,
+                'activeTo': payload.activated_to
             })
         };
         //var that = this;
@@ -75,8 +82,11 @@ const actions = {
             body: JSON.stringify({
                 'groupId': payload.id,
                 'groupName': payload.name,
-                'userName': payload.adminName,
-                'userPassword': payload.adminPassword
+                'adminUserName': payload.adminName,
+                'adminPassword': payload.adminPassword,
+                'activatedOn': payload.activated_on,
+                'activeFrom': payload.activated_from,
+                'activeTo': payload.activated_to
             })
         };
         fetch( url_1, fetch_data ).then(function(resultData){
@@ -150,7 +160,28 @@ const actions = {
             window.console.log('ERROR : 1');
             window.console.log(error_1);
         });
-    }
+    },
+    getAllClinics: ({commit})=>{
+        window.console.log('---ACTION---','getAllClinics');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.get.all_groups;
+        fetch( url_1 ).then(function(resultData){
+            resultData.json().then(function(rData){
+                window.console.log('UPDATE : SUCCESS :');
+                window.console.log(rData);
+                //Mutation
+                //commit('SEARCH_CLINIC', rData);
+                commit('UPDATE_INFO_MESSAGE', 'Search SUCCESS.'+JSON.stringify(rData) );
+                commit('UPDATE_ALL_CLINICS', rData);
+            }).catch(function(error_2){
+                window.console.log('ERROR : 2');
+                window.console.log(error_2);
+            });
+        }).catch(function(error_1){
+            window.console.log('ERROR : 1');
+            window.console.log(error_1);
+        });
+    },
 };
 const mutations = {
     REGISTER_NEW_CLINIC: (state, newClinicResult) => {
@@ -163,6 +194,9 @@ const mutations = {
         window.console.log('---MUTAION---','UPDATE_CLINIC');
         state.newClinic = clinicResult;
         state.clinic_message = 'SUCCESS: Clinic updated.';
+    },
+    UPDATE_ALL_CLINICS: (state, clinics)=>{
+        state.allClinics = clinics;
     }
 
 };
