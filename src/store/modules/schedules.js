@@ -10,8 +10,13 @@ const state = {
         doctorId: '4',
         groupId:'5'
     },
+    allSchedules: []
 };
-const getters = {};
+const getters = {
+    getAllSchedulesData: state=>{
+        return state.allSchedules;
+    }
+};
 const actions = {
     createSchedule: ({state,commit},payload) => {
         window.console.log('---ACTION---','createSchedule');
@@ -150,7 +155,29 @@ const actions = {
             window.console.log('ERROR : 1');
             window.console.log(error_1);
         });
-    }
+    },
+    getAllSchedules: ({commit})=>{
+        window.console.log('---ACTION---','getAllSchedules');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.get.all_schedules;
+        fetch( url_1 ).then(function(resultData){
+            resultData.json().then(function(rData){
+                window.console.log('UPDATE : SUCCESS :');
+                window.console.log(rData);
+                //Mutation
+                //commit('SEARCH_CLINIC', rData);
+                //commit('UPDATE_INFO_MESSAGE', 'Search SUCCESS.'+JSON.stringify(rData) );
+                commit('UPDATE_INFO_MESSAGE', 'SUCCESS. Total Schedules='+rData.length );
+                commit('UPDATE_ALL_SCHEDULES', rData);
+            }).catch(function(error_2){
+                window.console.log('ERROR : 2');
+                window.console.log(error_2);
+            });
+        }).catch(function(error_1){
+            window.console.log('ERROR : 1');
+            window.console.log(error_1);
+        });
+    },
 };
 const mutations = {
     REGISTER_NEW_PATIENT: (state, newPatientResult) => {
@@ -161,6 +188,9 @@ const mutations = {
     UPDATE_PATIENT: (state, doctorResult)=>{
         window.console.log('---MUTAION---','UPDATE_PATIENT');
         state.newDoctor = doctorResult;
+    },
+    UPDATE_ALL_SCHEDULES: (state, schedules)=>{
+        state.allSchedules = schedules;
     }
 };
 //

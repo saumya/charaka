@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label>All Clinics</label>
+        <label>All Clinics | {{tableData.length}}</label>
         <table class="table is-bordered is-hoverable is-fullwidth">
             <thead>
                 <tr>

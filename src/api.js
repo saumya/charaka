@@ -26,7 +26,9 @@ const apiconfig = {
     },
     get:{
         all_groups : '/getAllGroups/',
-        all_doctors : '/getAllDoctors/', 
+        all_doctors : '/getAllDoctors/',
+        all_patients : '/getAllPeople/', 
+        all_schedules : '/getAllSchedules/',
         group_by_id : '/getGroupWithId/',
         doctor_by_id : '/getDoctorWithId/',
         patient_by_id : '/getPersonWithId/',

@@ -11,6 +11,9 @@
         </section>
         <section class="section">
             <TableClinics :tableData=getAllClinicsData></TableClinics>
+            <TableDoctors :tableData=getAllDoctorsData></TableDoctors>
+            <TablePatients :tableData=getAllPatientsData></TablePatients>
+            <TableSchedule :tableData=getAllSchedulesData></TableSchedule>
         </section>
         <section class="section">
             <article class="message">
@@ -30,24 +33,39 @@ import { mapGetters, mapActions } from 'vuex';
 
 //import TableGeneral from './TableGeneral';
 import TableClinics from './TableClinics';
+import TableDoctors from './TableDoctors';
+import TablePatients from './TablePeople';
+import TableSchedule from './TableSchedules';
 
 export default {
     name: 'HomeReport',
-    components: { TableClinics },
+    components: { TableClinics, TableDoctors, TablePatients, TableSchedule },
     computed: {
-        ...mapGetters(['get_general_message', 'getAllClinicsData']),
+        ...mapGetters([ 'get_general_message', 
+                        'getAllClinicsData', 'getAllDoctorsData', 'getAllPatientsData', 
+                        'getAllSchedulesData']),
     },
     methods:{
-        ...mapActions([ 'searchClinicWithId', 'getAllClinics' ]),
+        ...mapActions([ 'searchClinicWithId', 
+                        'getAllClinics', 'getAllDoctors' ]),
         onClinics: function(){
             window.console.log('onClinics');
             //window.console.log( this.$store ) // Arrow function throws error for "this" !!
             //window.console.log( this )
             this.$store.dispatch('getAllClinics');
         },
-        onDoctors: function(){},
-        onPatients: function(){},
-        onSchedules: function(){}
+        onDoctors: function(){
+            window.console.log('onDoctors');
+            this.$store.dispatch('getAllDoctors');
+        },
+        onPatients: function(){
+            window.console.log('onPatients');
+            this.$store.dispatch('getAllPatients');
+        },
+        onSchedules: function(){
+            window.console.log('onSchedules');
+            this.$store.dispatch('getAllSchedules');
+        }
     }
 }
 </script>

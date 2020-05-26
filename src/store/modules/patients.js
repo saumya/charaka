@@ -11,8 +11,13 @@ const state = {
         activated_from:'2',
         activated_to:'3'
     },
+    allPatients: []
 };
-const getters = {};
+const getters = {
+    getAllPatientsData: state=>{
+        return state.allPatients
+    }
+};
 const actions = {
     createPatient: ({state,commit},payload) => {
         window.console.log('---ACTION---','createPatient');
@@ -80,7 +85,7 @@ const actions = {
                 // This MUTATION is in this module
                 commit('UPDATE_PATIENT', rData);
                 // This MUTAION from messages.js module
-                commit('UPDATE_INFO_MESSAGE', 'Doctor. UPDATE SUCCESS.'+JSON.stringify(rData) );
+                commit('UPDATE_INFO_MESSAGE', 'Patient. UPDATE SUCCESS.'+JSON.stringify(rData) );
             }).catch(error_2=>{
                 window.console.log('ERROR : 2');
                 window.console.log(error_2);
@@ -118,7 +123,7 @@ const actions = {
         window.console.log('1. state.reference_name =', state.reference_name);
         window.console.log('2. payload =', payload);
         
-        commit('UPDATE_INFO_MESSAGE', 'Doctor : DELETE in Progress');// MUTAION from messages.js module
+        commit('UPDATE_INFO_MESSAGE', 'Patient : DELETE in Progress');// MUTAION from messages.js module
         
         const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.delete.delete_patient;
         const fetch_data = {
@@ -147,7 +152,29 @@ const actions = {
             window.console.log('ERROR : 1');
             window.console.log(error_1);
         });
-    }
+    },
+    getAllPatients: ({commit})=>{
+        window.console.log('---ACTION---','getAllPatients');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.get.all_patients;
+        fetch( url_1 ).then(function(resultData){
+            resultData.json().then(function(rData){
+                window.console.log('UPDATE : SUCCESS :');
+                window.console.log(rData);
+                //Mutation
+                //commit('SEARCH_CLINIC', rData);
+                //commit('UPDATE_INFO_MESSAGE', 'Search SUCCESS.'+JSON.stringify(rData) );
+                commit('UPDATE_INFO_MESSAGE', 'SUCCESS. Total Patients='+rData.length );
+                commit('UPDATE_ALL_PATIENTS', rData);
+            }).catch(function(error_2){
+                window.console.log('ERROR : 2');
+                window.console.log(error_2);
+            });
+        }).catch(function(error_1){
+            window.console.log('ERROR : 1');
+            window.console.log(error_1);
+        });
+    },
 };
 const mutations = {
     REGISTER_NEW_PATIENT: (state, newPatientResult) => {
@@ -158,6 +185,9 @@ const mutations = {
     UPDATE_PATIENT: (state, doctorResult)=>{
         window.console.log('---MUTAION---','UPDATE_PATIENT');
         state.newDoctor = doctorResult;
+    },
+    UPDATE_ALL_PATIENTS: (state, patients)=>{
+        state.allPatients = patients;
     }
 };
 //
