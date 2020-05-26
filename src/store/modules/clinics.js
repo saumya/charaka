@@ -171,7 +171,8 @@ const actions = {
                 window.console.log(rData);
                 //Mutation
                 //commit('SEARCH_CLINIC', rData);
-                commit('UPDATE_INFO_MESSAGE', 'Search SUCCESS.'+JSON.stringify(rData) );
+                //commit('UPDATE_INFO_MESSAGE', 'Search SUCCESS.'+JSON.stringify(rData) );
+                commit('UPDATE_INFO_MESSAGE', 'SUCCESS. Total Clinics='+rData.length );
                 commit('UPDATE_ALL_CLINICS', rData);
             }).catch(function(error_2){
                 window.console.log('ERROR : 2');

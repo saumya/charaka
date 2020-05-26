@@ -10,7 +10,7 @@
             </div>
         </section>
         <section class="section">
-            <TableGeneral :tableData=getAllClinicsData></TableGeneral>
+            <TableClinics :tableData=getAllClinicsData></TableClinics>
         </section>
         <section class="section">
             <article class="message">
@@ -28,11 +28,12 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 
-import TableGeneral from './TableGeneral';
+//import TableGeneral from './TableGeneral';
+import TableClinics from './TableClinics';
 
 export default {
     name: 'HomeReport',
-    components: { TableGeneral },
+    components: { TableClinics },
     computed: {
         ...mapGetters(['get_general_message', 'getAllClinicsData']),
     },
