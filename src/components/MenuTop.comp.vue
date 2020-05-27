@@ -11,6 +11,7 @@
         <router-link to="/doctor">Doctors</router-link>
         <router-link to="/patient">Patients</router-link>
         <router-link to="/schedule">Schedules</router-link>
+        <router-link to="/assignments">Assignments</router-link>
         <router-link to="/report">Insights</router-link>
         
     </div>
