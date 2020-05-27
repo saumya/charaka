@@ -183,6 +183,30 @@ const actions = {
             window.console.log(error_1);
         });
     },
+    assignDoctorToClinic: ( {state, commit},payload )=>{
+        // payload = { clinincId: '' , doctorId: '' }
+        window.console.log('assignDoctorToClinic');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        //window.console.log('2. payload =', payload);
+        //window.console.log( JSON.stringify(payload) );
+        const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.post.assign_doctor_to_clinic;
+        const fetch_data = {
+            method: 'POST', mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify(payload)
+        };
+        fetch( url_1, fetch_data ).then(function(resultData){
+            resultData.json().then(function(rData){
+                commit('UPDATE_INFO_MESSAGE', 'Assignment SUCCESS.'+JSON.stringify(rData) ); // Mutation >>
+                window.console.log('Result Data', rData);
+            }).catch(function(error_3){
+                window.console.log('ERROR : 2'); 
+                window.console.log(error_3);
+            })
+        }).catch(function(error_2){
+            window.console.log('ERROR : 1');
+            window.console.log(error_2);
+        });
+    },
 };
 const mutations = {
     REGISTER_NEW_CLINIC: (state, newClinicResult) => {

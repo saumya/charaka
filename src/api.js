@@ -10,7 +10,9 @@ const apiconfig = {
         create_group : '/createGroup/',
         create_doctor : '/createDoctor/',
         create_patient : '/createPerson/',
-        create_schedule : '/createSchedule/'
+        create_schedule : '/createSchedule/',
+        
+        assign_doctor_to_clinic : '/assignDoctorToClinic/'
     },
     put:{
         update_group : '/updateGroup/',
