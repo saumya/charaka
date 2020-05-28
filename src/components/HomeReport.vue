@@ -1,6 +1,6 @@
 <template>
     <div>
-        
+        <!--
         <section class="section">
             <label class="label">Insights</label>
             <div class="buttons has-addons">
@@ -10,13 +10,21 @@
                 <button class="button" v-on:click="onSchedules">Schedules</button>
             </div>
         </section>
-        
+        -->
+
         <GeneralMessageUI :message="get_general_message" />
         <section class="section">
+            <div class="buttons has-addons">
+                <button class="button" v-on:click="onClinics">Clinics</button>
+                <button class="button" v-on:click="onDoctors">Doctors</button>
+                <button class="button" v-on:click="onPatients">Patients</button>
+                <button class="button" v-on:click="onSchedules">Schedules</button>
+            </div>
+
             <div class="panel has-background-white-bis">
-                <p class="panel-heading">
-                    <label class="label is-large">Search Schedules</label>
-                </p>
+                <div class="panel-heading">
+                    <label class="title">Search Schedules</label>
+                </div>
 
                 <div class="panel-block">
                     <label class="label">Select a Clinic</label>
@@ -58,24 +66,27 @@
                         <input class="input is-info" type="date" placeholder="Schedule Date" v-model="seletedSchedulesDate">
                     </div>
                 </div>
-                
                 <!-- <div>{{selectedClinicId}}-{{selectedDoctorId}}</div> -->
                 <div class="panel-block">
-                    
                     <button class="button is-large is-fullwidth" @click="onSearchSchedule">Get Schedules</button>            
                 </div>
                 
             </div>
+
+            <TableSchedule info="Filtered" :tableData=getFilteredSchedulesData></TableSchedule>
+            
         </section>
 
+        
         <section class="section">
+            <label class="title">Insights Generic</label>
             <TableClinics :tableData=getAllClinicsData></TableClinics>
             <TableDoctors :tableData=getAllDoctorsData></TableDoctors>
             <TablePatients :tableData=getAllPatientsData></TablePatients>
             <TableSchedule :tableData=getAllSchedulesData></TableSchedule>
             <TableSchedule info="Filtered" :tableData=getFilteredSchedulesData></TableSchedule>
         </section>
-        
+    
     </div>
 </template>
 <script>
@@ -84,6 +95,7 @@ import { mapGetters, mapActions } from 'vuex';
 import GeneralMessageUI from './GeneralMessage';
 
 //import TableGeneral from './TableGeneral';
+
 import TableClinics from './TableClinics';
 import TableDoctors from './TableDoctors';
 import TablePatients from './TablePeople';
@@ -91,8 +103,7 @@ import TableSchedule from './TableSchedules';
 
 export default {
     name: 'HomeReport',
-    components: { GeneralMessageUI, 
-                    TableClinics, TableDoctors, TablePatients, TableSchedule },
+    components: { GeneralMessageUI, TableClinics, TableDoctors, TablePatients, TableSchedule },
     data: function(){
         return({
             selectedClinicId: -1,

@@ -1,18 +1,53 @@
 <template>
     <div>
-        <!--
+
+        <GeneralMessage :message="get_general_message"></GeneralMessage>
         <section class="section">
-            Assignments
-        </section>
-        
-        <section class="section">
-            <div class="buttons has-addons">
-                <button class="button" v-on:click="onClinics">Clinics</button>
-                <button class="button">Doctors</button>
-                <button class="button">Patients</button>
+            <div class="panel has-background-white-bis">
+                <div class="panel-heading">
+                    <label class="title">Assign Doctor to Clinic</label>
+                </div>
+                <div class="panel-block">
+                    <label class="label">Select a Clinic</label>
+                </div>
+                <div class="panel-block">
+                    
+                        <div class="control">
+                            <div class="select is-info is-large is-fullwidth">
+                                <select @change="onSelectClininc" v-model="selectedClinicId">
+                                    <option>Select A Clinic</option>
+                                    <option v-for="(item,index) in getAllClinicsData" :key="item.id" :value="item.id">
+                                        {{index+1}}-{{item.id}}-{{item.group_name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    
+                </div>
+                <div class="panel-block">
+                    <label class="label">Select a Doctor</label>
+                </div>
+                <div class="panel-block">
+                    
+                        <div class="control">
+                            <div class="select is-info is-large is-fullwidth">
+                                <select @change="onSelectDoctor" v-model="selectedDoctorId">
+                                    <option>Select A Doctor</option>
+                                    <option v-for="(item,index) in getAllDoctorsData" :key="item.id" :value="item.id">
+                                        {{index+1}}-{{item.id}}-{{item.name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    
+                </div>
+                <div class="panel-block">
+                    <button class="button is-large is-primary is-fullwidth" @click="onAssignDoctorToClinic">Assign</button>
+                </div>
             </div>
         </section>
-        -->
+        
+        <!--
         <section class="section">
             <label class="label is-large">Clinics</label>
             <div class="field">
@@ -40,10 +75,10 @@
                     </div>
                 </div>
             </div>
-            <!-- <div>{{selectedClinicId}}-{{selectedDoctorId}}</div> -->
-            <button class="button is-large is-primary" @click="onAssignDoctorToClinic">Assign</button>            
+            <button class="button is-large is-primary" @click="onAssignDoctorToClinic">Assign</button>
         </section>
-        <GeneralMessage :message="get_general_message"></GeneralMessage>
+        -->
+        
     </div>
 </template>
 <script>
