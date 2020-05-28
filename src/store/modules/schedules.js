@@ -178,6 +178,36 @@ const actions = {
             window.console.log(error_1);
         });
     },
+    getAllSchedulesByClinicIdDoctorIdDate: function({state, commit},payload){
+        window.console.log('getAllSchedulesByClinicIdDoctorIdDate');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        window.console.log('2. payload =', payload);
+
+        const url_1 = apiconfig.global.uri + apiconfig.global.version 
+                        + apiconfig.get.all_schedules_byClinic_byDoctor_onDate
+                        + payload.clinicId 
+                        + '/' + payload.doctorId
+                        + '/' + payload.onDate;
+        
+        window.console.log('url=',url_1);
+        fetch( url_1 ).then(function(resultData){
+            resultData.json().then(function(rData){
+                window.console.log('UPDATE : SUCCESS :');
+                window.console.log(rData);
+                //Mutation
+                //commit('SEARCH_CLINIC', rData);
+                //commit('UPDATE_INFO_MESSAGE', 'Search SUCCESS.'+JSON.stringify(rData) );
+                commit('UPDATE_INFO_MESSAGE', 'SUCCESS. Total Schedules='+rData.length );
+                //commit('UPDATE_ALL_SCHEDULES', rData);
+            }).catch(function(error_2){
+                window.console.log('ERROR : 2');
+                window.console.log(error_2);
+            });
+        }).catch(function(error_1){
+            window.console.log('ERROR : 1');
+            window.console.log(error_1);
+        });
+    },
 };
 const mutations = {
     REGISTER_NEW_PATIENT: (state, newPatientResult) => {
