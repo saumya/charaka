@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label>All Schedules | {{tableData.length}}</label>
+        <label>All Schedules | {{info}} | {{tableData.length}}</label>
         <table class="table is-bordered is-hoverable is-fullwidth">
             <thead>
                 <tr>
@@ -44,6 +44,6 @@
 <script>
 export default {
     name: 'TableSchedule',
-    props: ['tableData'],
+    props: ['info','tableData'],
 }
 </script>

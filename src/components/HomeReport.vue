@@ -73,6 +73,7 @@
             <TableDoctors :tableData=getAllDoctorsData></TableDoctors>
             <TablePatients :tableData=getAllPatientsData></TablePatients>
             <TableSchedule :tableData=getAllSchedulesData></TableSchedule>
+            <TableSchedule info="Filtered" :tableData=getFilteredSchedulesData></TableSchedule>
         </section>
         
     </div>
@@ -102,11 +103,12 @@ export default {
     computed: {
         ...mapGetters([ 'get_general_message', 
                         'getAllClinicsData', 'getAllDoctorsData', 'getAllPatientsData', 
-                        'getAllSchedulesData', 'getAllSchedulesByClinicIdDoctorIdDate']),
+                        'getAllSchedulesData', 'getFilteredSchedulesData']),
     },
     methods:{
         ...mapActions([ 'searchClinicWithId', 
-                        'getAllClinics', 'getAllDoctors' ]),
+                        'getAllClinics', 'getAllDoctors', 'getAllSchedules',
+                        'getAllSchedulesByClinicIdDoctorIdDate' ]),
         onClinics: function(){
             window.console.log('onClinics');
             //window.console.log( this.$store ) // Arrow function throws error for "this" !!

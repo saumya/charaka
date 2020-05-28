@@ -10,11 +10,15 @@ const state = {
         doctorId: '4',
         groupId:'5'
     },
-    allSchedules: []
+    allSchedules: [],
+    filteredSchedules: []
 };
 const getters = {
     getAllSchedulesData: state=>{
         return state.allSchedules;
+    },
+    getFilteredSchedulesData: state => {
+        return state.filteredSchedules
     }
 };
 const actions = {
@@ -197,8 +201,8 @@ const actions = {
                 //Mutation
                 //commit('SEARCH_CLINIC', rData);
                 //commit('UPDATE_INFO_MESSAGE', 'Search SUCCESS.'+JSON.stringify(rData) );
-                commit('UPDATE_INFO_MESSAGE', 'SUCCESS. Total Schedules='+rData.length );
-                //commit('UPDATE_ALL_SCHEDULES', rData);
+                commit('UPDATE_INFO_MESSAGE', 'SUCCESS. Total Schedules='+rData.length);
+                commit('UPDATE_FILTERED_SCHEDULES', rData);
             }).catch(function(error_2){
                 window.console.log('ERROR : 2');
                 window.console.log(error_2);
@@ -221,6 +225,9 @@ const mutations = {
     },
     UPDATE_ALL_SCHEDULES: (state, schedules)=>{
         state.allSchedules = schedules;
+    },
+    UPDATE_FILTERED_SCHEDULES: (state, schedules)=>{
+        state.filteredSchedules = schedules;
     }
 };
 //
