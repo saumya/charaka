@@ -2,6 +2,7 @@
     <div>
 
         <GeneralMessage :message="get_general_message"></GeneralMessage>
+        
         <section class="section">
             <div class="panel has-background-white-bis">
                 <div class="panel-heading">
@@ -45,39 +46,51 @@
                     <button class="button is-large is-primary is-fullwidth" @click="onAssignDoctorToClinic">Assign</button>
                 </div>
             </div>
+
         </section>
-        
-        <!--
+
         <section class="section">
-            <label class="label is-large">Clinics</label>
-            <div class="field">
-                <div class="control">
-                    <div class="select is-info is-large">
-                        <select @change="onSelectClininc" v-model="selectedClinicId">
-                            <option>Select A Clinic</option>
-                            <option v-for="(item,index) in getAllClinicsData" :key="item.id" :value="item.id">
-                                {{index+1}}-{{item.id}}-{{item.group_name}}
-                            </option>
-                        </select>
+            <div class="panel has-background-white-bis">
+                <div class="panel-heading">
+                    <label class="title">Activate a Clinic</label>
+                </div>
+                <div class="panel-block">
+                    <label class="label">Select a Clinic</label>
+                </div>
+                <div class="panel-block">
+                    <div class="control">
+                        <div class="select is-info is-large is-fullwidth">
+                            <select @change="onSelectClininc" v-model="selectedClinicId">
+                                <option>Select A Clinic</option>
+                                <option v-for="(item,index) in getAllClinicsData" :key="item.id" :value="item.id">
+                                    {{index+1}}-{{item.id}}-{{item.group_name}}
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <label class="label is-large">Doctors</label>
-            <div class="field">
-                <div class="control">
-                    <div class="select is-info is-large">
-                        <select @change="onSelectDoctor" v-model="selectedDoctorId">
-                            <option>Select A Doctor</option>
-                            <option v-for="(item,index) in getAllDoctorsData" :key="item.id" :value="item.id">
-                                {{index+1}}-{{item.id}}-{{item.name}}
-                            </option>
-                        </select>
+                <div class="panel-block">
+                    <label class="label">Activation Dates</label>
+                </div>
+                <div class="panel-block">
+                    <div class="control">
+                        <label>Activated From</label>
+                        <input class="input is-info" type="date" v-model="activation.from">
                     </div>
                 </div>
+                <div class="panel-block">
+                    <div class="control">
+                        <label>Activated To</label>
+                        <input class="input is-info" type="date" v-model="activation.to">
+                    </div> 
+                </div>
+                <div class="panel-block">
+                    <button class="button is-large is-primary is-fullwidth" @click="onActivateClinic">Activate Clinic</button>
+                </div>
             </div>
-            <button class="button is-large is-primary" @click="onAssignDoctorToClinic">Assign</button>
+
         </section>
-        -->
+      
         
     </div>
 </template>
@@ -91,14 +104,15 @@ export default {
     data: function(){
         return({
             selectedClinicId: '',
-            selectedDoctorId: ''
+            selectedDoctorId: '',
+            activation:{ from:'', to:''}
         })
     },
     computed: {
         ...mapGetters([ 'get_general_message', 'getAllClinicsData', 'getAllDoctorsData' ])
     },
     methods: {
-        ...mapActions([ 'assignDoctorToClinic' ]),
+        ...mapActions([ 'assignDoctorToClinic', 'activateClinic' ]),
         onClinics: function(){
             window.console.log('onclinics')
         },
@@ -117,6 +131,13 @@ export default {
         onAssignDoctorToClinic: function(){
             window.console.log('onAssignDoctorToClinic');
             this.$store.dispatch('assignDoctorToClinic',{ clinincId: this.selectedClinicId, doctorId: this.selectedDoctorId});
+        },
+        onActivateClinic: function(){
+            window.console.log('onActivateClinic');
+            window.console.log( this.activation.from, this.activation.to);
+            this.$store.dispatch('activateClinic', {    clinincId:this.selectedClinicId, 
+                                                        activeFrom:this.activation.from, 
+                                                        activeTo: this.activation.to    });
         }
     }
 }

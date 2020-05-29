@@ -183,6 +183,7 @@ const actions = {
             window.console.log(error_1);
         });
     },
+
     assignDoctorToClinic: ( {state, commit},payload )=>{
         // payload = { clinincId: '' , doctorId: '' }
         window.console.log('assignDoctorToClinic');
@@ -198,6 +199,36 @@ const actions = {
             resultData.json().then(function(rData){
                 commit('UPDATE_INFO_MESSAGE', 'Assignment SUCCESS.'+JSON.stringify(rData) ); // Mutation >>
                 window.console.log('Result Data', rData);
+            }).catch(function(error_3){
+                window.console.log('ERROR : 2'); 
+                window.console.log(error_3);
+            })
+        }).catch(function(error_2){
+            window.console.log('ERROR : 1');
+            window.console.log(error_2);
+        });
+    },
+    activateClinic: ({state, commit},payload)=>{
+        window.console.log('activateClinic');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        window.console.log('2. payload =', payload);
+        const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.post.activate_clinic;
+        window.console.log('3. url =', url_1);
+        const fetch_data = {
+            method: 'POST', mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify(payload)
+        };
+        fetch( url_1, fetch_data ).then(function(resultData){
+            resultData.json().then(function(rData){
+                window.console.log('Result Data', rData);
+                var resultString = 'No Clinics found with that Id';
+                if(rData[0] == 1){
+                    resultString = 'Activation SUCCESS. One Clinic is activated successfully.';
+                }else{
+                    resultString = 'Activation FAIL! No Clinics found with that Id!';
+                }
+                // Mutation
+                commit('UPDATE_INFO_MESSAGE', resultString );
             }).catch(function(error_3){
                 window.console.log('ERROR : 2'); 
                 window.console.log(error_3);

@@ -1,15 +1,22 @@
 <template>
   <div class="hello">
     <h1>{{ msg }} <strong>{{appName}}</strong> </h1>
-    <div>
-      <div>All functionality are as follows.</div>
-      <div>Make a clinic(Group)</div>
-      <div>Activate the clinic(Group)</div>
+    <section class="section">
+      <h1 class="title">Functionalities</h1>
+      <h2 class="subtitle">All the functionalities that are available now are as follows.</h2>
+      
+      <p>Clinincs | Create, Update, Delete</p>
+      <p>Patients | Create, Update, Delete</p>
+      <p>Doctors | Create, Update, Delete</p>
+      <p>Schedules | Create, Update, Delete</p>
 
-      <div>Persons</div>
-      <div>Doctors</div>
-      <div>Schedules</div>
-    </div>
+      <p>Activate the clinic</p>
+      <p>Assign Doctors to a clinic</p>
+
+      <p>View Schedules | All </p>
+      <p>View Schedules | By Date + By Clinic + By Doctor </p>
+
+    </section>
   </div>
 </template>
 
