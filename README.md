@@ -8,7 +8,7 @@ An application to use the API from another server and show UI here.
 
 ### wip
 
- - UI for reporting
+ - UI for Clinic facing APP
  - UI for Patient facing APP
  - UI for Doctor facing App
  - UX improvements
@@ -18,6 +18,7 @@ An application to use the API from another server and show UI here.
   - UI CRUD Doctors
   - UI CRUD Patient
   - UI CRUD Schedule
+  - UI for reporting
 
 Component boiler plate
 
@@ -55,20 +56,6 @@ const actions = {};
 const mutations = {};
 export default { state, getters, actions, mutations }
 ```
-
-### TODO
-
- - Application Admin
- - Office Admin
- - User Admin
- - User UI
-
- - Need to work on at least 3 apps
-  - Patient
-  - Doctor
-  - Clinic
- 
- - Any other changes and further research for the WIP
 
 
 

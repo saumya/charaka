@@ -3,18 +3,27 @@
     <h1>{{ msg }} <strong>{{appName}}</strong> </h1>
     <section class="section">
       <h1 class="title">Functionalities</h1>
-      <h2 class="subtitle">All the functionalities that are available now are as follows.</h2>
+      <h2 class="subtitle">All the functionalities details are as follows.</h2>
       
-      <p>Clinincs | Create, Update, Delete</p>
-      <p>Patients | Create, Update, Delete</p>
-      <p>Doctors | Create, Update, Delete</p>
-      <p>Schedules | Create, Update, Delete</p>
+      <div class="box">
+        <h1 class="subtitle">Available Now</h1>
+        <p>Clinics | Create, Update, Delete</p>
+        <p>Patients | Create, Update, Delete</p>
+        <p>Doctors | Create, Update, Delete</p>
+        <p>Schedules | Create, Update, Delete</p>
 
-      <p>Activate the clinic</p>
-      <p>Assign Doctors to a clinic</p>
+        <p>Activate the clinic</p>
+        <p>Assign Doctors to a clinic</p>
 
-      <p>View Schedules | All </p>
-      <p>View Schedules | By Date + By Clinic + By Doctor </p>
+        <p>View Schedules | All </p>
+        <p>View Schedules | By Date + By Clinic + By Doctor </p>
+
+      </div>
+
+      <div class="box">
+        <h1 class="subtitle">Work in progress</h1>
+        <p>ClinicOnly UI</p>
+      </div>
 
     </section>
   </div>
