@@ -43,6 +43,13 @@ export default new Router({
         { path: '/report', component: HomeReport },
         { path: '/assignments', component: HomeAssignment },
 
+        { path: '/clinic_employees', component: HomeClinicAdmin },
+        { path: '/clinic_patients', component: HomeClinicAdmin },
+        { path: '/clinic_doctors', component: HomeClinicAdmin },
+        { path: '/clinic_schedules', component: HomeClinicAdmin },
+        { path: '/clinic_approvals', component: HomeClinicAdmin },
+
+
         { path: '/app_basics', component: AppBasics }
 
     ]
