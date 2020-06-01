@@ -167,7 +167,7 @@ const actions = {
         const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.get.all_groups;
         fetch( url_1 ).then(function(resultData){
             resultData.json().then(function(rData){
-                window.console.log('UPDATE : SUCCESS :');
+                window.console.log('GET : SUCCESS :');
                 window.console.log(rData);
                 //Mutation
                 //commit('SEARCH_CLINIC', rData);
