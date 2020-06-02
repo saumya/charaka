@@ -1,6 +1,8 @@
 # charaka
 
-A VueJS Application. Using REST calls, Routers and State engines.
+A VueJS Application. 
+ 
+ - REST calls, Routers and State engines.
 
 An application to use the API from another server and show UI here.
 
