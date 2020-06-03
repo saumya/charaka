@@ -40,9 +40,12 @@
                 </div>
         </section>
 
+        <!--
         <div class="buttons">
             <button class="button is-info" v-on:click="getClinics">clinics</button>
         </div>
+        -->
+        {{ /* this.$store.state.clinics.reference_name */ }}
 
 
 
@@ -53,7 +56,7 @@
 </template>
 
 <script>
-import {mapGetters,mapActions} from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 
 window.console.log('Hello: Home.ClinicAdmin');
@@ -62,22 +65,24 @@ export default {
     name: 'HomeClinicAdmin',
     created: function(){
         window.console.log('created');
+        this.$store.dispatch('getAllClinics');
     },
     mounted: function(){
         window.console.log('mounted');
     },
     data: function(){
         return {
-            selectedClinicId : -1,
+            selectedClinicId : -1
         }
     },
     computed: {
-        ...mapGetters['getAllClinicsData'],
+        ...mapGetters(['getAllClinicsData']),
     },
     methods: {
         ...mapActions['getAllClinics'],
         getClinics: function(){
             window.console.log('getClinics');
+            window.console.log( this.$store.state.clinics.reference_name );
             this.$store.dispatch('getAllClinics');
         }
     },
