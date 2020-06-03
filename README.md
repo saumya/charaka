@@ -4,7 +4,7 @@ A VueJS Application.
  
  - REST calls, Routers and State engines.
 
-An application to use the API from another server and show UI here.
+Application to use the API from another server and show UI here.
 
 ### wip
 
