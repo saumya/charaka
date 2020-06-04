@@ -8,7 +8,10 @@ import One from '../components/One.comp'
 import Two from '../components/Two.comp'
 
 import HomeAppAdmin from '../components/Home.AppAdmin'
+
 import HomeClinicAdmin from '../components/Home.ClinicAdmin'
+import HomeClinicAdminPatients from '../components/Home.ClinicAdminPatients'
+import HomeClinicAdminDoctors from '../components/Home.ClinicAdminDoctors'
 
 import HomeClinic from '../components/HomeClinic'
 import HomeDoctor from '../components/HomeDoctor'
@@ -44,8 +47,8 @@ export default new Router({
         { path: '/assignments', component: HomeAssignment },
 
         { path: '/clinic_employees', component: HomeClinicAdmin },
-        { path: '/clinic_patients', component: HomeClinicAdmin },
-        { path: '/clinic_doctors', component: HomeClinicAdmin },
+        { path: '/clinic_patients', component: HomeClinicAdminPatients },
+        { path: '/clinic_doctors', component: HomeClinicAdminDoctors },
         { path: '/clinic_schedules', component: HomeClinicAdmin },
         { path: '/clinic_approvals', component: HomeClinicAdmin },
 

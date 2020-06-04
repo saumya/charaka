@@ -176,6 +176,14 @@ const actions = {
             window.console.log(error_1);
         });
     },
+    getAllDoctorsInClinicId: function({commit},payload){
+        window.console.log('---ACTION---','getAllDoctorsInClinicId');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        window.console.log('getAllDoctorsInClinicId', payload);
+        window.console.log('TODO','1. Call the API. 2. Write the API');
+        commit('UPDATE_INFO_MESSAGE', 'Searching Doctors.' );
+        //TODO: calling the API
+    },
 
 };
 const mutations = {

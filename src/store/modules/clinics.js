@@ -13,7 +13,8 @@ const state = {
         activated_from:'2',
         activated_to:'3'
     },
-    allClinics:[]
+    allClinics:[],
+    selectedClinic: {},
 };
 const getters = {
     getNewClinic: state=>{
@@ -21,7 +22,10 @@ const getters = {
     },
     getAllClinicsData: state=>{
         return state.allClinics
-    }
+    },
+    getSeletedClinic: state=>{
+        return state.selectedClinic
+    },
 };
 const actions = {
     registerNewClinic: ({state,commit},payload) => {
@@ -238,6 +242,13 @@ const actions = {
             window.console.log(error_2);
         });
     },
+    onClinicSelectionDone: ({state,commit},payload) => {
+        window.console.log('onClinicSelectionDone');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        window.console.log('2. payload =', payload);
+        //Mutation
+        commit('SELECT_CLINIC_INFO', payload );
+    },
 };
 const mutations = {
     REGISTER_NEW_CLINIC: (state, newClinicResult) => {
@@ -253,6 +264,9 @@ const mutations = {
     },
     UPDATE_ALL_CLINICS: (state, clinics)=>{
         state.allClinics = clinics;
+    },
+    SELECT_CLINIC_INFO: (state, clinic) => {
+        state.selectedClinic = clinic;
     }
 
 };

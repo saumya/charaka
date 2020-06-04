@@ -9,7 +9,7 @@
                 <div class="navbar-start">
                     <router-link class="navbar-item" to="/clinic_admin">Home</router-link>
                     <!-- <router-link class="navbar-item" to="/clinic_employees">Employees</router-link> -->
-                    <router-link class="navbar-item" to="/clinic_patients">Patients</router-link>
+                    <!-- <router-link class="navbar-item" to="/clinic_patients">Patients</router-link> -->
                     <router-link class="navbar-item" to="/clinic_doctors">Doctors</router-link>
                     <!-- <router-link class="navbar-item" to="/clinic_approvals">Approvals</router-link> -->
                     <router-link class="navbar-item" to="/clinic_schedules">Schedules</router-link>
@@ -26,18 +26,17 @@
         </nav>
 
         <section class="section">
-            <div class="panel-block">
-                    <div class="control">
-                        <div class="select is-info is-large is-fullwidth">
-                            <select v-model="selectedClinic">
-                                <option value="-1">Select A Clinic</option>
-                                <option v-for="(item,index) in getAllClinicsData" :key="item.id" :value="item">
-                                    {{index+1}}-{{item.id}}-{{item.group_name}}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
+            <label class="label">Select a Clinic</label>
+            <div class="control">
+                <div class="select is-info is-large is-fullwidth">
+                    <select v-model="selectedClinic" @change="onSelectClininc">
+                        <option value="-1">Select A Clinic</option>
+                        <option v-for="(item,index) in getAllClinicsData" :key="item.id" :value="item">
+                            {{index+1}}-{{item.id}}-{{item.group_name}}
+                        </option>
+                    </select>
                 </div>
+            </div>
         </section>
 
         <!--
@@ -45,7 +44,7 @@
             <button class="button is-info" v-on:click="onClinicSelectionDone">Clinic Selection Done</button>
         </div>
         -->
-        
+
         {{ /* this.$store.state.clinics.reference_name */ }}
 
 
@@ -83,6 +82,7 @@ export default {
     },
     methods: {
         ...mapActions['getAllClinics'],
+        /*
         getClinics: function(){
             window.console.log('getClinics');
             window.console.log( this.$store.state.clinics.reference_name );
@@ -91,6 +91,12 @@ export default {
         onClinicSelectionDone: function(){
             window.console.log('onClinicSelectionDone');
             window.console.log( 'selectedClinic', JSON.stringify(this.selectedClinic) );
+        },
+        */
+        onSelectClininc: function(){
+            window.console.log('onSelectClininc');
+            window.console.log( JSON.stringify(this.selectedClinic) );
+            this.$store.dispatch('onClinicSelectionDone', (this.selectedClinic) );
         }
     },
     
