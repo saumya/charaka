@@ -1,7 +1,7 @@
 <template>
     <div>
         <section class="section">
-        <label  class="title">Clinic Application</label>
+        <label  class="title">Clinic Application | {{ this.selectedClinic.group_name }}</label>
 
 
         <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -29,9 +29,9 @@
             <div class="panel-block">
                     <div class="control">
                         <div class="select is-info is-large is-fullwidth">
-                            <select v-model="selectedClinicId">
+                            <select v-model="selectedClinic">
                                 <option value="-1">Select A Clinic</option>
-                                <option v-for="(item,index) in getAllClinicsData" :key="item.id" :value="item.id">
+                                <option v-for="(item,index) in getAllClinicsData" :key="item.id" :value="item">
                                     {{index+1}}-{{item.id}}-{{item.group_name}}
                                 </option>
                             </select>
@@ -42,9 +42,10 @@
 
         <!--
         <div class="buttons">
-            <button class="button is-info" v-on:click="getClinics">clinics</button>
+            <button class="button is-info" v-on:click="onClinicSelectionDone">Clinic Selection Done</button>
         </div>
         -->
+        
         {{ /* this.$store.state.clinics.reference_name */ }}
 
 
@@ -69,10 +70,12 @@ export default {
     },
     mounted: function(){
         window.console.log('mounted');
+        //this.$store.dispatch('getAllClinics');
     },
     data: function(){
         return {
-            selectedClinicId : -1
+            selectedClinicId : -1,
+            selectedClinic : '',
         }
     },
     computed: {
@@ -84,6 +87,10 @@ export default {
             window.console.log('getClinics');
             window.console.log( this.$store.state.clinics.reference_name );
             this.$store.dispatch('getAllClinics');
+        },
+        onClinicSelectionDone: function(){
+            window.console.log('onClinicSelectionDone');
+            window.console.log( 'selectedClinic', JSON.stringify(this.selectedClinic) );
         }
     },
     
