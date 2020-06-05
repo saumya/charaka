@@ -183,6 +183,27 @@ const actions = {
         window.console.log('TODO','1. Call the API. 2. Write the API');
         commit('UPDATE_INFO_MESSAGE', 'Searching Doctors.' );
         //TODO: calling the API
+
+        const url_1 = apiconfig.global.uri + apiconfig.global.version 
+                        + apiconfig.get.all_doctors_byClinic + payload ;
+        fetch( url_1 ).then(function(resultData){
+            resultData.json().then(function(rData){
+                window.console.log('UPDATE : SUCCESS :');
+                window.console.log(rData);
+                //Mutation
+                //commit('SEARCH_CLINIC', rData);
+                //commit('UPDATE_INFO_MESSAGE', 'Search SUCCESS.'+JSON.stringify(rData) );
+                
+                //commit('UPDATE_INFO_MESSAGE', 'SUCCESS. Total Doctors='+rData.length );
+                //commit('UPDATE_ALL_DOCTORS', rData);
+            }).catch(function(error_2){
+                window.console.log('ERROR : 2');
+                window.console.log(error_2);
+            });
+        }).catch(function(error_1){
+            window.console.log('ERROR : 1');
+            window.console.log(error_1);
+        });
     },
 
 };
