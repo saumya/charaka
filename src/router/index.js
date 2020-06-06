@@ -12,6 +12,7 @@ import HomeAppAdmin from '../components/Home.AppAdmin'
 import HomeClinicAdmin from '../components/Home.ClinicAdmin'
 import HomeClinicAdminPatients from '../components/Home.ClinicAdminPatients'
 import HomeClinicAdminDoctors from '../components/Home.ClinicAdminDoctors'
+import HomeClinicAdminSchedules from '../components/Home.ClinicAdminSchedules'
 
 import HomeClinic from '../components/HomeClinic'
 import HomeDoctor from '../components/HomeDoctor'
@@ -49,7 +50,7 @@ export default new Router({
         { path: '/clinic_employees', component: HomeClinicAdmin },
         { path: '/clinic_patients', component: HomeClinicAdminPatients },
         { path: '/clinic_doctors', component: HomeClinicAdminDoctors },
-        { path: '/clinic_schedules', component: HomeClinicAdmin },
+        { path: '/clinic_schedules', component: HomeClinicAdminSchedules },
         { path: '/clinic_approvals', component: HomeClinicAdmin },
 
 

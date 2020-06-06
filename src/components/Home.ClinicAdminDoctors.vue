@@ -1,7 +1,7 @@
 <template>
     <div>
         <section class="section">
-            <label  class="title">Clinic Application | {{ getSeletedClinic.group_name }}</label>
+            <label  class="title">Clinic Application | Doctors | {{ getSeletedClinic.group_name }}</label>
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-menu is-active">
                     <div class="navbar-start">
@@ -49,10 +49,10 @@ export default {
         ...mapActions(['getAllDoctors', 'getAllDoctorsInClinicId']),
     },
     created: function(){
-        window.console.log('created');
+        window.console.log('created : Home.ClinicAdmin.Patients');
     },
     mounted: function(){
-        window.console.log('mounted');
+        window.console.log('mounted : Home.ClinicAdmin.Patients');
         //window.console.log( 'this.$store.getSeletedClinic', this.$store.getters.getSeletedClinic )
         //this.$store.dispatch('getAllDoctors');
         

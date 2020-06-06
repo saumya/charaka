@@ -19,6 +19,9 @@ const getters = {
     },
     getFilteredSchedulesData: state => {
         return state.filteredSchedules
+    },
+    getDataAllSchedulesByClinicId: state => {
+        return state.filteredSchedules
     }
 };
 const actions = {
@@ -182,6 +185,37 @@ const actions = {
             window.console.log(error_1);
         });
     },
+    getAllSchedulesByClinicId: ({commit}, payload)=>{
+        window.console.log('getAllSchedulesByClinicId');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        window.console.log('2. payload =', payload);
+
+        const url_1 = apiconfig.global.uri + apiconfig.global.version 
+                        + apiconfig.get.all_schedules_byClinic_id + payload ;
+        
+        window.console.log('url=',url_1);
+        commit('UPDATE_INFO_MESSAGE', 'SEARCHING. Schedules for the clinic');
+
+        fetch( url_1 ).then(function(resultData){
+            resultData.json().then(function(rData){
+                window.console.log('UPDATE : SUCCESS :');
+                window.console.log(rData);
+                //Mutation
+                //commit('SEARCH_CLINIC', rData);
+                //commit('UPDATE_INFO_MESSAGE', 'Search SUCCESS.'+JSON.stringify(rData) );
+                commit('UPDATE_INFO_MESSAGE', 'SUCCESS. Total Schedules='+rData.length);
+                commit('UPDATE_FILTERED_SCHEDULES', rData);
+            }).catch(function(error_2){
+                window.console.log('ERROR : 2');
+                window.console.log(error_2);
+            });
+        }).catch(function(error_1){
+            window.console.log('ERROR : 1');
+            window.console.log(error_1);
+        });
+
+    }, // getAllSchedulesByClinicId
+
     getAllSchedulesByClinicIdDoctorIdDate: function({state, commit},payload){
         window.console.log('getAllSchedulesByClinicIdDoctorIdDate');
         window.console.log('1. state.reference_name =', state.reference_name);
