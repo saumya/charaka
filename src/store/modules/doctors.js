@@ -13,7 +13,7 @@ const state = {
     },
     allDoctors: [],
     foundDoctorIdsForTheClinic: false,
-    allDoctorIdsInClinic: []
+    allDoctorsInTheClinic: []
 };
 
 const getters = {
@@ -23,8 +23,8 @@ const getters = {
     getWhetherFoundDoctorIdsForTheClinic: state=>{
         return state.foundDoctorIdsForTheClinic
     },
-    getDoctorIdsForClinic: state=>{
-        return state.allDoctorIdsInClinic
+    getDoctorsForTheClinicId: state=>{
+        return state.allDoctorsInTheClinic
     }
 
 };
@@ -210,7 +210,7 @@ const actions = {
                 // foundDoctorIdsForTheClinic
                 
                 commit('UPDATE_INFO_MESSAGE', 'Found Doctor Ids for the Clinic.' );
-                commit('FOUND_DOCTOR_IDS_FOR_CLINIC', rData);
+                commit('FOUND_DOCTORS_FOR_CLINIC', rData);
             
             }).catch(function(error_2){
                 window.console.log('ERROR : 2');
@@ -237,9 +237,9 @@ const mutations = {
     UPDATE_ALL_DOCTORS: (state, doctors)=>{
         state.allDoctors = doctors;
     },
-    FOUND_DOCTOR_IDS_FOR_CLINIC: (state, doctorIds)=>{
+    FOUND_DOCTORS_FOR_CLINIC: (state, doctors)=>{
         state.foundDoctorIdsForTheClinic = true;
-        state.allDoctorIdsInClinic = doctorIds;
+        state.allDoctorsInTheClinic = doctors;
     }
 };
 

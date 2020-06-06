@@ -23,9 +23,11 @@
                 </div>
             </nav>
             <section class="section">
-                {{ getWhetherFoundDoctorIdsForTheClinic }} - {{ getDoctorIdsForClinic }}
-                {{ (getDoctorIdsForClinic.length>0 ? 'Please wait. Getting the details of '+getDoctorIdsForClinic.length+' doctors.' : 'No doctors found for the clinic.') }}
-                <TableDoctors :tableData=getAllDoctorsData></TableDoctors>
+                <!--
+                {{ getWhetherFoundDoctorIdsForTheClinic }} - {{ getDoctorsForTheClinicId }}
+                {{ (getDoctorsForTheClinicId.length>0 ? 'Please wait. Getting the details of '+getDoctorsForTheClinicId.length+' doctors.' : 'No doctors found for the clinic.') }}
+                -->
+                <TableDoctors :tableData=getDoctorsForTheClinicId></TableDoctors>
             </section>
         </section>
     </div>
@@ -41,7 +43,7 @@ export default {
     components: { TableDoctors },
     computed:{
         ...mapGetters([ 'getSeletedClinic','getAllDoctorsData', 
-                        'getWhetherFoundDoctorIdsForTheClinic', 'getDoctorIdsForClinic']),
+                        'getWhetherFoundDoctorIdsForTheClinic', 'getDoctorsForTheClinicId']),
     },
     methods:{
         ...mapActions(['getAllDoctors', 'getAllDoctorsInClinicId']),
