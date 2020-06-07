@@ -21,7 +21,7 @@
       </div>
 
       <div class="box">
-        <h1 class="subtitle">Work in progress</h1>
+        <h1 class="subtitle"> Dedicated Applications </h1>
         <!-- <a class="button" href="#/clinic_admin"> Clinic Only Application </a> -->
         <router-link class="button" to="/clinic_admin">Clinic Only Application</router-link>
         
