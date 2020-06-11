@@ -79,7 +79,7 @@ export default {
             window.console.log('onPrescription');
             //window.console.log( JSON.stringify( this.prescription ) );
 
-            this.$store.dispatch('registerNewPrescription', JSON.stringify(this.prescription) );
+            this.$store.dispatch('registerNewPrescription', this.prescription );
         }
     }
 }
