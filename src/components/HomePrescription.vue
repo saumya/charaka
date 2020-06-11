@@ -14,49 +14,41 @@
         </nav>
         <GeneralMessage :message="get_general_message"></GeneralMessage>
         <section class="section">
-            <div class="panel has-background-white-bis">
-                <div class="panel-heading">
-                    <label class="title"> Prescription : Create </label>
-                </div>
 
-                <div class="panel-block">
-                    <div class="field">
-                        <div class="control">
-                            <label>Name</label>
-                            <input class="input is-info" type="text" placeholder="Prescription" value="Prescription"> 
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-block">
-                    <div class="field">
-                        <div class="control">
-                            <label>On Date</label>
-                            <input class="input is-info" type="date" placeholder="Prescription" value=""> 
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-block">
-                    <div class="field">
-                        <div class="control">
-                            <label> Details </label>
-                            <input class="input is-info" type="text" placeholder="Details" value="Details"> 
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="panel-block">
-                    <button class="button is-large is-primary is-fullwidth" @click="onPrescription"> Create Prescription </button>
-                </div>
+            <div class="field">
+                <label>Name</label>
+                <input class="input is-info" type="text" placeholder="Prescription" value="Prescription" v-model="prescription.name">
+            </div>
+            <div class="field">
+                <label>Details</label>
+                <input class="input is-info" type="text" placeholder="Details" value="Details" v-model="prescription.details">
+            </div>
+            <div class="field">
+                <label>On Date</label>
+                <input class="input is-info" type="date" value="" v-model="prescription.onDate">
+            </div>
+            <div class="field">
+                <label>Doctor Id</label>
+                <input class="input is-info" type="text" placeholder="Doctor Id" value="Doctor Id" v-model="prescription.doctorId">
+            </div>
+            <div class="field">
+                <label>Person Id</label>
+                <input class="input is-info" type="text" placeholder="Person Id" value="Person Id" v-model="prescription.personId">
+            </div>
+            <div class="field">
+                <label>Clinic Id</label>
+                <input class="input is-info" type="text" placeholder="Clinic Id" value="Clinic Id" v-model="prescription.clinicId">
             </div>
 
-            
+            <div class="field">
+                <button class="button is-info" @click="onPrescription"> Create Prescription </button>
+            </div>
 
         </section>
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import GeneralMessage from './GeneralMessage';
 
 export default {
@@ -64,20 +56,30 @@ export default {
     components: { GeneralMessage },
     data: function(){
         return({
-            selectedClinicId: '',
-            selectedDoctorId: '',
+            prescription:{
+                name : 'prescriptionX',
+                onDate : '2020-12-24',
+                details : 'detailsX',
+                doctorId : '4',
+                personId : '5',
+                clinicId : '3'
+            }
         })
     },
     computed: {
         ...mapGetters(['get_general_message']),
     },
     methods: {
-        onCreate: function(){},
-        onRead: function(){},
-        onUpdate: function(){},
-        onDelete: function(){},
+        ...mapActions([ 'registerNewPrescription' ]),
+        onCreate: function(){ window.console.log('onCreate') },
+        onRead: function(){ window.console.log('onRead') },
+        onUpdate: function(){ window.console.log('onUpdate') },
+        onDelete: function(){ window.console.log('onDelete') },
         onPrescription: function(){
-            window.console.log('onPrescription')
+            window.console.log('onPrescription');
+            //window.console.log( JSON.stringify( this.prescription ) );
+
+            this.$store.dispatch('registerNewPrescription', JSON.stringify(this.prescription) );
         }
     }
 }
