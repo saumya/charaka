@@ -20,6 +20,8 @@ import HomePatient from '../components/HomePatient'
 import HomeSchedule from '../components/HomeSchedule'
 import HomeReport from '../components/HomeReport'
 import HomeAssignment from '../components/HomeAssignment'
+import HomePrescription from '../components/HomePrescription'
+import HomeBill from '../components/HomeBill'
 
 import AppBasics from '../components/AppBasics'
 
@@ -46,6 +48,9 @@ export default new Router({
         { path: '/schedule', component: HomeSchedule },
         { path: '/report', component: HomeReport },
         { path: '/assignments', component: HomeAssignment },
+
+        { path: '/prescriptions', component: HomePrescription },
+        { path: '/bills', component: HomeBill },
 
         { path: '/clinic_employees', component: HomeClinicAdmin },
         { path: '/clinic_patients', component: HomeClinicAdminPatients },

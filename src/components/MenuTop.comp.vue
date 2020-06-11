@@ -26,6 +26,10 @@
                     <router-link class="navbar-item" to="/doctor">Doctors</router-link>
                     <router-link class="navbar-item" to="/patient">Patients</router-link>
                     <router-link class="navbar-item" to="/schedule">Schedules</router-link> 
+                    
+                    <router-link class="navbar-item" to="/prescriptions">Prescriptions</router-link>
+                    <router-link class="navbar-item" to="/bills">Bills</router-link>
+
                     <router-link class="navbar-item" to="/assignments">Assignments</router-link>
                 </div>
                 <div class="navbar-end">
