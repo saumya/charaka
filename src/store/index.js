@@ -10,6 +10,7 @@ import doctors from './modules/doctors';
 import patients from './modules/patients';
 import schedules from './modules/schedules';
 import prescriptions from './modules/prescription';
+import bill from './modules/bill';
 
 //
 Vue.use(Vuex);
@@ -23,6 +24,7 @@ export default new Vuex.Store({
         doctors,
         patients,
         schedules,
-        prescriptions
+        prescriptions,
+        bill
     }
 });

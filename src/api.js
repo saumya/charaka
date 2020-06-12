@@ -12,6 +12,7 @@ const apiconfig = {
         create_patient : '/createPerson/',
         create_schedule : '/createSchedule/',
         create_prescription : '/createPrescription/',
+        create_bill : '/createBill',
         
         assign_doctor_to_clinic : '/assignDoctorToClinic/',
         activate_clinic : '/activateClinic'
