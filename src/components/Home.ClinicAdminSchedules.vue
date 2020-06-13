@@ -19,7 +19,7 @@
                         <a class="navbar-item"> Notice Board </a>
                         <a class="navbar-item"> Dashboard </a>
                         -->
-                        <a class="navbar-item"> Dashboard </a>
+                        <!-- <a class="navbar-item"> Dashboard </a> -->
                     </div>
                 </div>
             </nav>

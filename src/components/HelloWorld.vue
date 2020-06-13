@@ -23,7 +23,8 @@
       <div class="box">
         <h1 class="subtitle"> Dedicated Applications </h1>
         <!-- <a class="button" href="#/clinic_admin"> Clinic Only Application </a> -->
-        <router-link class="button" to="/clinic_admin">Clinic Only Application</router-link>
+        <router-link class="button is-primary" to="/clinic_admin">Clinic Only Functionality</router-link>
+        <router-link class="button is-primary" to="/clinic_ui"> Clinic UI </router-link>
         
       </div>
 

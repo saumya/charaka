@@ -23,6 +23,8 @@ import HomeAssignment from '../components/HomeAssignment'
 import HomePrescription from '../components/HomePrescription'
 import HomeBill from '../components/HomeBill'
 
+import ClinicUI from '../components/ClinicUI'
+
 import AppBasics from '../components/AppBasics'
 
 Vue.use(Router)
@@ -52,11 +54,13 @@ export default new Router({
         { path: '/prescriptions', component: HomePrescription },
         { path: '/bills', component: HomeBill },
 
-        { path: '/clinic_employees', component: HomeClinicAdmin },
+        /* { path: '/clinic_employees', component: HomeClinicAdmin }, */
         { path: '/clinic_patients', component: HomeClinicAdminPatients },
         { path: '/clinic_doctors', component: HomeClinicAdminDoctors },
         { path: '/clinic_schedules', component: HomeClinicAdminSchedules },
         { path: '/clinic_approvals', component: HomeClinicAdmin },
+
+        { path: '/clinic_ui', component: ClinicUI },
 
 
         { path: '/app_basics', component: AppBasics }
