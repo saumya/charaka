@@ -262,14 +262,18 @@ const actions = {
                 //window.console.log( rData.data );
 
                 let resultString = 'No Clinics found with that Id';
+                let isStillActive = false;
                 if(rData.result === 'SUCCESS'){
                     resultString = 'SUCCESS. Login.';
-                    window.console.log( rData.data );
-                    //TODO: Check for activation
-                    
+                    isStillActive = rData.isStillActive;
                 }else{
                     resultString = 'FAIL!! Login. No Clinics found with that Id!';
                 }
+
+                window.console.log('isActive', isStillActive);
+                // TODO: set state for isLoggedIn, isStillActive
+                // Then show the respective UI
+
                 // Mutation
                 commit('UPDATE_INFO_MESSAGE', resultString );
             }).catch(function(error_3){
