@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="hero is-primary is-medium">
+        <section class="hero is-primary is-small">
             <!--
             <div class="hero-head">
                 head
@@ -13,6 +13,11 @@
                     <div class="columns is-mobile">
                         <div class="column"></div>
                         <div class="column is-one-thirds">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-large" type="text" placeholder="Clinic Id">
+                                </div>
+                            </div>
                             <div class="field">
                                 <div class="control">
                                     <input class="input is-large" type="text" placeholder="User Name">
