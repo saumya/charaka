@@ -15,22 +15,22 @@
                         <div class="column is-one-thirds">
                             <div class="field">
                                 <div class="control">
-                                    <input class="input is-large" type="text" placeholder="Clinic Id">
+                                    <input class="input is-large" type="text" placeholder="Clinic Id" v-model="loginInfoObj.cid">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input class="input is-large" type="text" placeholder="User Name">
+                                    <input class="input is-large" type="text" placeholder="User Name" v-model="loginInfoObj.cAdminUserName">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input class="input is-large" type="password" placeholder="Password">
+                                    <input class="input is-large" type="password" placeholder="Password" v-model="loginInfoObj.cAdminUserPw">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <button class="button is-large is-fullwidth is-primary is-light"> Login </button>
+                                    <button class="button is-large is-fullwidth is-primary is-light" v-on:click="onLoginButtonClick"> Login </button>
                                 </div>
                             </div> 
                         </div>
@@ -47,8 +47,24 @@
     </div>
 </template>
 <script>
+import { mapActions } from 'vuex';
+
 export default {
-    name: 'ClinicUI'
+    name: 'ClinicUI',
+    data: ()=>({
+        loginInfoObj:{
+            cid:100,
+            cAdminUserName: 'AdminName',
+            cAdminUserPw: 'AdminPw'
+        }
+    }),
+    methods: {
+        ...mapActions([ 'onClinicLogin' ]),
+        onLoginButtonClick: function(){
+            window.console.log('onLoginClick', JSON.stringify(this.loginInfoObj) );
+            this.$store.dispatch('onClinicLogin', this.loginInfoObj );
+        }, 
+    }
 }
 </script>
 <style lang="stylus" scoped>

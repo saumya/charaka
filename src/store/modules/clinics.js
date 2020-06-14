@@ -242,12 +242,57 @@ const actions = {
             window.console.log(error_2);
         });
     },
+    onClinicLogin: ({state,commit}, payload) => {
+        window.console.log('onClinicLogin');
+        window.console.log('1. state.reference_name', state.reference_name);
+        window.console.log('2. payload', JSON.stringify(payload) );
+        commit('UPDATE_INFO_MESSAGE', 'Login : Process in progress');
+        //
+        const url_1 = apiconfig.global.uri + apiconfig.global.version 
+                        + apiconfig.post.login_clinic; 
+        const fetch_data = {
+            method: 'POST', mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify(payload)
+        };
+        fetch( url_1, fetch_data ).then(function(resultData){
+            resultData.json().then(function(rData){
+                window.console.log('Result Data', rData);
+                
+                //window.console.log( rData.result );
+                //window.console.log( rData.data );
+
+                let resultString = 'No Clinics found with that Id';
+                if(rData.result === 'SUCCESS'){
+                    resultString = 'SUCCESS. Login.';
+                    window.console.log( rData.data );
+                    //TODO: Check for activation
+                    
+                }else{
+                    resultString = 'FAIL!! Login. No Clinics found with that Id!';
+                }
+                // Mutation
+                commit('UPDATE_INFO_MESSAGE', resultString );
+            }).catch(function(error_3){
+                window.console.log('ERROR : 2'); 
+                window.console.log(error_3);
+            })
+        }).catch(function(error_2){
+            window.console.log('ERROR : 1');
+            window.console.log(error_2);
+        });
+    }, // onClinicLogin/
     onClinicSelectionDone: ({state,commit},payload) => {
         window.console.log('onClinicSelectionDone');
         window.console.log('1. state.reference_name =', state.reference_name);
         window.console.log('2. payload =', payload);
         //Mutation
         commit('SELECT_CLINIC_INFO', payload );
+    },
+    checkForMapActions: ({state,commit}, payload) => {
+        window.console.log('checkForMapActions');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        window.console.log('2. payload =', payload);
+        commit('UPDATE_INFO_MESSAGE', 'ERROR : fix wih mapActions');
     },
 };
 const mutations = {
