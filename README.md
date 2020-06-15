@@ -13,12 +13,7 @@ Application to use the API from another server and show UI here.
  - UI for Doctor facing App
  - UX improvements
  
- #### Done
-  - UI CRUD Groups
-  - UI CRUD Doctors
-  - UI CRUD Patient
-  - UI CRUD Schedule
-  - UI for reporting
+
 
 Component boiler plate
 
