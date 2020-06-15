@@ -1,5 +1,13 @@
 <template>
     <div>
+
+        <!--
+        <section class="section">
+            <div> Login : {{ getLoggedInClinicData.result }} </div>
+            <div> Is Still Active : {{ getLoggedInClinicData.isStillActive }} </div>
+        </section>
+        -->
+
         <section class="hero is-primary is-small">
             <!--
             <div class="hero-head">
@@ -10,9 +18,30 @@
                 <div class="container has-text-centered">
                     <h1 class="title"> Login </h1>
                     <h2 class="subtitle"> Manage your clinic </h2>
+                    
+
+
                     <div class="columns is-mobile">
                         <div class="column"></div>
                         <div class="column is-one-thirds">
+                    
+                            <div class="field is-grouped is-grouped-multiline">
+                                <div class="control">
+                                    <div class="tags has-addons">
+                                        <span class="tag is-dark is-normal">Login</span>
+                                        <span class="tag is-normal"> {{ getLoggedInClinicData.result }} </span>
+                                    </div>
+                                </div>
+                                <div class="control">
+                                    <div class="tags has-addons">
+                                        <span class="tag is-dark is-normal">Active</span>
+                                        <span class="tag is-normal"> {{ getLoggedInClinicData.isStillActive }} </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{ getLoggedInClinicData.isStillActive ? "Nice! Let's go." : "Please get your clininc activated!" }}
+
                             <div class="field">
                                 <div class="control">
                                     <input class="input is-large" type="text" placeholder="Clinic Id" v-model="loginInfoObj.cid">
@@ -47,7 +76,7 @@
     </div>
 </template>
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     name: 'ClinicUI',
@@ -58,6 +87,9 @@ export default {
             cAdminUserPw: 'AdminPw'
         }
     }),
+    computed: {
+        ...mapGetters([ 'getLoggedInClinicData' ])
+    },
     methods: {
         ...mapActions([ 'onClinicLogin' ]),
         onLoginButtonClick: function(){

@@ -13,6 +13,11 @@ const state = {
         activated_from:'2',
         activated_to:'3'
     },
+    loggedInClinic: {
+        result: 'Not yet',
+        isStillActive: false,
+        data: {}
+    },
     allClinics:[],
     selectedClinic: {},
 };
@@ -26,6 +31,7 @@ const getters = {
     getSeletedClinic: state=>{
         return state.selectedClinic
     },
+    getLoggedInClinicData: state => state.loggedInClinic
 };
 const actions = {
     registerNewClinic: ({state,commit},payload) => {
@@ -266,14 +272,12 @@ const actions = {
                 if(rData.result === 'SUCCESS'){
                     resultString = 'SUCCESS. Login.';
                     isStillActive = rData.isStillActive;
+                    commit('LOGGED_IN_CLINIC', rData);
                 }else{
+                    commit('LOGGED_IN_CLINIC', rData);
                     resultString = 'FAIL!! Login. No Clinics found with that Id!';
                 }
-
                 window.console.log('isActive', isStillActive);
-                // TODO: set state for isLoggedIn, isStillActive
-                // Then show the respective UI
-
                 // Mutation
                 commit('UPDATE_INFO_MESSAGE', resultString );
             }).catch(function(error_3){
@@ -316,7 +320,8 @@ const mutations = {
     },
     SELECT_CLINIC_INFO: (state, clinic) => {
         state.selectedClinic = clinic;
-    }
+    },
+    LOGGED_IN_CLINIC: (state, loginData) => state.loggedInClinic = loginData 
 
 };
 //
