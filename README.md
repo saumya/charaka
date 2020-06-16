@@ -8,10 +8,8 @@ Application to use the API from another server and show UI here.
 
 ### wip
 
- - UI for Clinic facing APP
- - UI for Patient facing APP
- - UI for Doctor facing App
  - UX improvements
+ - UI for Clinic / Patient / Doctor
  
 
 
