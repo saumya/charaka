@@ -25,13 +25,11 @@
                     <div class="columns is-mobile">
                         <div class="column"></div>
                         <div class="column is-one-thirds">
-
-                            <div> {{ get_whetherBusy }} </div>
-
-                            <LoginStatusComp v-bind:loginStatusObj="getLoggedInClinicData" />
-
                             
-
+                            
+                            <LoginStatusComp v-bind:loginStatusObj="getLoggedInClinicData" />
+                            <BusyIndicator v-bind:isBusy="get_whetherBusy" />
+                            
                             <div class="field">
                                 <div class="control">
                                     <input class="input is-large" type="text" placeholder="Clinic Id" v-model="loginInfoObj.cid">
@@ -68,11 +66,12 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 
+import BusyIndicator from './BusyIndicator';
 import LoginStatusComp from './LoginStatus.comp';
 
 export default {
     name: 'ClinicUI',
-    components: { LoginStatusComp },
+    components: { BusyIndicator, LoginStatusComp },
     data: ()=>({
         loginInfoObj:{
             cid:100,

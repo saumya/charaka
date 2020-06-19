@@ -4,7 +4,7 @@
         <div class="level">
             <div class="level-item has-text-centered">
 
-                <div class="control mr-4">
+                <div class="control mr-1">
                     <div class="tags has-addons">
                         <span class="tag is-dark is-normal">Login</span>
                         <span class="tag" v-bind:class="{ 'is-danger' : !isLoggedIn , 'is-success is-light' : isLoggedIn }"> {{ isLoggedIn }} </span>
@@ -21,7 +21,7 @@
             
         </div>
 
-        <div class="mb-2"> {{ uiMessage }} </div>
+        <div class="mb-1"> {{ uiMessage }} </div>
 
         
         
