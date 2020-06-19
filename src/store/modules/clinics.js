@@ -280,6 +280,7 @@ const actions = {
                 window.console.log('isActive', isStillActive);
                 // Mutation
                 commit('UPDATE_INFO_MESSAGE', resultString );
+                commit('UPDATE_BUSY_STATUS', false);
             }).catch(function(error_3){
                 window.console.log('ERROR : 2'); 
                 window.console.log(error_3);

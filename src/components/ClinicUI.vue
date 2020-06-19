@@ -26,6 +26,8 @@
                         <div class="column"></div>
                         <div class="column is-one-thirds">
 
+                            <div> {{ get_whetherBusy }} </div>
+
                             <LoginStatusComp v-bind:loginStatusObj="getLoggedInClinicData" />
 
                             
@@ -79,13 +81,14 @@ export default {
         }
     }),
     computed: {
-        ...mapGetters([ 'getLoggedInClinicData' ])
+        ...mapGetters([ 'get_whetherBusy', 'getLoggedInClinicData' ])
     },
     methods: {
-        ...mapActions([ 'onClinicLogin' ]),
+        ...mapActions([ 'updateBusyStatus', 'onClinicLogin' ]),
         onLoginButtonClick: function(){
             window.console.log('onLoginClick', JSON.stringify(this.loginInfoObj) );
             this.$store.dispatch('onClinicLogin', this.loginInfoObj );
+            this.$store.dispatch('updateBusyStatus', true);
         }, 
     }
 }
