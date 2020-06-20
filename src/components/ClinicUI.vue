@@ -9,6 +9,7 @@
         -->
 
         <section class="hero is-primary is-small">
+            <BusyIndicator v-bind:isBusy="get_whetherBusy" />
             <!--
             <div class="hero-head">
                 head
@@ -18,38 +19,14 @@
                 <div class="container has-text-centered">
                     <h1 class="title"> Login </h1>
                     <h2 class="subtitle"> Manage your clinic </h2>
-                    
-                    
-
 
                     <div class="columns is-mobile">
                         <div class="column"></div>
                         <div class="column is-one-thirds">
                             
+                            <LoginComp v-bind:loggedInClinicData="getLoggedInClinicData" v-bind:goNextFromClinicUI="onNextButtonClick" v-if="!isLoggedInAndActive" />
+                            <div v-if="isLoggedInAndActive"> TODO: UI for Clinic Management </div>
                             
-                            <LoginStatusComp v-bind:loginStatusObj="getLoggedInClinicData" v-bind:goNext="onNextButtonClick" />
-                            <BusyIndicator v-bind:isBusy="get_whetherBusy" />
-                            
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input is-large" type="text" placeholder="Clinic Id" v-model="loginInfoObj.cid">
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input is-large" type="text" placeholder="User Name" v-model="loginInfoObj.cAdminUserName">
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input is-large" type="password" placeholder="Password" v-model="loginInfoObj.cAdminUserPw">
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="control">
-                                    <button class="button is-large is-fullwidth is-primary is-light" v-on:click="onLoginButtonClick"> Login </button>
-                                </div>
-                            </div> 
                         </div>
                         <div class="column"></div>
                     </div>
@@ -67,31 +44,23 @@
 import { mapGetters, mapActions } from 'vuex';
 
 import BusyIndicator from './BusyIndicator';
-import LoginStatusComp from './LoginStatus.comp';
+//import LoginStatusComp from './LoginStatus.comp';
+import LoginComp from './LoginComp'
 
 export default {
     name: 'ClinicUI',
-    components: { BusyIndicator, LoginStatusComp },
-    data: ()=>({
-        loginInfoObj:{
-            cid:100,
-            cAdminUserName: 'AdminName',
-            cAdminUserPw: 'AdminPw'
-        }
-    }),
+    components: { BusyIndicator, LoginComp },
+    data: ()=>({}),
     computed: {
-        ...mapGetters([ 'get_whetherBusy', 'getLoggedInClinicData' ])
+        ...mapGetters([ 'get_whetherBusy', 'getLoggedInClinicData' ]),
+        isLoggedInAndActive: function(){
+            return this.getLoggedInClinicData.isStillActive
+        },
     },
     methods: {
         ...mapActions([ 'updateBusyStatus', 'onClinicLogin' ]),
-        onLoginButtonClick: function(){
-            window.console.log('onLoginClick', JSON.stringify(this.loginInfoObj) );
-            this.$store.dispatch('onClinicLogin', this.loginInfoObj );
-            this.$store.dispatch('updateBusyStatus', true);
-        },
         onNextButtonClick: function(){
-            window.console.log( 'onNextButtonClick'+ this.loginInfoObj.cid );
-            
+            //window.console.log( 'onNextButtonClick'+ this.loginInfoObj.cid );
             this.$router.push( '/clinic_admin' );
             //this.$router.push({ path: `/clinic_admin/${this.loginInfoObj.cid}` })
         }, 
