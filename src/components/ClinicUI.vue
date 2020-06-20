@@ -27,7 +27,7 @@
                         <div class="column is-one-thirds">
                             
                             
-                            <LoginStatusComp v-bind:loginStatusObj="getLoggedInClinicData" />
+                            <LoginStatusComp v-bind:loginStatusObj="getLoggedInClinicData" v-bind:goNext="onNextButtonClick" />
                             <BusyIndicator v-bind:isBusy="get_whetherBusy" />
                             
                             <div class="field">
@@ -88,6 +88,12 @@ export default {
             window.console.log('onLoginClick', JSON.stringify(this.loginInfoObj) );
             this.$store.dispatch('onClinicLogin', this.loginInfoObj );
             this.$store.dispatch('updateBusyStatus', true);
+        },
+        onNextButtonClick: function(){
+            window.console.log( 'onNextButtonClick'+ this.loginInfoObj.cid );
+            
+            this.$router.push( '/clinic_admin' );
+            //this.$router.push({ path: `/clinic_admin/${this.loginInfoObj.cid}` })
         }, 
     }
 }

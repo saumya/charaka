@@ -24,7 +24,7 @@
         <div class="mb-1"> {{ uiMessage }} </div>
         <div class="field" v-if="isActive">
             <div class="control">
-                <button class="button is-large is-fullwidth is-warning"> Let's Go </button>
+                <button class="button is-large is-fullwidth is-warning" v-on:click="goNext"> Let's Go </button>
             </div>
         </div>
 
@@ -36,7 +36,7 @@
 <script>
 export default {
     name: "LoginStatusComp",
-    props: ['loginStatusObj'],
+    props: ['loginStatusObj', 'goNext'],
     computed: {
         isLoggedIn: function(){
             let x = this.loginStatusObj.result
@@ -60,7 +60,7 @@ export default {
             }
             return x;
         }
-    },
+    }
 }
 </script>
 <style scoped>
