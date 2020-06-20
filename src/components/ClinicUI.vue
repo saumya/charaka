@@ -24,9 +24,9 @@
                         <div class="column"></div>
                         <div class="column is-one-thirds">
                             
-                            <LoginComp v-bind:loggedInClinicData="getLoggedInClinicData" v-bind:goNextFromClinicUI="onNextButtonClick" v-if="!isLoggedInAndActive" />
+                            <LoginComp v-if="!isLoggedInAndActive" v-bind:loggedInClinicData="getLoggedInClinicData" v-bind:goNextFromClinicUI="onNextButtonClick" />
                             <div v-if="isLoggedInAndActive"> TODO: UI for Clinic Management </div>
-                            
+
                         </div>
                         <div class="column"></div>
                     </div>
@@ -44,7 +44,6 @@
 import { mapGetters, mapActions } from 'vuex';
 
 import BusyIndicator from './BusyIndicator';
-//import LoginStatusComp from './LoginStatus.comp';
 import LoginComp from './LoginComp'
 
 export default {
@@ -58,7 +57,7 @@ export default {
         },
     },
     methods: {
-        ...mapActions([ 'updateBusyStatus', 'onClinicLogin' ]),
+        ...mapActions([ 'updateBusyStatus' ]),
         onNextButtonClick: function(){
             //window.console.log( 'onNextButtonClick'+ this.loginInfoObj.cid );
             this.$router.push( '/clinic_admin' );
