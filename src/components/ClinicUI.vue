@@ -16,22 +16,14 @@
             </div>
             -->
             <div class="hero-body">
-                <div class="container has-text-centered">
-                    <h1 class="title"> Login </h1>
-                    <h2 class="subtitle"> Manage your clinic </h2>
-
-                    <div class="columns is-mobile">
-                        <div class="column"></div>
-                        <div class="column is-one-thirds">
+                <div class="container">
                             
-                            <LoginComp v-if="!isLoggedInAndActive" v-bind:loggedInClinicData="getLoggedInClinicData" v-bind:goNextFromClinicUI="onNextButtonClick" />
-                            <div v-if="isLoggedInAndActive"> TODO: UI for Clinic Management </div>
+                    <LoginComp v-if="!isLoggedInAndActive" v-bind:loggedInClinicData="getLoggedInClinicData" v-bind:goNextFromClinicUI="onNextButtonClick" />
+                    <ClinicUIActiveHome v-if="isLoggedInAndActive" v-bind:loggedInClinicData="getLoggedInClinicData" /> 
 
-                        </div>
-                        <div class="column"></div>
-                    </div>
                 </div>
             </div>
+            
             <div class="hero-foot">
                 <div class="container has-text-centered">
                     <p>Please user your Clinic Administration credentials. It is provided to you while activating the clinic.</p>
@@ -45,10 +37,11 @@ import { mapGetters, mapActions } from 'vuex';
 
 import BusyIndicator from './BusyIndicator';
 import LoginComp from './LoginComp'
+import ClinicUIActiveHome from './ClinicUIActiveHome'
 
 export default {
     name: 'ClinicUI',
-    components: { BusyIndicator, LoginComp },
+    components: { BusyIndicator, LoginComp, ClinicUIActiveHome },
     data: ()=>({}),
     computed: {
         ...mapGetters([ 'get_whetherBusy', 'getLoggedInClinicData' ]),

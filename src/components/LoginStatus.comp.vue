@@ -20,8 +20,14 @@
             </div>
             
         </div>
+        <div class="level">
+            <div class="level-item has-text-centered">
+                <div class="mb-1"> {{ uiMessage }} </div>
+            </div>
+        </div>
+        
 
-        <div class="mb-1"> {{ uiMessage }} </div>
+        
         <div class="field" v-if="isActive">
             <div class="control">
                 <button class="button is-large is-fullwidth is-warning" v-on:click="goNext"> Let's Go </button>
