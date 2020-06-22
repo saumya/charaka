@@ -27,7 +27,7 @@
             
             <div class="hero-foot">
                 <div class="container has-text-centered">
-                    <p>Please user your Clinic Administration credentials. It is provided to you while activating the clinic.</p>
+                    <p> FindHeath.today | Thank you for using. </p>
                 </div>
             </div>
         </section>
