@@ -192,7 +192,6 @@ const actions = {
         window.console.log('getAllDoctorsInClinicId', payload);
         window.console.log('TODO','1. Call the API. 2. Write the API');
         commit('UPDATE_INFO_MESSAGE', 'Searching Doctors.' );
-        //TODO: calling the API
 
         const url_1 = apiconfig.global.uri + apiconfig.global.version 
                         + apiconfig.get.all_doctors_byClinic + payload ;
