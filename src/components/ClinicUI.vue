@@ -15,9 +15,10 @@
                 head
             </div>
             -->
+            
             <div class="hero-body">
                 <div class="container">
-                            
+                    
                     <LoginComp v-if="!isLoggedInAndActive" v-bind:loggedInClinicData="getLoggedInClinicData" v-bind:goNextFromClinicUI="onNextButtonClick" />
                     <ClinicUIActiveHome v-if="isLoggedInAndActive" v-bind:loggedInClinicData="getLoggedInClinicData" /> 
 
