@@ -42,17 +42,48 @@
             </tfoot>
         </table>
         </div> <!-- table-container / -->
+
+        <div class="modal is-active" v-if="shouldShowModalDetails">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Appointment Details</p>
+                    <button class="delete" aria-label="close" v-on:click="onHideDetailsClick"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div style="color:black">
+                        hello
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success">Save changes</button>
+                    <button class="button" v-on:click="onHideDetailsClick">Cancel</button>
+                </footer>
+            </div>
+        </div>
+
+
     </div>
 </template>
 <script>
 export default {
     name: 'TableSchedule',
     props: ['info','tableData'],
+    data: ()=>({
+        shouldShowModalDetails: false
+    }),
     methods: {
         onDetailsClick: function(item){
             window.console.log('onDetailsClick', item.id);
             window.console.log( JSON.stringify(item) )
             window.console.log('TODO: fetch and show details')
+
+            
+
+            this.shouldShowModalDetails = !this.shouldShowModalDetails
+        },
+        onHideDetailsClick: function(){
+            this.shouldShowModalDetails = !this.shouldShowModalDetails
         }
     }
 }

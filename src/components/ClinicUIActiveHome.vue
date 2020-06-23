@@ -6,6 +6,8 @@
         <TableDoctors v-bind:tableData='getDoctorsForTheClinicId' />
         <TableClinicSchedules :info='loggedInClinicData.data.group_name' :tableData='modifiedSchedulesForRender' />
         
+        
+
     </div>
 </template>
 <script>
