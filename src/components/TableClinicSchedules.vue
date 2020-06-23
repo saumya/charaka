@@ -52,7 +52,10 @@
                 </header>
                 <section class="modal-card-body">
                     <div style="color:black">
-                        hello
+                        <div>Appointment id : {{ this.detailsOfObj.id }}</div>
+                        <div>Person id : {{ this.detailsOfObj.personId }}</div>
+                        <div>Doctor Name : {{ this.detailsOfObj.doctorName }}</div>
+                        <div>TODO: Form for prescription</div>
                     </div>
                 </section>
                 <footer class="modal-card-foot">
@@ -70,21 +73,24 @@ export default {
     name: 'TableSchedule',
     props: ['info','tableData'],
     data: ()=>({
-        shouldShowModalDetails: false
+        shouldShowModalDetails: false,
+        detailsOfObj: '',
     }),
     methods: {
+        onHideDetailsClick: function(){
+            this.shouldShowModalDetails = !this.shouldShowModalDetails
+        },
         onDetailsClick: function(item){
             window.console.log('onDetailsClick', item.id);
             window.console.log( JSON.stringify(item) )
             window.console.log('TODO: fetch and show details')
 
-            
+            this.detailsOfObj = item;
 
+            
             this.shouldShowModalDetails = !this.shouldShowModalDetails
         },
-        onHideDetailsClick: function(){
-            this.shouldShowModalDetails = !this.shouldShowModalDetails
-        }
+        
     }
 }
 </script>
