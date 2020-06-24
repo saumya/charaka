@@ -9,10 +9,11 @@ Application to use the API from another server and show UI here.
 ### wip
 
  - UX improvements
+ - UI for Clinic
 
 ### TODO
 
- - UI for Clinic / Patient / Doctor
+ - UI Patient / Doctor
  
 
 
