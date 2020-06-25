@@ -4,7 +4,7 @@
         <h2 class="subtitle is-6">Active till {{loggedInClinicData.data.activated_to}}</h2>
         
         <TableDoctors v-bind:tableData='getDoctorsForTheClinicId' />
-        <TableClinicSchedules :info='loggedInClinicData.data.group_name' :tableData='modifiedSchedulesForRender' />
+        <TableClinicSchedules :clinicName='loggedInClinicData.data.group_name' :clinicId='loggedInClinicData.data.id' :tableData='modifiedSchedulesForRender' />
         
         
 

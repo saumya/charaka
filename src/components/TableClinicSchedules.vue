@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label>All Schedules | {{info}} | {{tableData.length}}</label>
+        <label>All Schedules | {{clinicName}} | {{tableData.length}}</label>
         <div class="table-container">
         <table class="table is-bordered is-hoverable is-fullwidth">
             <thead>
@@ -53,7 +53,9 @@
                 <section class="modal-card-body">
                     <div style="color:black">
                         <div>Appointment id : {{ this.detailsOfObj.id }}</div>
+                        <div>Clinic id : {{ this.clinicId }}</div>
                         <div>Person id : {{ this.detailsOfObj.personId }}</div>
+                        <div>Doctor id : {{ this.detailsOfObj.doctorId }}</div>
                         <div>Doctor Name : {{ this.detailsOfObj.doctorName }}</div>
                         <div>TODO: Form for prescription</div>
                     </div>
@@ -71,7 +73,7 @@
 <script>
 export default {
     name: 'TableSchedule',
-    props: ['info','tableData'],
+    props: ['clinicName', 'clinicId','tableData'],
     data: ()=>({
         shouldShowModalDetails: false,
         detailsOfObj: '',
