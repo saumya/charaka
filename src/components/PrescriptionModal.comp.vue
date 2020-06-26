@@ -70,7 +70,7 @@
 <script>
 export default {
     name : "PrescriptionModal",
-    props : ['appointmentId', 'clinicId', 'personId', 'doctorId', 'doctorName' ],
+    props : ['appointmentId', 'clinicId', 'personId', 'doctorId', 'doctorName'],
     data: function(){
         return({
             prescription:{

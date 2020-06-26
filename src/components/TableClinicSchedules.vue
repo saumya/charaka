@@ -57,11 +57,21 @@
                             v-on:on_hide_details_click="onHideDetails"
                             v-on:on_save_prescription_click="onSavePrescription" />
 
+        <BillModal v-if="shouldShowModalBill" 
+                    v-bind:appointmentId="this.billsObj.id" 
+                    v-bind:clinicId="this.clinicId" 
+                    v-bind:personId="this.billsObj.personId" 
+                    v-bind:doctorId="this.billsObj.doctorId"
+                    v-bind:doctorName="this.billsObj.doctorName"  
+                    v-on:on_hide_modal_bill_click="onHideBillThisModalClick"
+                    v-on:on_save_bill_click="onSaveBill" />
+
     </div>
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import PrescriptionModal from './PrescriptionModal.comp'
+import BillModal from './BillModal.comp'
 import GeneralMessage from './GeneralMessage'
 
 export default {
@@ -69,14 +79,16 @@ export default {
     props: ['clinicName', 'clinicId','tableData'],
     data: ()=>({
         shouldShowModalDetails: false,
+        shouldShowModalBill: false,
         detailsOfObj: '',
+        billsObj: '',
     }),
-    components: { PrescriptionModal, GeneralMessage },
+    components: { PrescriptionModal, BillModal, GeneralMessage },
     computed: {
         ...mapGetters(['get_general_message']),
     },
     methods: {
-        ...mapActions([ 'registerNewPrescription' ]),
+        ...mapActions([ 'registerNewPrescription', 'createNewBill' ]),
         onSavePrescription: function( newPrescription ){
             window.console.log('TableSchedule : onSavePrescription');
             window.console.log( JSON.stringify(newPrescription) );
@@ -92,9 +104,18 @@ export default {
             this.detailsOfObj = item;
             this.shouldShowModalDetails = !this.shouldShowModalDetails
         },
+        onSaveBill: function(bill){
+            window.console.log('onSaveBill', JSON.stringify(bill) );
+            this.$store.dispatch('createNewBill', bill);
+        },
         onBillThisClick: function(item){
             window.console.log('onBillThisClick', JSON.stringify(item) );
-        }
+            this.billsObj = item;
+            this.shouldShowModalBill = !this.shouldShowModalBill;
+        },
+        onHideBillThisModalClick: function(){
+            this.shouldShowModalBill = !this.shouldShowModalBill
+        },
         
     }
 }
