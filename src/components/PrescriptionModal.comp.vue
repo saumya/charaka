@@ -16,6 +16,7 @@
                     <div>Doctor Name : {{ this.doctorName }}</div>
                 </div>
                 -->
+                
                 <div style="color:black">
                     <!--
                     <div class="field">
@@ -87,8 +88,9 @@ export default {
             this.$emit('on_hide_details_click');
         },
         onSavePrescriptionClick : function(){
-            window.console.log( this.prescription );
-            this.$emit('on_save_prescription_click');
+            //window.console.log( this.prescription );
+            this.$emit('on_save_prescription_click', this.prescription );
+            this.$emit('on_hide_details_click');
         },
     },
 }

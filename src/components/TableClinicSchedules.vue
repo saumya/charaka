@@ -1,5 +1,7 @@
 <template>
     <div>
+        <GeneralMessage :message="get_general_message"></GeneralMessage>
+
         <label>All Schedules | {{clinicName}} | {{tableData.length}}</label>
         <div class="table-container">
         <table class="table is-bordered is-hoverable is-fullwidth">
@@ -55,7 +57,9 @@
     </div>
 </template>
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import PrescriptionModal from './PrescriptionModal.comp'
+import GeneralMessage from './GeneralMessage'
 
 export default {
     name: 'TableSchedule',
@@ -64,10 +68,16 @@ export default {
         shouldShowModalDetails: false,
         detailsOfObj: '',
     }),
-    components: { PrescriptionModal },
+    components: { PrescriptionModal, GeneralMessage },
+    computed: {
+        ...mapGetters(['get_general_message']),
+    },
     methods: {
-        onSavePrescription: function(){
-            window.console.log('onSavePrescription');
+        ...mapActions([ 'registerNewPrescription' ]),
+        onSavePrescription: function( newPrescription ){
+            window.console.log('TableSchedule : onSavePrescription');
+            window.console.log( JSON.stringify(newPrescription) );
+            this.$store.dispatch('registerNewPrescription', newPrescription );
         },
         onHideDetails: function(){
             this.shouldShowModalDetails = !this.shouldShowModalDetails
