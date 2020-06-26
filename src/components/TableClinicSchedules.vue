@@ -13,7 +13,8 @@
                     <th>on Date</th>
                     <!-- <th>Person Id</th> -->
                     <th>Doctor</th>
-                    <th> More </th>
+                    <th> Prescription </th>
+                    <th> Bill </th>
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +29,8 @@
                     <!-- <td>{{ item.personId }}</td> -->
                     <!-- <td>{{ item.doctorId }}</td> -->
                     <td>{{ item.doctorName }}</td>
-                    <td> <button class="button is-dark" v-on:click="onDetailsClick(item)">Details</button> </td>
+                    <td> <button class="button is-dark" v-on:click="onDetailsClick(item)"> Prescribe </button> </td>
+                    <td> <button class="button is-dark" @click="onBillThisClick(item)"> Bill This </button> </td>
                 </tr>
             </tbody>
             <tfoot>
@@ -39,7 +41,8 @@
                     <th>on Date</th>
                     <!-- <th>Person Id</th> -->
                     <th>Doctor</th>
-                    <th> More </th>
+                    <th> Prescription </th>
+                    <th> Bill </th>
                 </tr>
             </tfoot>
         </table>
@@ -89,6 +92,9 @@ export default {
             this.detailsOfObj = item;
             this.shouldShowModalDetails = !this.shouldShowModalDetails
         },
+        onBillThisClick: function(item){
+            window.console.log('onBillThisClick', JSON.stringify(item) );
+        }
         
     }
 }
