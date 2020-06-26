@@ -43,34 +43,20 @@
         </table>
         </div> <!-- table-container / -->
 
-        <div class="modal is-active" v-if="shouldShowModalDetails">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Appointment Details</p>
-                    <button class="delete" aria-label="close" v-on:click="onHideDetailsClick"></button>
-                </header>
-                <section class="modal-card-body">
-                    <div style="color:black">
-                        <div>Appointment id : {{ this.detailsOfObj.id }}</div>
-                        <div>Clinic id : {{ this.clinicId }}</div>
-                        <div>Person id : {{ this.detailsOfObj.personId }}</div>
-                        <div>Doctor id : {{ this.detailsOfObj.doctorId }}</div>
-                        <div>Doctor Name : {{ this.detailsOfObj.doctorName }}</div>
-                        <div>TODO: Form for prescription</div>
-                    </div>
-                </section>
-                <footer class="modal-card-foot">
-                    <button class="button is-success">Save changes</button>
-                    <button class="button" v-on:click="onHideDetailsClick">Cancel</button>
-                </footer>
-            </div>
-        </div>
-
+        <PrescriptionModal v-if="shouldShowModalDetails" 
+                            v-bind:appointmentId="this.detailsOfObj.id"
+                            v-bind:clinicId="this.clinicId"
+                            v-bind:personId="this.detailsOfObj.personId"
+                            v-bind:doctorId="this.detailsOfObj.doctorId" 
+                            v-bind:doctorName="this.detailsOfObj.doctorName"
+                            v-on:on_hide_details_click="onHideDetails"
+                            v-on:on_save_prescription_click="onSavePrescription" />
 
     </div>
 </template>
 <script>
+import PrescriptionModal from './PrescriptionModal.comp'
+
 export default {
     name: 'TableSchedule',
     props: ['clinicName', 'clinicId','tableData'],
@@ -78,18 +64,19 @@ export default {
         shouldShowModalDetails: false,
         detailsOfObj: '',
     }),
+    components: { PrescriptionModal },
     methods: {
-        onHideDetailsClick: function(){
+        onSavePrescription: function(){
+            window.console.log('onSavePrescription');
+        },
+        onHideDetails: function(){
             this.shouldShowModalDetails = !this.shouldShowModalDetails
         },
         onDetailsClick: function(item){
             window.console.log('onDetailsClick', item.id);
             window.console.log( JSON.stringify(item) )
             window.console.log('TODO: fetch and show details')
-
             this.detailsOfObj = item;
-
-            
             this.shouldShowModalDetails = !this.shouldShowModalDetails
         },
         
