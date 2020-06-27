@@ -9,14 +9,7 @@
             <section class="modal-card-body">
                 
                 <div style="color:black">
-
                     <div>
-                        <!--
-                        <div class="field">
-                            <label>Name</label>
-                            <input class="input is-info" type="text" placeholder="Bill" value="Bill" v-model="bill.name">
-                        </div>
-                        -->
                         <div class="field">
                             <label>Details</label>
                             <input class="input is-info" type="text" placeholder="Details" value="Details" v-model="bill.details">
@@ -29,38 +22,22 @@
                             <label>Ammount</label>
                             <input class="input is-info" type="number" value="" v-model="bill.ammount">
                         </div>
-                        <!--
-                        <div class="field">
-                            <label>Doctor Id</label>
-                            <input class="input is-info" type="text" placeholder="Doctor Id" value="Doctor Id" v-model="bill.doctorId">
-                        </div>
-                        <div class="field">
-                            <label>Person Id</label>
-                            <input class="input is-info" type="text" placeholder="Person Id" value="Person Id" v-model="bill.personId">
-                        </div>
-                        <div class="field">
-                            <label>Clinic Id</label>
-                            <input class="input is-info" type="text" placeholder="Clinic Id" value="Clinic Id" v-model="bill.clinicId">
-                        </div>
-                        -->
                     </div>
-
+                    <!--
                     <div style="color:black">
                         <label>Appointment id:{{ this.appointmentId }}</label>,
                         <label>Clinic id : {{ this.bill.clinicId }}</label>,
                         <label>Person id : {{ this.bill.personId }}</label>,
                         <label>Doctor id : {{ this.bill.doctorId }}</label>,
                         <label>Doctor Name : {{ this.doctorName }}</label>
-                        
-                        <!-- <label>TODO: Get the person details if necessary.</label> -->
                     </div>
-
+                    -->
                 </div>
                 
             </section>
             <footer class="modal-card-foot">
-                <button class="button is-success" v-on:click="onSaveBillClick">Save changes</button>
-                <button class="button" v-on:click="onHideDetailsClick">Cancel</button>
+                <button class="button is-success" v-on:click="onSaveBillClick"> Save </button>
+                <button class="button" v-on:click="onHideDetailsClick"> Cancel </button>
             </footer>
         </div>
     </div>
