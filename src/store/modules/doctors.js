@@ -6,6 +6,7 @@ const state = {
         name: 'n',
         email: 'a',
         phone: 'ap',
+        specialization: 'na',
         address: 'ad',
         activated_on:'1',
         activated_from:'2',
@@ -48,6 +49,7 @@ const actions = {
                 'doctorName': payload.name,
                 'doctorPhone': payload.phone,
                 'doctorEmail': payload.email,
+                'doctorSpecialization': payload.specialization,
                 'doctorAddress': payload.address
             })
         };
@@ -84,6 +86,7 @@ const actions = {
                 'doctorName': payload.name,
                 'doctorEmail': payload.email,
                 'doctorPhone': payload.phone,
+                'doctorSpecialization': payload.specialization,
                 'doctorAddress': payload.address
             })
         };

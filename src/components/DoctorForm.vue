@@ -30,6 +30,12 @@
     </div>
     <div class="field">
         <div class="control">
+            <label>Doctor Specialization / Details</label>
+            <input class="input is-info" type="text" placeholder="Medicine" v-model="doctor.specialization"> 
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
             <label>Doctor Address</label>
             <input class="input is-info" type="text" placeholder="Road Lane, Town, State,Pin" v-model="doctor.address"> 
         </div>
@@ -58,6 +64,7 @@ export default {
               name: "Xyz Last",
               phone: "1111111111",
               email: "email@email.com",
+              specialization: 'Nothing',
               address: "my address is this"
           }
       })
