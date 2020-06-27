@@ -6,17 +6,11 @@
       <h2 class="subtitle">All the functionalities details are as follows.</h2>
       
       <div class="box">
-        <h1 class="subtitle">Available Now</h1>
-        <p>Clinics | Create, Update, Delete</p>
-        <p>Patients | Create, Update, Delete</p>
-        <p>Doctors | Create, Update, Delete</p>
-        <p>Schedules | Create, Update, Delete</p>
+        <h1 class="subtitle"> Administration Application </h1>
+        <p>Clinics, Patients, Doctors, Schedules, Prescription, Bill </p>
 
         <p>Activate the clinic</p>
         <p>Assign Doctors to a clinic</p>
-
-        <p>View Schedules | All </p>
-        <p>View Schedules | By Date + By Clinic + By Doctor </p>
 
       </div>
 
