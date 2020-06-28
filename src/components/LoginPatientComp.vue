@@ -63,7 +63,6 @@ export default {
     data: function(){
         return({
             loginInfoObj:{
-                cid : 1,
                 pUserId : '2',
                 pUserPw : 'UserPw'
             }

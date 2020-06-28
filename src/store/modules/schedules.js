@@ -31,7 +31,8 @@ const actions = {
         window.console.log('2. payload =', JSON.stringify(payload));
         commit('UPDATE_INFO_MESSAGE', 'Schedule : Registration Progress');
 
-        const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.post.create_schedule;
+        const url_1 = apiconfig.global.uri + apiconfig.global.version 
+                                                + apiconfig.post.create_schedule;
         window.console.log('3. url =',url_1);
 
         const fetch_data = {

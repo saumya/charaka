@@ -18,31 +18,12 @@
             
             <div class="hero-body">
                 <div class="container">
-                    
+                    <!-- <span> *This is Demo. So clinic id is set to 1. By default. </span> -->
                     <LoginPatientComp :isLoggedIn="getWhetherLoginSuccess" v-if="!getWhetherLoginSuccess"/>
-                    <section class="section" v-if="getWhetherLoginSuccess">
-                        <div class="field">
-                            <div class="control">
-                                <button class="button is-large is-fullwidth is-primary is-light"> Schedule Appointment </button>
-                            </div>
-                        </div>
-
-                        {{ getLoginPatientObj }}
-
-                        <div class="field has-addons">
-                            <p class="control">
-                                <button class="button is-info"> Schedules </button>
-                            </p>
-                            <p class="control">
-                                <button class="button is-link"> Prescriptions </button>
-                            </p>
-                            <p class="control">
-                                <button class="button is-info"> Bills </button>
-                            </p>
-                        </div>
-                        
-
-                    </section>
+                    <PatientUIActiveHome v-if="getWhetherLoginSuccess" 
+                                            :ui_clinic_id="ui_clinic_id" 
+                                            v-bind:loginPatientObj="getLoginPatientObj"/>
+                    
                 </div>
             </div>
             
@@ -59,10 +40,18 @@ import { mapGetters } from 'vuex';
 
 import BusyIndicator from './BusyIndicator'
 import LoginPatientComp from './LoginPatientComp'
+import PatientUIActiveHome from './PatientUIActiveHome'
 
 export default {
     name : 'PatientUI',
-    components: { BusyIndicator, LoginPatientComp },
+    components: { BusyIndicator, LoginPatientComp, PatientUIActiveHome },
+    data: function(){
+        // clinic_id is from UI
+        // As there would be different UI for different Clinics
+        return {
+            ui_clinic_id: 1
+        }
+    },
     computed: {
         ...mapGetters([ 'get_whetherBusy', 'getWhetherLoginSuccess', 'getLoginPatientObj' ]),
     },
