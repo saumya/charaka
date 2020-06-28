@@ -12,12 +12,16 @@ const state = {
         activated_from:'2',
         activated_to:'3'
     },
-    allPatients: []
+    allPatients: [],
+    isLoginSuccess_patient:false,
+    loginPatientObj: {}
 };
 const getters = {
     getAllPatientsData: state=>{
         return state.allPatients
-    }
+    },
+    getWhetherLoginSuccess: state=> state.isLoginSuccess_patient,
+    getLoginPatientObj: state=> state.loginPatientObj
 };
 const actions = {
     createPatient: ({state,commit},payload) => {
@@ -191,6 +195,19 @@ const actions = {
         fetch( url_1, fetch_data ).then(function(resultData){
             resultData.json().then(function(rData){
                 window.console.log('Result Data', rData);
+
+                commit('UPDATE_BUSY_STATUS', false)
+                commit('UPDATE_LOGIN_STATUS', rData.success)
+
+                if(rData.success===true){
+                    window.console.log('LOGIN:SUCCESS');
+                    commit('UPDATE_INFO_MESSAGE', 'Login : SUCCESS');
+                    commit('UPDATE_LOGIN_PATIENT', rData.data)
+                }else{
+                    window.console.log('LOGIN:FAIL');
+                    commit('UPDATE_INFO_MESSAGE', 'Login : FAIL');
+                }
+
             }).catch(function(error_2){
                 window.console.log('ERROR : 2');
                 window.console.log(error_2);
@@ -207,13 +224,16 @@ const mutations = {
         window.console.log('---MUTAION---', state.reference_name, JSON.stringify(newPatientResult));
         state.newPatient = newPatientResult;
     },
-    UPDATE_PATIENT: (state, doctorResult)=>{
+    UPDATE_PATIENT: (state, newPatientResult)=>{
         window.console.log('---MUTAION---','UPDATE_PATIENT');
-        state.newDoctor = doctorResult;
+        state.newPatient = newPatientResult;
     },
     UPDATE_ALL_PATIENTS: (state, patients)=>{
         state.allPatients = patients;
-    }
+    },
+    UPDATE_LOGIN_STATUS: (state, isSuccess)=> state.isLoginSuccess_patient = isSuccess ,
+    UPDATE_LOGIN_PATIENT: (state, loginPatient)=> state.loginPatientObj = loginPatient
+
 };
 //
 export default { state, getters, actions, mutations }

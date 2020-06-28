@@ -6,7 +6,7 @@
             <h2 class="subtitle"> Demo Health Clinic. </h2>
         </div>
         
-        <LoginStatusComp v-bind:loginStatusObj="loggedInClinicData" v-bind:goNext="goNextFromClinicUI" />
+        
 
         <div class="columns">
             <div class="column" />
@@ -54,18 +54,17 @@
 <script>
 import { mapActions } from 'vuex';
 
-import LoginStatusComp from './LoginStatus.comp';
 
 export default {
     name: 'LoginPatientComp',
-    props: ['loggedInClinicData', 'goNextFromClinicUI'],
-    components: { LoginStatusComp },
+    props: ['loggedInPatientData', 'goNextFromPatientUI'],
+    components: {  },
     data: function(){
         return({
             loginInfoObj:{
-                cid:1,
-                pUserId: '2',
-                pUserPw: 'UserPw'
+                cid : 1,
+                pUserId : '2',
+                pUserPw : 'UserPw'
             }
         })
     },

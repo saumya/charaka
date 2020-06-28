@@ -19,7 +19,11 @@
             <div class="hero-body">
                 <div class="container">
 
-                    <LoginPatientComp />
+                    {{ getWhetherLoginSuccess }}
+                    {{ getLoginPatientObj }}
+
+
+                    <LoginPatientComp :loggedInClinicData="getLoginPatientObj" :goNextFromPatientUI="onLoginSuccess" />
                     
 
                 </div>
@@ -43,7 +47,12 @@ export default {
     name : 'PatientUI',
     components: { BusyIndicator, LoginPatientComp },
     computed: {
-        ...mapGetters([ 'get_whetherBusy' ]),
+        ...mapGetters([ 'get_whetherBusy', 'getWhetherLoginSuccess', 'getLoginPatientObj' ]),
+    },
+    methods:{
+        onLoginSuccess: function(){
+            window.console.log( 'onLoginSuccess' );
+        }
     }
 }
 </script>
