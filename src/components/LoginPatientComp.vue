@@ -4,6 +4,7 @@
         <div class="mb-4 has-text-centered">
             <h1 class="title"> Login </h1>
             <h2 class="subtitle"> Demo Health Clinic. </h2>
+            <h3> {{ isLoggedIn ? "Login Success" : "Login Fail" }} </h3>
         </div>
         
         
@@ -57,7 +58,7 @@ import { mapActions } from 'vuex';
 
 export default {
     name: 'LoginPatientComp',
-    props: ['loggedInPatientData', 'goNextFromPatientUI'],
+    props: [ 'isLoggedIn' ],
     components: {  },
     data: function(){
         return({

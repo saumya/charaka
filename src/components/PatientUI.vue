@@ -18,14 +18,31 @@
             
             <div class="hero-body">
                 <div class="container">
-
-                    {{ getWhetherLoginSuccess }}
-                    {{ getLoginPatientObj }}
-
-
-                    <LoginPatientComp :loggedInClinicData="getLoginPatientObj" :goNextFromPatientUI="onLoginSuccess" />
                     
+                    <LoginPatientComp :isLoggedIn="getWhetherLoginSuccess" v-if="!getWhetherLoginSuccess"/>
+                    <section class="section" v-if="getWhetherLoginSuccess">
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-large is-fullwidth is-primary is-light"> Schedule Appointment </button>
+                            </div>
+                        </div>
 
+                        {{ getLoginPatientObj }}
+
+                        <div class="field has-addons">
+                            <p class="control">
+                                <button class="button is-info"> Schedules </button>
+                            </p>
+                            <p class="control">
+                                <button class="button is-link"> Prescriptions </button>
+                            </p>
+                            <p class="control">
+                                <button class="button is-info"> Bills </button>
+                            </p>
+                        </div>
+                        
+
+                    </section>
                 </div>
             </div>
             
@@ -51,7 +68,7 @@ export default {
     },
     methods:{
         onLoginSuccess: function(){
-            window.console.log( 'onLoginSuccess' );
+            window.console.log( 'onLoginSuccess', this.getWhetherLoginSuccess );
         }
     }
 }
