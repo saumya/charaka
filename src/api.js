@@ -16,7 +16,8 @@ const apiconfig = {
         
         assign_doctor_to_clinic : '/assignDoctorToClinic/',
         activate_clinic : '/activateClinic',
-        login_clinic : '/loginClinic'
+        login_clinic : '/loginClinic',
+        login_patient : '/loginPatient'
     },
     put:{
         update_group : '/updateGroup/',

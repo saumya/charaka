@@ -175,6 +175,30 @@ const actions = {
             window.console.log(error_1);
         });
     },
+    onPatientLogin: ({state,commit}, payload) => {
+        window.console.log('---ACTION---','onPatientLogin');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        window.console.log('2. payload', JSON.stringify(payload) );
+        commit('UPDATE_INFO_MESSAGE', 'Login : Process in progress');
+        
+        const url_1 = apiconfig.global.uri + apiconfig.global.version 
+                        + apiconfig.post.login_patient;
+        const fetch_data = {
+            method: 'POST', mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify(payload)
+        };
+        fetch( url_1, fetch_data ).then(function(resultData){
+            resultData.json().then(function(rData){
+                window.console.log('Result Data', rData);
+            }).catch(function(error_2){
+                window.console.log('ERROR : 2');
+                window.console.log(error_2);
+            });
+        }).catch(function(error_1){
+            window.console.log('ERROR : 1');
+            window.console.log(error_1);
+        });
+    },
 };
 const mutations = {
     REGISTER_NEW_PATIENT: (state, newPatientResult) => {

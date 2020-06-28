@@ -19,6 +19,7 @@
         <!-- <a class="button" href="#/clinic_admin"> Clinic Only Application </a> -->
         <router-link class="button is-primary" to="/clinic_admin">Clinic Only Functionality</router-link>
         <router-link class="button is-primary" to="/clinic_ui"> Clinic UI </router-link>
+        <router-link class="button is-primary" to="/patient_ui"> Patient UI </router-link>
         
       </div>
 
