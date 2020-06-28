@@ -20,26 +20,26 @@
             <strong>Patient Administration</strong>
         </div>
 
-        <!-- Register New Doctor -->
-        <section class="section" id="clinic_register_ui" v-bind:style="{display:section_visibility.ui_create}">
+        <!-- Register New Patient -->
+        <section class="section" v-bind:style="{display:section_visibility.ui_create}">
             <PatientForm title="CREATE"></PatientForm>
         </section>
-        <!-- Register New Doctor / -->
-        <!-- Update Doctor -->
-        <section class="section" id="clinic_update_ui" v-bind:style="{display:section_visibility.ui_update}">
+        <!-- Register New Patient / -->
+        <!-- Update Patient -->
+        <section class="section" v-bind:style="{display:section_visibility.ui_update}">
             <PatientForm title="UPDATE"></PatientForm>
         </section>
-        <!-- Update Doctor / -->
-        <!-- DELETE Doctor -->
-        <section class="section" id="clinic_delete_ui" v-bind:style="{display:section_visibility.ui_delete}">
+        <!-- Update Patient / -->
+        <!-- DELETE Patient -->
+        <section class="section" v-bind:style="{display:section_visibility.ui_delete}">
             <PatientSearchForm title="DELETE"></PatientSearchForm>
         </section>
-        <!-- DELETE Doctor / -->
-        <!-- READ Doctor  -->
+        <!-- DELETE Patient / -->
+        <!-- READ Patient  -->
         <section class="section" id="clinic_read_ui" v-bind:style="{display:section_visibility.ui_read}">
             <PatientSearchForm title="READ"></PatientSearchForm>
         </section>
-        <!-- READ Doctor / -->
+        <!-- READ Patient / -->
 
         <section class="section">
             <article class="message">

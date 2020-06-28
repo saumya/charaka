@@ -4,6 +4,7 @@ const state = {
     reference_name: 'module_patients',
     newPatient:{
         name: 'n',
+        password: 'pw',
         email: 'a',
         phone: 'ap',
         address: 'ad',
@@ -25,17 +26,17 @@ const actions = {
         window.console.log('2. payload =', JSON.stringify(payload));
         commit('UPDATE_INFO_MESSAGE', 'Patient : Registration Progress');
 
-        const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.post.create_patient;
+        const url_1 = apiconfig.global.uri + apiconfig.global.version 
+                        + apiconfig.post.create_patient;
         window.console.log('3. url =',url_1);
 
         const fetch_data = {
             method: 'POST',
             mode: 'cors',
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            }),
+            headers: new Headers({ 'Content-Type': 'application/json' }),
             body: JSON.stringify({
                 'personName': payload.name,
+                'personPassword': payload.password,
                 'personPhone': payload.phone,
                 'personEmail': payload.email,
                 'personAddress': payload.address
@@ -61,17 +62,17 @@ const actions = {
         window.console.log('1. state.reference_name =', state.reference_name);
         window.console.log('2. payload =', JSON.stringify(payload) );
         commit('UPDATE_INFO_MESSAGE', 'Patient : Updation Progress');
-        const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.put.update_patient;
+        const url_1 = apiconfig.global.uri + apiconfig.global.version 
+                                            + apiconfig.put.update_patient;
         window.console.log('url',url_1);
         const fetch_data = {
             method: 'PUT',
             mode: 'cors',
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            }),
+            headers: new Headers({ 'Content-Type': 'application/json' }),
             body: JSON.stringify({
                 'personId': payload.id,
                 'personName': payload.name,
+                'personPassword': payload.password,
                 'personEmail': payload.email,
                 'personPhone': payload.phone,
                 'personAddress': payload.address

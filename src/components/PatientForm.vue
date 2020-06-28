@@ -5,14 +5,20 @@
         <div class="field" v-if="(title==='UPDATE')">
             <div class="control">
                 <label>Patient Id</label>
-                <input class="input is-info" type="text" placeholder="Doctor Id" v-model="patient.id"> 
+                <input class="input is-info" type="text" placeholder="Patient Id" v-model="patient.id"> 
             </div>
         </div>
 
         <div class="field">
             <div class="control">
                 <label>Patient Name</label>
-                <input class="input is-info" type="text" placeholder="Doctor Name" v-model="patient.name"> 
+                <input class="input is-info" type="text" placeholder="Patient Name" v-model="patient.name"> 
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <label>Patient Password</label>
+                <input class="input is-info" type="text" placeholder="Patient Password" v-model="patient.password"> 
             </div>
         </div>
         <div class="field">
@@ -24,7 +30,7 @@
         <div class="field">
             <div class="control">
                 <label>Patient Email</label>
-                <input class="input is-info" type="text" placeholder="doctor@email.com" v-model="patient.email"> 
+                <input class="input is-info" type="text" placeholder="patient@email.com" v-model="patient.email"> 
             </div>
         </div>
         <div class="field">
@@ -52,6 +58,7 @@ export default {
             patient:{
               id: 3,
               name: "Xyz Last",
+              password: "Password",
               phone: "1111111111",
               email: "email@email.com",
               address: "my address is this"
@@ -63,13 +70,13 @@ export default {
             window.console.log('Patient : CREATE');
             window.console.log('patient : ', JSON.stringify(this.patient));
 
-            this.$store.dispatch( 'createPatient', this.patient);
+            this.$store.dispatch( 'createPatient', this.patient );
         },
         onUpdatePatient: function(){
             window.console.log('Patient : UPDATE');
             window.console.log('patient : ', JSON.stringify(this.patient));
 
-            this.$store.dispatch('updatePatient', this.patient);
+            this.$store.dispatch( 'updatePatient', this.patient );
         }
     }
 }
