@@ -2,7 +2,10 @@
     <div>
         
         <div class="section">
-            <button class="button" @click="onShowUpdateProfileUI"> Update Profile </button>
+            <span class="title has-text-black is-family-secondary is-size-3"> {{ newProfile.name }} </span>
+            <div class="field">
+                <button class="button" @click="onShowUpdateProfileUI"> Update Your Profile </button>
+            </div>
 
             <div class="box" v-if="shouldShowUpdateProfileUI">
                 <span class="title has-text-black is-family-secondary is-size-3"> Profile </span>
@@ -38,11 +41,14 @@
                 </div>
             </div>
 
-            
         </div>
+        
         <div class="section">
-            <div class="">
-                TODO: Render the Schedules
+            
+            <div>
+                <TableDoctorSchedules :doctorName='newProfile.name' 
+                                        :tableData='getSchedulesForDoctorId' />
+
             </div>
         </div>
         
@@ -50,10 +56,13 @@
 </template>
 <script>
 
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
+
+import TableDoctorSchedules from './TableDoctorSchedules'
 
 export default {
     name: "DoctorUIActiveHome",
+    components: { TableDoctorSchedules, },
     props: [ 'loginDoctorObj' ],
     data: function(){
         return(
@@ -67,15 +76,34 @@ export default {
                     email: 'e',
                     address: 'aa',
                     specialization: 'ss'
-                }
+                },
             }
         )
+    },
+    computed: {
+        ...mapGetters([ 'getSchedulesForDoctorId' ]),
+        modifiedSchedulesForRender: function(){
+            // Modifying the Array to add this DoctorName 
+            let newArray = this.getSchedulesForDoctorId.map( item =>{
+                
+                //const foundDoctor = this.searchClinicWithId.find(element => (element.id===item.doctorId) );
+                //const clinicDetails = item.groupId
+
+                const clinicName = 'TODO';
+                return { ...item, clinicName }
+            } );
+            return newArray
+        }
     },
     created: function(){
         // Taking the props and making them stateObjects here to modify
         //const newObj = Object.assign( this.newProfile, this.loginDoctorObj );
         
         Object.assign( this.newProfile, this.loginDoctorObj )
+        
+        // Get the Schedules
+        this.$store.dispatch('getAllSchedulesByDoctorId', this.loginDoctorObj.id )
+
     },
     methods: {
         ...mapActions([ 'updateDoctor' ]),

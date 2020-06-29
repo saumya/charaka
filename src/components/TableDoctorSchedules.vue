@@ -1,8 +1,10 @@
 <template>
     <div>
+        <!--
         <GeneralMessage :message="get_general_message"></GeneralMessage>
+        -->
 
-        <label>All Schedules | {{clinicName}} | {{tableData.length}}</label>
+        <label>All Schedules for Doctor | {{doctorName}} | {{tableData.length}}</label>
         <div class="table-container">
         <table class="table is-bordered is-hoverable is-fullwidth">
             <thead>
@@ -11,8 +13,11 @@
                     <th>id</th>
                     <th>when</th>
                     <th>on Date</th>
-                    <!-- <th>Person Id</th> -->
-                    <th>Doctor</th>
+                    <!--
+                    <th>Person Id</th>
+                    <th>Doctor Id</th>
+                    <th>Clinic id</th>
+                    -->
                     <th> Prescription </th>
                     <th> Bill </th>
                 </tr>
@@ -26,10 +31,12 @@
                         <span class="tag is-light is-warning is-medium" v-if="!item.is_morning"> Evening </span> 
                     </td>
                     <td>{{ item.on_date }}</td>
-                    <!-- <td>{{ item.personId }}</td> -->
-                    <!-- <td>{{ item.doctorId }}</td> -->
-                    <td>{{ item.doctorName }}</td>
-                    <td> <button class="button is-dark" v-on:click="onDetailsClick(item)"> Prescribe </button> </td>
+                    <!--
+                    <td>{{ item.personId }}</td>
+                    <td>{{ item.doctorId }}</td>
+                    <td>{{ item.groupId }}</td>
+                    -->
+                    <td> <button class="button is-dark" v-on:click="onPrescriptionClick(item)"> Prescribe </button> </td>
                     <td> <button class="button is-dark" @click="onBillThisClick(item)"> Bill This </button> </td>
                 </tr>
             </tbody>
@@ -39,8 +46,11 @@
                     <th>id</th>
                     <th>when</th>
                     <th>on Date</th>
-                    <!-- <th>Person Id</th> -->
-                    <th>Doctor</th>
+                    <!--
+                    <th>Person Id</th>
+                    <th>Doctor Id</th>
+                    <th>Clinic Id</th>
+                    -->
                     <th> Prescription </th>
                     <th> Bill </th>
                 </tr>
@@ -50,7 +60,7 @@
 
         <PrescriptionModal v-if="shouldShowModalDetails" 
                             v-bind:appointmentId="this.detailsOfObj.id"
-                            v-bind:clinicId="this.clinicId"
+                            v-bind:clinicId="this.detailsOfObj.groupId"
                             v-bind:personId="this.detailsOfObj.personId"
                             v-bind:doctorId="this.detailsOfObj.doctorId" 
                             v-bind:doctorName="this.detailsOfObj.doctorName"
@@ -59,7 +69,7 @@
 
         <BillModal v-if="shouldShowModalBill" 
                     v-bind:appointmentId="this.billsObj.id" 
-                    v-bind:clinicId="this.clinicId" 
+                    v-bind:clinicId="this.billsObj.groupId" 
                     v-bind:personId="this.billsObj.personId" 
                     v-bind:doctorId="this.billsObj.doctorId"
                     v-bind:doctorName="this.billsObj.doctorName"  
@@ -72,18 +82,18 @@
 import { mapActions, mapGetters } from 'vuex'
 import PrescriptionModal from './PrescriptionModal.comp'
 import BillModal from './BillModal.comp'
-import GeneralMessage from './GeneralMessage'
+//import GeneralMessage from './GeneralMessage'
 
 export default {
-    name: 'TableClinicSchedule',
-    props: ['clinicName', 'clinicId','tableData'],
+    name: 'TableDoctorSchedules',
+    props: ['doctorName', 'clinicId','tableData'],
     data: ()=>({
         shouldShowModalDetails: false,
         shouldShowModalBill: false,
         detailsOfObj: '',
         billsObj: '',
     }),
-    components: { PrescriptionModal, BillModal, GeneralMessage },
+    components: { PrescriptionModal, BillModal },
     computed: {
         ...mapGetters(['get_general_message']),
     },
@@ -97,8 +107,8 @@ export default {
         onHideDetails: function(){
             this.shouldShowModalDetails = !this.shouldShowModalDetails
         },
-        onDetailsClick: function(item){
-            window.console.log('onDetailsClick', item.id);
+        onPrescriptionClick: function(item){
+            window.console.log('onPrescriptionClick', item.id);
             window.console.log( JSON.stringify(item) )
             window.console.log('TODO: fetch and show details')
             this.detailsOfObj = item;

@@ -11,7 +11,8 @@ const state = {
         groupId:'5'
     },
     allSchedules: [],
-    filteredSchedules: []
+    filteredSchedules: [],
+    filteredSchedulesForDoctorId: [],
 };
 const getters = {
     getAllSchedulesData: state=>{
@@ -22,7 +23,8 @@ const getters = {
     },
     getDataAllSchedulesByClinicId: state => {
         return state.filteredSchedules
-    }
+    },
+    getSchedulesForDoctorId: state=> state.filteredSchedulesForDoctorId
 };
 const actions = {
     createSchedule: ({state,commit},payload) => {
@@ -247,6 +249,35 @@ const actions = {
             window.console.log(error_1);
         });
     },
+
+    getAllSchedulesByDoctorId: function( {state, commit},payload ){
+        window.console.log('action : getAllSchedulesByDoctorId')
+        window.console.log('1. state.reference_name =', state.reference_name)
+        window.console.log('2. payload =', payload)
+        commit('UPDATE_INFO_MESSAGE', 'Getting Schedules for the doctor with id='+payload)
+
+        const url_1 = apiconfig.global.uri + apiconfig.global.version 
+                        + apiconfig.get.all_schedules_by_doctor_id + payload
+        
+        //window.console.log('url=',url_1)
+
+        fetch( url_1 ).then(function(resultData){
+            resultData.json().then(function(rData){
+                window.console.log('SUCCESS : getAllSchedulesByDoctorId : ');
+                //window.console.log(rData);
+                //Mutation
+                commit('UPDATE_INFO_MESSAGE', 'Search SUCCESS.')
+                commit('UPDATE_FILTERED_SCHEDULES_FOR_DOCTOR_ID', rData)
+            }).catch(function(error_2){
+                window.console.log('ERROR : 2 : getAllSchedulesByDoctorId : ');
+                window.console.log(error_2);
+            });
+        }).catch(function(error_1){
+            window.console.log('ERROR : 1');
+            window.console.log(error_1);
+        });
+
+    },
 };
 const mutations = {
     REGISTER_NEW_PATIENT: (state, newPatientResult) => {
@@ -263,7 +294,8 @@ const mutations = {
     },
     UPDATE_FILTERED_SCHEDULES: (state, schedules)=>{
         state.filteredSchedules = schedules;
-    }
+    },
+    UPDATE_FILTERED_SCHEDULES_FOR_DOCTOR_ID: (state, schedules)=> (state.filteredSchedulesForDoctorId=schedules)
 };
 //
 export default { state, getters, actions, mutations }
