@@ -19,13 +19,10 @@
                 <label>Name</label>
                 <input class="input is-info" type="text" placeholder="Prescription" value="Prescription" v-model="prescription.name">
             </div>
+
             <div class="field">
-                <label>Details</label>
-                <input class="input is-info" type="text" placeholder="Details" value="Details" v-model="prescription.details">
-            </div>
-            <div class="field">
-                <label>On Date</label>
-                <input class="input is-info" type="date" value="" v-model="prescription.onDate">
+                <label>Clinic Id</label>
+                <input class="input is-info" type="text" placeholder="Clinic Id" value="Clinic Id" v-model="prescription.clinicId">
             </div>
             <div class="field">
                 <label>Doctor Id</label>
@@ -35,9 +32,38 @@
                 <label>Person Id</label>
                 <input class="input is-info" type="text" placeholder="Person Id" value="Person Id" v-model="prescription.personId">
             </div>
+
+            
             <div class="field">
-                <label>Clinic Id</label>
-                <input class="input is-info" type="text" placeholder="Clinic Id" value="Clinic Id" v-model="prescription.clinicId">
+                <label>On Date</label>
+                <input class="input is-info" type="date" value="" v-model="prescription.onDate">
+            </div>
+            
+
+            <div class="field">
+                <label> Observation </label>
+                <input class="input is-info" type="text" placeholder="Observation" v-model="prescription.observations">
+            </div>
+            <div class="field">
+                <label> Tests </label>
+                <input class="input is-info" type="text" placeholder="Tests" v-model="prescription.tests">
+            </div>
+            <div class="field">
+                <label> Advice </label>
+                <input class="input is-info" type="text" placeholder="Advice" v-model="prescription.advice">
+            </div>
+            <div class="field">
+                <label> Medicines </label>
+                <input class="input is-info" type="text" placeholder="Medicines" v-model="prescription.medicines">
+            </div>
+            <div class="field">
+                <label> Followup Date </label>
+                <input class="input is-info" type="date" placeholder="2020-12-24" v-model="prescription.followupDate">
+            </div>
+
+            <div class="field">
+                <label>Details</label>
+                <input class="input is-info" type="text" placeholder="Details" value="Details" v-model="prescription.details">
             </div>
 
             <div class="field">
@@ -59,10 +85,17 @@ export default {
             prescription:{
                 name : 'prescriptionX',
                 onDate : '2020-12-24',
-                details : 'detailsX',
+                
                 doctorId : '4',
                 personId : '5',
-                clinicId : '3'
+                clinicId : '3',
+
+                observations: 'ObsR',
+                tests: 'TesR',
+                advice: 'AdvR',
+                medicines: 'MedR',
+                details : 'detailsX',
+                followupDate: '2020-12-31'
             }
         })
     },
