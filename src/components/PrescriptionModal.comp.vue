@@ -11,12 +11,35 @@
                 <div style="color:black">
                     <div class="field">
                         <label>On Date</label>
-                        <input class="input is-info" type="date" value="" v-model="prescription.onDate">
+                        <input class="input is-info" type="date" v-model="prescription.onDate">
+                    </div>
+
+                    <div class="field">
+                        <label> Observations </label>
+                        <input class="input is-info" type="text" placeholder="Observations" v-model="prescription.observations">
                     </div>
                     <div class="field">
-                        <label>Details</label>
-                        <input class="input is-info" type="text" placeholder="Details" value="Details" v-model="prescription.details">
+                        <label> Advice </label>
+                        <input class="input is-info" type="text" placeholder="Advice" v-model="prescription.advice">
                     </div>
+                    <div class="field">
+                        <label> Tests </label>
+                        <input class="input is-info" type="text" placeholder="Tests" v-model="prescription.tests">
+                    </div>
+                    <div class="field">
+                        <label> Medicines </label>
+                        <input class="input is-info" type="text" placeholder="Medicines" v-model="prescription.medicines">
+                    </div>
+                    <div class="field">
+                        <label> FollowUp Date </label>
+                        <input class="input is-info" type="date" v-model="prescription.followupDate">
+                    </div>
+
+                    <div class="field">
+                        <label> Other details / Notes </label>
+                        <input class="input is-info" type="text" placeholder="Details" v-model="prescription.details">
+                    </div>
+
                     <!--
                     <div style="color:black">
                         <label>Appointment id:{{ this.appointmentId }}</label>,
@@ -47,6 +70,13 @@ export default {
                 name : 'Prescription',
                 onDate : '2020-12-24',
                 details : 'detailsX',
+                
+                observations : 'ObsX',
+                advice : 'AdvR',
+                tests : 'TesR',
+                medicines : 'MedR',
+                followupDate : '2020-12-24',
+
                 doctorId : this.doctorId,
                 personId : this.personId,
                 clinicId : this.clinicId
