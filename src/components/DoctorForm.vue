@@ -18,6 +18,12 @@
     </div>
     <div class="field">
         <div class="control">
+            <label> Password </label>
+            <input class="input is-info" type="text" placeholder="Password" v-model="doctor.password"> 
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
             <label>Doctor Phone Number</label>
             <input class="input is-info" type="number" placeholder="9999999999" v-model="doctor.phone"> 
         </div>
@@ -62,6 +68,7 @@ export default {
           doctor:{
               id: 3,
               name: "Xyz Last",
+              password: "pass",
               phone: "1111111111",
               email: "email@email.com",
               specialization: 'Nothing',

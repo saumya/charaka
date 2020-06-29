@@ -47,6 +47,7 @@ const actions = {
             }),
             body: JSON.stringify({
                 'doctorName': payload.name,
+                'doctorPassword': payload.password,
                 'doctorPhone': payload.phone,
                 'doctorEmail': payload.email,
                 'doctorSpecialization': payload.specialization,
@@ -84,6 +85,7 @@ const actions = {
             body: JSON.stringify({
                 'doctorId': payload.id,
                 'doctorName': payload.name,
+                'doctorPassword': payload.password,
                 'doctorEmail': payload.email,
                 'doctorPhone': payload.phone,
                 'doctorSpecialization': payload.specialization,
