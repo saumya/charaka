@@ -24,6 +24,7 @@ import HomePrescription from '../components/HomePrescription'
 import HomeBill from '../components/HomeBill'
 
 import ClinicUI from '../components/ClinicUI'
+import DoctorUI from '../components/DoctorUI'
 import PatientUI from '../components/PatientUI'
 
 import AppBasics from '../components/AppBasics'
@@ -62,6 +63,7 @@ export default new Router({
         { path: '/clinic_approvals', component: HomeClinicAdmin },
 
         { path: '/clinic_ui', component: ClinicUI },
+        { path: '/doctor_ui', component: DoctorUI },
         { path: '/patient_ui', component:PatientUI },
 
 

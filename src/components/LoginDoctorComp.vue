@@ -2,16 +2,17 @@
     <div>
 
         <div class="mb-4 has-text-centered">
-            <h1 class="title"> Login | Clinic </h1>
-            <h2 class="subtitle"> Manage your clinic </h2>
+            <h1 class="title"> Login | Doctor</h1>
+            <h2 class="subtitle"> Demo Health Clinic. </h2>
+            <h3> {{ isLoggedIn ? "Login Success" : "Login Fail" }} </h3>
         </div>
         
-        <LoginStatusComp v-bind:loginStatusObj="loggedInClinicData" v-bind:goNext="goNextFromClinicUI" />
+        
 
         <div class="columns">
             <div class="column" />
             <div class="column">
-
+                <!--
                 <div class="field">
                     <div class="control">
                         <input class="input is-large" type="text" placeholder="Clinic Id" v-model="loginInfoObj.cid">
@@ -19,12 +20,18 @@
                 </div>
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="text" placeholder="User Name" v-model="loginInfoObj.cAdminUserName">
+                        <input class="input is-large" type="text" placeholder="User Name" v-model="loginInfoObj.pUserName">
+                    </div>
+                </div>
+                -->
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="text" placeholder="Doctor Id" v-model="loginInfoObj.pUserId">
                     </div>
                 </div>
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="password" placeholder="Password" v-model="loginInfoObj.cAdminUserPw">
+                        <input class="input is-large" type="password" placeholder="Password" v-model="loginInfoObj.pUserPw">
                     </div>
                 </div>
                 <div class="field">
@@ -38,7 +45,7 @@
         </div>
 
         <div class="container has-text-centered">
-            <p>Please use your Clinic Administration credentials. It is provided to you while activating the clinic.</p>
+            <p> Please use your credentials. </p>
         </div>
 
         
@@ -48,30 +55,26 @@
 <script>
 import { mapActions } from 'vuex';
 
-import LoginStatusComp from './LoginStatus.comp';
 
 export default {
-    name: 'LoginComp',
-    props: ['loggedInClinicData', 'goNextFromClinicUI'],
-    components: { LoginStatusComp },
+    name: 'LoginPatientComp',
+    props: [ 'isLoggedIn' ],
+    components: {  },
     data: function(){
         return({
             loginInfoObj:{
-                cid:100,
-                cAdminUserName: 'AdminName',
-                cAdminUserPw: 'AdminPw'
+                pUserId : '2',
+                pUserPw : 'UserPw'
             }
         })
     },
-    computed:{
-        
-    },
     methods:{
-        ...mapActions([ 'updateBusyStatus', 'onClinicLogin' ]),
+        ...mapActions([ 'updateBusyStatus', 'onDoctorLogin' ]),
         onLoginButtonClick: function(){
             window.console.log('onLoginButtonClick', JSON.stringify(this.loginInfoObj) );
-            this.$store.dispatch('onClinicLogin', this.loginInfoObj );
+            
             this.$store.dispatch('updateBusyStatus', true);
+            this.$store.dispatch('onDoctorLogin', this.loginInfoObj );
         }
     }
 }

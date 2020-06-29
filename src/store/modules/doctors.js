@@ -14,20 +14,15 @@ const state = {
     },
     allDoctors: [],
     foundDoctorIdsForTheClinic: false,
-    allDoctorsInTheClinic: []
+    allDoctorsInTheClinic: [],
+    loginDoctorObj: {}
 };
 
 const getters = {
-    getAllDoctorsData: state=>{
-        return state.allDoctors
-    },
-    getWhetherFoundDoctorIdsForTheClinic: state=>{
-        return state.foundDoctorIdsForTheClinic
-    },
-    getDoctorsForTheClinicId: state=>{
-        return state.allDoctorsInTheClinic
-    }
-
+    getAllDoctorsData: state=> state.allDoctors ,
+    getWhetherFoundDoctorIdsForTheClinic: state=> state.foundDoctorIdsForTheClinic,
+    getDoctorsForTheClinicId: state=> state.allDoctorsInTheClinic,
+    getLoggedInDoctorObj: state=> state.loginDoctorObj
 };
 const actions = {
     createDoctor: ({state,commit},payload) => {
@@ -226,6 +221,47 @@ const actions = {
         });
     },
 
+    onDoctorLogin: ({state,commit}, payload) => {
+        window.console.log('---ACTION---','onDoctorLogin');
+        window.console.log('1. state.reference_name =', state.reference_name);
+        window.console.log('2. payload', JSON.stringify(payload) );
+
+        commit('UPDATE_INFO_MESSAGE', 'Login : Process in progress');
+        
+        
+        const url_1 = apiconfig.global.uri + apiconfig.global.version 
+                        + apiconfig.post.login_doctor;
+        const fetch_data = {
+            method: 'POST', mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify(payload)
+        };
+        fetch( url_1, fetch_data ).then(function(resultData){
+            resultData.json().then(function(rData){
+                window.console.log('Result Data', rData);
+
+                commit('UPDATE_BUSY_STATUS', false)
+                commit('UPDATE_LOGIN_STATUS', rData.success)
+
+                if(rData.success===true){
+                    window.console.log('LOGIN:SUCCESS');
+                    commit('UPDATE_INFO_MESSAGE', 'Login : SUCCESS');
+                    commit('UPDATE_LOGIN_DOCTOR', rData.data)
+                }else{
+                    window.console.log('LOGIN:FAIL');
+                    commit('UPDATE_INFO_MESSAGE', 'Login : FAIL');
+                }
+
+            }).catch(function(error_2){
+                window.console.log('ERROR : 2');
+                window.console.log(error_2);
+            });
+        }).catch(function(error_1){
+            window.console.log('ERROR : 1');
+            window.console.log(error_1);
+        });
+        
+    },
+
 };
 const mutations = {
     REGISTER_NEW_DOCTOR: (state, newDoctorResult) => {
@@ -238,13 +274,12 @@ const mutations = {
         state.newDoctor = doctorResult;
         //state.clinic_message = 'SUCCESS: Clinic updated.';
     },
-    UPDATE_ALL_DOCTORS: (state, doctors)=>{
-        state.allDoctors = doctors;
-    },
+    UPDATE_ALL_DOCTORS: (state, doctors)=> (state.allDoctors = doctors),
     FOUND_DOCTORS_FOR_CLINIC: (state, doctors)=>{
         state.foundDoctorIdsForTheClinic = true;
         state.allDoctorsInTheClinic = doctors;
-    }
+    },
+    UPDATE_LOGIN_DOCTOR: (state, doctor)=> (state.loginDoctorObj = doctor)
 };
 
 //window.console.log('apiconfig',apiconfig);
