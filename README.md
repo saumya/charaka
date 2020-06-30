@@ -6,14 +6,18 @@ A VueJS Application.
 
 Application to use the API from another server and show UI here.
 
-### wip
+### Done
 
- - UX improvements
- - UI for Clinic
+ - UI Administration
+ - UI Doctor
+ - UI Patient
+ - UI Clinic
+
+All of them has got there own UI.
 
 ### TODO
 
- - UI Patient / Doctor
+ - UX and UI improvements
  
 
 
