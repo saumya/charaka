@@ -12,8 +12,8 @@ Application to use the API from another server and show UI here.
  - [x] UI Doctor
  - [x] UI Patient
  - [x] UI Clinic
- - [] UX Iterations
- - [] UI Iterations
+ - [ ] UX Iterations
+ - [ ] UI Iterations
  
 
 ### Reference
