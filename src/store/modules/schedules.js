@@ -287,8 +287,10 @@ const actions = {
         window.console.log('2. payload =', payload)
         commit('UPDATE_INFO_MESSAGE', 'Getting Schedules for the Patient with id='+payload)
 
-        const url_1 = apiconfig.global.uri + apiconfig.global.version 
-                        + apiconfig.get.all_schedules_by_patient_id + payload
+        const url_1 = apiconfig.global.uri 
+                        + apiconfig.global.version 
+                        + apiconfig.get.all_schedules_by_patient_id 
+                        + payload
         
         //window.console.log('url=',url_1)
         fetch( url_1 ).then(function(resultData){

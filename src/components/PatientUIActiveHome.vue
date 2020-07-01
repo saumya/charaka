@@ -27,8 +27,8 @@
                                         v-on:PatientProfileUpdate="onUpdateProfile" />
             
             <PatientSchedulesComponent v-if="shouldShowSchedulesUI" :profileObj="loginPatientObj" />
-            <PatientPrescriptionsComponent v-if="shouldShowPrescriptionsUI" />
-            <PatientBillsComponent v-if="shouldShowBillsUI" />
+            <PatientPrescriptionsComponent v-if="shouldShowPrescriptionsUI" :profileObj="loginPatientObj" />
+            <PatientBillsComponent v-if="shouldShowBillsUI" :profileObj="loginPatientObj" />
                 
             <section class="section">
                 <div>

@@ -4,11 +4,10 @@
         <p class="control">
             <span class="title has-text-black is-family-secondary is-size-3"> Schedules </span>
             <button class="button" @click="onGetSchedules"> Get </button>
-            
-            <TableSchedules :info="profileObj.name" 
-                            :tableData='getFilteredSchedulesForPatientId' />
-            
         </p>
+        <TableSchedules :info="profileObj.name" 
+                            :tableData='getFilteredSchedulesForPatientId' />
+                            
     </div>
 </template>
 <script>
