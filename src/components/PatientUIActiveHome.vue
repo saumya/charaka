@@ -1,30 +1,46 @@
 <template>
     <div>
+
         <section class="section">
-            
-            <nav class="panel">
-                <p class="panel-heading"> My Profile </p>
-                <div class="panel-block">
-                    <label class="is-size-4 has-text-weight-bold"> {{ loginPatientObj.id }} | {{ loginPatientObj.name }} </label>
-                </div>
-                <div class="panel-block">
-                    <label class="is-size-4"> Email- {{ loginPatientObj.email }} </label>
-                </div>
-                <div class="panel-block">
-                    <label class="is-size-4"> Phone- {{ loginPatientObj.phone }} </label>
-                </div>
-                <div class="panel-block">
-                    <label class="is-size-4"> Address- {{ loginPatientObj.address }} </label>
-                </div>
-            </nav>
+            <div>
+                <span class="is-size-3 has-text-weight-bold"> {{ loginPatientObj.name }} </span>
+            </div>
 
-            <div class="section">
+            <div class="field has-addons">
+                <p class="control">
+                    <button class="button" @click="onShowUpdateProfileUI"> Profile </button>
+                </p>
+                <p class="control">
+                    <button class="button" @click="onShowSchedulesUI"> Schedules </button>
+                </p>
+                <p class="control">
+                    <button class="button" @click="onShowPrescriptionsUI"> Prescriptions </button>
+                </p>
+                <p class="control">
+                    <button class="button" @click="onShowBillsUI"> Bills </button>
+                </p>
+            </div>
 
-                <div class="field">
-                    <div class="control">
-                        <label>Schedule Time and Date</label>
-                    </div>
+            <PatientProfileComponent v-if="shouldShowUpdateProfileUI" 
+                                        :profileObj="loginPatientObj" 
+                                        v-on:CancelUpdate="onUpdateProfileCancel"
+                                        v-on:PatientProfileUpdate="onUpdateProfile" />
+            <section class="section" v-if="shouldShowSchedulesUI" >
+                Schedules
+            </section>
+            <section class="section" v-if="shouldShowPrescriptionsUI" > 
+                Prescriptions
+            </section>
+            <section class="section" v-if="shouldShowBillsUI" >
+                Bills
+            </section>
+                
+
+            <section class="section">
+                <div>
+                    <span class="is-size-3"> Schedule Time and Date </span>
                 </div>
+                
                 <div class="field has-addons">
                     <div class="control">
                         <div class="select is-info">
@@ -64,38 +80,21 @@
                         <button class="button is-large is-fullwidth is-primary is-light" @click="onScheduleAppointment"> Schedule Appointment </button>
                     </div>
                 </div>
-            </div>
-
+            </section>
             <GeneralMessage :message="get_general_message"></GeneralMessage>
-
-            
-            
-            <!--
-            <div class="field has-addons">
-                <p class="control">
-                    <button class="button is-info"> Schedules </button>
-                </p>
-                <p class="control">
-                    <button class="button is-link"> Prescriptions </button>
-                </p>
-                <p class="control">
-                    <button class="button is-info"> Bills </button>
-                </p>
-            </div>
-            -->
-            
-
         </section>
+        
     </div>
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
 import GeneralMessage from './GeneralMessage'
+import PatientProfileComponent from './PatientProfile.comp'
 
 export default {
     name: "PatientUIActiveHome",
-    components: { GeneralMessage },
+    components: { GeneralMessage, PatientProfileComponent },
     props: [ 'ui_clinic_id', 'loginPatientObj' ],
     computed: {
         ...mapGetters([ 'get_general_message', 'getDoctorsForTheClinicId' ]),
@@ -110,11 +109,17 @@ export default {
               name: "Appointment",
               sDate: "2020-07-08",
               isMorning: "0",
-          }
+            },
+            shouldShowUpdateProfileUI : false,
+            shouldShowSchedulesUI : false,
+            shouldShowPrescriptionsUI : false,
+            shouldShowBillsUI: false
+
         })
     },
     created: function(){
         window.console.log('created:', this.ui_clinic_id)
+
         const payload = this.ui_clinic_id 
         this.$store.dispatch('getAllDoctorsInClinicId', payload )
     },
@@ -149,7 +154,40 @@ export default {
         onSelectDoctor: function(event){
             window.console.log('onSelectDoctor', event.target.value);
             window.console.log('onSelectDoctor', this.selectedDoctorId);
+        },
+        onUpdateProfile: function( new_profile_obj ){
+            window.console.log('onUpdateProfile')
+            //window.console.log( JSON.stringify(new_profile_obj) ); //new_profile_obj : we got from the event
+            this.$store.dispatch('updatePatient', new_profile_obj )
+        },
+        onUpdateProfileCancel: function(){
+            this.shouldShowUpdateProfileUI = false
+        },
+        onShowUpdateProfileUI: function(){
+            this.shouldShowUpdateProfileUI = !this.shouldShowUpdateProfileUI
+            this.shouldShowSchedulesUI = false
+            this.shouldShowPrescriptionsUI = false
+            this.shouldShowBillsUI = false
+        },
+        onShowSchedulesUI: function(){
+            this.shouldShowUpdateProfileUI = false
+            this.shouldShowSchedulesUI = !this.shouldShowSchedulesUI
+            this.shouldShowPrescriptionsUI = false
+            this.shouldShowBillsUI = false
+        },
+        onShowPrescriptionsUI: function(){
+            this.shouldShowUpdateProfileUI = false
+            this.shouldShowSchedulesUI = false
+            this.shouldShowPrescriptionsUI = !this.shouldShowPrescriptionsUI
+            this.shouldShowBillsUI = false
+        },
+        onShowBillsUI: function(){
+            this.shouldShowUpdateProfileUI = false
+            this.shouldShowSchedulesUI = false
+            this.shouldShowPrescriptionsUI = false
+            this.shouldShowBillsUI = !this.shouldShowBillsUI
         }
+
     }
 }
 </script>
