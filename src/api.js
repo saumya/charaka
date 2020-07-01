@@ -45,6 +45,7 @@ const apiconfig = {
         all_schedules_byClinic_byDoctor_onDate : '/getAllSchedulesByClinicByDoctorOnDate/',
         all_schedules_byClinic_id : '/getScheduleByDoctorGroupId/',
         all_schedules_by_doctor_id : '/getSchedulesByDoctorId/',
+        all_schedules_by_patient_id : '/getSchedulesByPatientId/',
         
         all_doctors_byClinic : '/getAllDoctorsByGroup/',
     }

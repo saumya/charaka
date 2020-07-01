@@ -25,17 +25,11 @@
                                         :profileObj="loginPatientObj" 
                                         v-on:CancelUpdate="onUpdateProfileCancel"
                                         v-on:PatientProfileUpdate="onUpdateProfile" />
-            <section class="section" v-if="shouldShowSchedulesUI" >
-                Schedules
-            </section>
-            <section class="section" v-if="shouldShowPrescriptionsUI" > 
-                Prescriptions
-            </section>
-            <section class="section" v-if="shouldShowBillsUI" >
-                Bills
-            </section>
+            
+            <PatientSchedulesComponent v-if="shouldShowSchedulesUI" :profileObj="loginPatientObj" />
+            <PatientPrescriptionsComponent v-if="shouldShowPrescriptionsUI" />
+            <PatientBillsComponent v-if="shouldShowBillsUI" />
                 
-
             <section class="section">
                 <div>
                     <span class="is-size-3"> Schedule Time and Date </span>
@@ -91,10 +85,18 @@ import { mapGetters, mapActions } from 'vuex'
 
 import GeneralMessage from './GeneralMessage'
 import PatientProfileComponent from './PatientProfile.comp'
+import PatientSchedulesComponent from './PatientSchedules.comp'
+import PatientPrescriptionsComponent from './PatientPrescriptions.comp'
+import PatientBillsComponent from './PatientBills.comp'
 
 export default {
     name: "PatientUIActiveHome",
-    components: { GeneralMessage, PatientProfileComponent },
+    components: { GeneralMessage, 
+                    PatientProfileComponent, 
+                    PatientSchedulesComponent, 
+                    PatientPrescriptionsComponent, 
+                    PatientBillsComponent 
+                },
     props: [ 'ui_clinic_id', 'loginPatientObj' ],
     computed: {
         ...mapGetters([ 'get_general_message', 'getDoctorsForTheClinicId' ]),
