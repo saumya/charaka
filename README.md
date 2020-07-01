@@ -8,10 +8,10 @@ Application to use the API from another server and show UI here.
 
 ### Done
 
- - UI Administration
- - UI Doctor
- - UI Patient
- - UI Clinic
+ - [x] UI Administration
+ - [x] UI Doctor
+ - [x] UI Patient
+ - [x] UI Clinic
 
 All of them has got there own UI.
 
