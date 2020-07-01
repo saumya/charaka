@@ -6,20 +6,17 @@ A VueJS Application.
 
 Application to use the API from another server and show UI here.
 
-### Done
+### WIP and Done things
 
  - [x] UI Administration
  - [x] UI Doctor
  - [x] UI Patient
  - [x] UI Clinic
-
-All of them has got there own UI.
-
-### TODO
-
- - UX and UI improvements
+ - [] UX Iterations
+ - [] UI Iterations
  
 
+### Reference
 
 Component boiler plate
 
