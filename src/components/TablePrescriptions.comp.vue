@@ -101,17 +101,29 @@
                 <button class="button" @click="onMoreDetails"> Printable Details </button>                
             </div>
         </article>
+
+        <PrescriptionModal2 v-if="shouldShowMoreDetails" 
+                                v-bind:pData="displayPrescriptionData"
+                                v-on:print="onPrint" 
+                                v-on:hide="onHideMoreDetails" />
+
+        
         
 
     </div>
 </template>
 <script>
+import PrescriptionModal2 from './PrescriptionModal2.comp'
 export default {
     name: 'TablePrescriptionsComponent',
     props: ['info','tableData'],
+    components:{
+        PrescriptionModal2
+    },
     data: function(){
         return({
             shouldShowSmallDetails: false,
+            shouldShowMoreDetails: false,
             displayPrescriptionData: {}
         })
     },
@@ -126,6 +138,13 @@ export default {
         },
         onMoreDetails: function(){
             window.console.log( JSON.stringify( this.displayPrescriptionData ) );
+            this.shouldShowMoreDetails = !this.shouldShowMoreDetails
+        },
+        onHideMoreDetails: function(){
+            this.shouldShowMoreDetails = false
+        },
+        onPrint: function(){
+            window.console.log('print');
         }
 
     }
