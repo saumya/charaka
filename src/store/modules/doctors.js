@@ -15,14 +15,16 @@ const state = {
     allDoctors: [],
     foundDoctorIdsForTheClinic: false,
     allDoctorsInTheClinic: [],
-    loginDoctorObj: {}
+    loginDoctorObj: {},
+    searched_doctor_with_id: {}
 };
 
 const getters = {
     getAllDoctorsData: state=> state.allDoctors ,
     getWhetherFoundDoctorIdsForTheClinic: state=> state.foundDoctorIdsForTheClinic,
     getDoctorsForTheClinicId: state=> state.allDoctorsInTheClinic,
-    getLoggedInDoctorObj: state=> state.loginDoctorObj
+    getLoggedInDoctorObj: state=> state.loginDoctorObj,
+    getSearchedDoctorWithId: state=> state.searched_doctor_with_id
 };
 const actions = {
     createDoctor: ({state,commit},payload) => {
@@ -119,6 +121,7 @@ const actions = {
                 window.console.log(rData);
                 //Mutation
                 commit('UPDATE_INFO_MESSAGE', 'Doctor : Search SUCCESS.'+JSON.stringify(rData) ); 
+                commit('UPDATE_SEARCHED_DOCTOR', rData)
             }).catch(function(error_2){
                 window.console.log('ERROR : 2');
                 window.console.log(error_2);
@@ -279,7 +282,8 @@ const mutations = {
         state.foundDoctorIdsForTheClinic = true;
         state.allDoctorsInTheClinic = doctors;
     },
-    UPDATE_LOGIN_DOCTOR: (state, doctor)=> (state.loginDoctorObj = doctor)
+    UPDATE_LOGIN_DOCTOR: (state, doctor)=> (state.loginDoctorObj = doctor),
+    UPDATE_SEARCHED_DOCTOR: (state, doctor)=> (state.searched_doctor_with_id = doctor)
 };
 
 //window.console.log('apiconfig',apiconfig);

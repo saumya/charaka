@@ -20,6 +20,7 @@ const state = {
     },
     allClinics:[],
     selectedClinic: {},
+    searched_clinic_with_id: {}
 };
 const getters = {
     getNewClinic: state=>{
@@ -31,7 +32,8 @@ const getters = {
     getSeletedClinic: state=>{
         return state.selectedClinic
     },
-    getLoggedInClinicData: state => state.loggedInClinic
+    getLoggedInClinicData: state => state.loggedInClinic,
+    getSearchedClinicWithId: state=> state.searched_clinic_with_id
 };
 const actions = {
     registerNewClinic: ({state,commit},payload) => {
@@ -129,6 +131,7 @@ const actions = {
                 //Mutation
                 //commit('SEARCH_CLINIC', rData);
                 commit('UPDATE_INFO_MESSAGE', 'Search SUCCESS.'+JSON.stringify(rData) ); 
+                commit('UPDATE_SEARCHED_CLINIC',rData)
             }).catch(function(error_2){
                 window.console.log('ERROR : 2');
                 window.console.log(error_2);
@@ -316,13 +319,11 @@ const mutations = {
         state.newClinic = clinicResult;
         state.clinic_message = 'SUCCESS: Clinic updated.';
     },
-    UPDATE_ALL_CLINICS: (state, clinics)=>{
-        state.allClinics = clinics;
-    },
-    SELECT_CLINIC_INFO: (state, clinic) => {
-        state.selectedClinic = clinic;
-    },
-    LOGGED_IN_CLINIC: (state, loginData) => state.loggedInClinic = loginData 
+    UPDATE_ALL_CLINICS: (state, clinics)=>(state.allClinics = clinics),
+    UPDATE_SEARCHED_CLINIC: (state, clinic)=> (state.searched_clinic_with_id = clinic), 
+    SELECT_CLINIC_INFO: (state, clinic) => (state.selectedClinic = clinic),
+    LOGGED_IN_CLINIC: (state, loginData) => state.loggedInClinic = loginData
+    
 
 };
 //

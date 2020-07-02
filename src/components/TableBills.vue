@@ -9,7 +9,7 @@
                     <th> id </th>
                     <th> date </th>
                     <th> ammount </th>
-                    <th> details </th>
+                    <!-- <th> details </th> -->
                 </tr>
             </thead>
             <tbody>
@@ -18,9 +18,11 @@
                     <td>{{ item.id }}</td>
                     <td> {{ new Date(item.onDate).toDateString() }} </td>
                     <td>{{ item.ammount }}</td>
+                    <!--
                     <td>
                         <button class="button" @click="onGetData(item)"> Details </button>
                     </td>
+                    -->
                 </tr>
             </tbody>
             <tfoot>
@@ -29,7 +31,7 @@
                     <th> id </th>
                     <th> date </th>
                     <th> ammount </th>
-                    <th> details </th>
+                    <!-- <th> details </th> -->
                 </tr>
             </tfoot>
         </table>

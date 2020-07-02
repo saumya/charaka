@@ -14,14 +14,16 @@ const state = {
     },
     allPatients: [],
     isLoginSuccess_patient:false,
-    loginPatientObj: {}
+    loginPatientObj: {},
+    searched_patient_with_id: {},
 };
 const getters = {
     getAllPatientsData: state=>{
         return state.allPatients
     },
     getWhetherLoginSuccess: state=> state.isLoginSuccess_patient,
-    getLoginPatientObj: state=> state.loginPatientObj
+    getLoginPatientObj: state=> state.loginPatientObj,
+    getSearchedPatientWithId: state=> state.searched_patient_with_id
 };
 const actions = {
     createPatient: ({state,commit},payload) => {
@@ -114,6 +116,7 @@ const actions = {
                 window.console.log(rData);
                 //Mutation
                 commit('UPDATE_INFO_MESSAGE', 'Patient : Search SUCCESS.'+JSON.stringify(rData) ); 
+                commit('UPDATE_SEARCHED_PATIENT', rData)
             }).catch(function(error_2){
                 window.console.log('ERROR : 2');
                 window.console.log(error_2);
@@ -232,7 +235,9 @@ const mutations = {
         state.allPatients = patients;
     },
     UPDATE_LOGIN_STATUS: (state, isSuccess)=> state.isLoginSuccess_patient = isSuccess ,
-    UPDATE_LOGIN_PATIENT: (state, loginPatient)=> state.loginPatientObj = loginPatient
+    UPDATE_LOGIN_PATIENT: (state, loginPatient)=> state.loginPatientObj = loginPatient,
+
+    UPDATE_SEARCHED_PATIENT: (state, patient)=> state.searched_patient_with_id = patient
 
 };
 //

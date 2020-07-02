@@ -7,30 +7,40 @@
                 <button class="delete" aria-label="close" v-on:click="onCancelClick"></button>
             </header>
             <section class="modal-card-body">
-
+                
                 <div class="container is-fluid">
                     <div class="is-size-3 has-text-centered">
-                        <strong>Clinic Name</strong>
+                        <strong>{{ getSearchedClinicWithId.group_name}}</strong>
                         <div class="is-size-7">
+                            <!--
                             Address of the clinic
                             Clinic Id - {{pData.clinicId}}
-                            Person Id - {{pData.personId}}
-                            Doctor Id - {{pData.doctorId}}
-                        </div>
-                    </div>
-                    <div class="is-family-monospace">
-
-                        <div class="has-text-left">
-                            Date - <strong> {{  new Date( pData.onDate ).toDateString() }} </strong> <br>
-                            Patient - <strong>Patient Name</strong>
+                            -->
                         </div>
                         
-                        <div class="prescription is-size-6">
+                        <!-- {{ getSearchedPatientWithId }} -->
+                        <!-- {{ getSearchedDoctorWithId }} -->
+                        <!-- {{ getSearchedClinicWithId }} -->
+
+                    </div>
+                    <div>
+
+                        <div class="prescription_to has-text-left">
+                            Date - <strong> {{dateToDisplay}} </strong> <br>
+                            Patient - <strong> {{getSearchedPatientWithId.name}} </strong>, <br> 
+                            <span class="is-size-7"> 
+                                Ph- {{getSearchedPatientWithId.phone}}, 
+                                Email- {{getSearchedPatientWithId.email}}, <br>
+                                Address- {{getSearchedPatientWithId.address}}  
+                            </span>
+                        </div>
+                        
+                        <div class="prescription is-size-6 is-family-monospace">
                             
                             <!-- {{ pData }} -->
 
                             <div class="is-size-5 has-text-weight-bold"> Prescription </div>
-                            <div class="has-text-centered"> Id - {{pData.id}} </div>
+                            <div> Id - {{pData.id}} </div>
                             <div>
                                 <div> 
                                     <div class="has-text-weight-bold"> Observations </div>
@@ -68,14 +78,21 @@
                         </div>
                         
                         <div class="has-text-right">
-                            Doctor 
-                            <div> <strong> Doctor Name </strong> </div>
+                            <span> Doctor </span>
+                            <div> 
+                                <strong> {{ getSearchedDoctorWithId.name }} </strong>, <br>
+                                <span class="is-size-7"> 
+                                    Ph- {{getSearchedPatientWithId.phone}}, 
+                                    Email- {{getSearchedPatientWithId.email}}, <br>
+                                    Address- {{getSearchedPatientWithId.address}}  
+                                </span> 
+                            </div>
                         </div>
 
                     </div>
                 </div>
 
-                <div class="is-size-7 is-family-code has-text-centered"> Thank you for using FindHealth.Today. </div>
+                <div class="thank_you is-size-7 is-family-code has-text-centered"> Thank you for using FindHealth.Today. </div>
             </section>
             <footer class="modal-card-foot">
                 <button class="button is-success" v-on:click="onPrintClick"> Print </button>
@@ -85,10 +102,33 @@
     </div>
 </template>
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
     name: "PrescriptionModal_2_component",
     props: [ 'pData' ],
+    computed: {
+        ...mapGetters([ 'getSearchedPatientWithId', 
+                        'getSearchedDoctorWithId', 'getSearchedClinicWithId' ]),
+        dateToDisplay: function(){
+            const d = new Date(this.pData.onDate)
+            const ds = (d.getDate()) + '/' + (d.getMonth()+1) + '/' + (d.getFullYear())
+            return ds
+        }
+    },
+    created: function(){
+        window.console.log( 'onCreate' )
+        window.console.log( '---------------------------------' )
+        window.console.log( JSON.stringify(this.pData) )
+        window.console.log( '---------------------------------' )
+        // Get the Details of Patient, Doctor, Clinic
+        this.$store.dispatch('searchPatientWithId', this.pData.personId);
+        this.$store.dispatch('searchDoctorWithId', this.pData.doctorId);
+        this.$store.dispatch('searchClinicWithId', this.pData.clinicId);
+    },
     methods: {
+        ...mapActions([ 'searchPatientWithId', 
+                        'searchDoctorWithId', 'searchClinicWithId' ]),
         onPrintClick: function(){
             this.$emit('print')
         },
@@ -99,10 +139,17 @@ export default {
 }
 </script>
 <style scoped>
+    .prescription_to{
+        margin-top: 1em;
+    }
     .prescription{
+        margin-top: 1em;
         padding : 0.4em;
     }
     .prescription_description{
         margin-left: 0.8em;
+    }
+    .thank_you {
+        margin-top: 2em;
     }
 </style>

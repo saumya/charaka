@@ -60,7 +60,7 @@
             </tfoot>
         </table>
         
-        
+        <transition name="bounce">
         <article class="message" v-if="shouldShowSmallDetails">
             <div class="message-header">
                 Prescription id {{ this.displayPrescriptionData.id }} 
@@ -98,14 +98,17 @@
                         <span > {{ this.displayPrescriptionData.details }} </span>
                     </div>
                 </div>
-                <button class="button" @click="onMoreDetails"> Printable Details </button>                
+                <button class="button" @click="onMoreDetails"> Printable View </button>                
             </div>
         </article>
+        </transition>
 
+        
         <PrescriptionModal2 v-if="shouldShowMoreDetails" 
                                 v-bind:pData="displayPrescriptionData"
                                 v-on:print="onPrint" 
                                 v-on:hide="onHideMoreDetails" />
+        
 
         
         
@@ -150,3 +153,22 @@ export default {
     }
 }
 </script>
+<style scoped>
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+</style>
