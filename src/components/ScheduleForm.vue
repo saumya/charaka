@@ -84,7 +84,6 @@
                 <label class="radio"> <input type="radio" value=true v-model="schedule.isWeb"> Yes </label>
                 <label class="radio"> <input type="radio" value=false v-model="schedule.isWeb"> No </label>
             </div>
-
         </div>
         <div class="field">
             <label>Web Conference URL</label>
