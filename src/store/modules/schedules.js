@@ -16,15 +16,9 @@ const state = {
     filteredSchedulesForPatientId: [],
 };
 const getters = {
-    getAllSchedulesData: state=>{
-        return state.allSchedules;
-    },
-    getFilteredSchedulesData: state => {
-        return state.filteredSchedules
-    },
-    getDataAllSchedulesByClinicId: state => {
-        return state.filteredSchedules
-    },
+    getAllSchedulesData: state=> state.allSchedules ,
+    getFilteredSchedulesData: state => state.filteredSchedules ,
+    getDataAllSchedulesByClinicId: state => state.filteredSchedules ,
     getSchedulesForDoctorId: state=> state.filteredSchedulesForDoctorId,
     getFilteredSchedulesForPatientId: state=> state.filteredSchedulesForPatientId
 };
@@ -42,17 +36,8 @@ const actions = {
         const fetch_data = {
             method: 'POST',
             mode: 'cors',
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            }),
-            body: JSON.stringify({
-                'name': payload.name,
-                'sDate': payload.sDate,
-                'isMorning': payload.isMorning,
-                'personId': payload.personId,
-                'doctorId': payload.doctorId,
-                'groupId': payload.groupId
-            })
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify(payload)
         };
         fetch( url_1, fetch_data ).then(function(resultData){
             resultData.json().then(function(rData){
@@ -74,23 +59,15 @@ const actions = {
         window.console.log('1. state.reference_name =', state.reference_name);
         window.console.log('2. payload =', JSON.stringify(payload) );
         commit('UPDATE_INFO_MESSAGE', 'Schedule : Updation Progress');
-        const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.put.update_schedule;
+        const url_1 = apiconfig.global.uri 
+                        + apiconfig.global.version 
+                        + apiconfig.put.update_schedule;
         window.console.log('url',url_1);
         const fetch_data = {
             method: 'PUT',
             mode: 'cors',
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            }),
-            body: JSON.stringify({
-                'scheduleId': payload.id,
-                'name': payload.name,
-                'sDate': payload.sDate,
-                'isMorning': payload.isMorning,
-                'personId': payload.personId,
-                'doctorId': payload.doctorId,
-                'groupId': payload.groupId
-            })
+            headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify(payload)
         };
         fetch( url_1, fetch_data ).then(function(resultData){
             resultData.json().then(function(rData){

@@ -40,14 +40,14 @@
         <div class="field has-addons">
             <div class="control">
                 <div class="select is-info">
-                    <select v-model="schedule.isMorning">
-                        <option value="1">is Morning</option>
-                        <option value="0">is Evening</option>
+                    <select v-model="schedule.is_morning">
+                        <option value=true>is Morning</option>
+                        <option value=false>is Evening</option>
                     </select>
                 </div>
             </div>
             <div class="control is-expanded">
-                <input class="input is-info" type="date" placeholder="Schedule Date" v-model="schedule.sDate"> 
+                <input class="input is-info" type="date" placeholder="Schedule Date" v-model="schedule.on_date"> 
             </div>
         </div>
         <div class="field">
@@ -67,6 +67,28 @@
                 <label>Group Id</label>
                 <input class="input is-info" type="text" placeholder="Group Id" v-model="schedule.groupId"> 
             </div>
+        </div>
+
+        <div class="field is-size-4">
+            <label> Is Attended? </label>
+            <span> {{ schedule.isAttended }} </span>
+            <div class="control">
+                <label class="radio"> <input type="radio" value=true v-model="schedule.isAttended"> Yes </label>
+                <label class="radio"> <input type="radio" value=false v-model="schedule.isAttended"> No </label>
+            </div>
+        </div>
+        <div class="field is-size-4">
+            <label> Is a web consultation? </label>
+            <span> {{ schedule.isWeb }} </span>
+            <div class="control">
+                <label class="radio"> <input type="radio" value=true v-model="schedule.isWeb"> Yes </label>
+                <label class="radio"> <input type="radio" value=false v-model="schedule.isWeb"> No </label>
+            </div>
+
+        </div>
+        <div class="field">
+            <label>Web Conference URL</label>
+            <input class="input is-info" type="text" placeholder="Details" value="Details" v-model="schedule.webURL">
         </div>
         
 
@@ -88,13 +110,17 @@ export default {
     data: function(){
         return({
             schedule:{
-              id: 3,
+              id:'',
               name: "Appointment",
-              sDate: "2020-05-08",
-              isMorning: "0",
+              on_date: "2020-05-08",
+              is_morning: false,
               doctorId: "3",
               personId: "4",
-              groupId: "5"
+              groupId: "5",
+              
+              isAttended: false,
+              isWeb: false,
+              webURL: 'http://www.findhealth.today'
           }
         })
     },

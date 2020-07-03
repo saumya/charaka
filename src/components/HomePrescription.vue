@@ -67,19 +67,6 @@
             </div>
 
             <div class="field">
-                <label> Is Attended </label>
-                <input class="input is-info" type="text" placeholder="Details" value="Details" v-model="prescription.isAttended">
-            </div>
-            <div class="field">
-                <label> Is On Web / In Person </label>
-                <input class="input is-info" type="text" placeholder="Details" value="Details" v-model="prescription.isWeb">
-            </div>
-            <div class="field">
-                <label>Web Conference URL</label>
-                <input class="input is-info" type="text" placeholder="Details" value="Details" v-model="prescription.webURL">
-            </div>
-
-            <div class="field">
                 <button class="button is-info" @click="onPrescription"> Create Prescription </button>
             </div>
 
@@ -108,11 +95,7 @@ export default {
                 advice: 'AdvR',
                 medicines: 'MedR',
                 details : 'detailsX',
-                followupDate: '2020-12-31',
-
-                isAttended: false,
-                isWeb: false,
-                webURL: 'http://www.findhealth.today'
+                followupDate: '2020-12-31'
             }
         })
     },
@@ -127,7 +110,7 @@ export default {
         onDelete: function(){ window.console.log('onDelete') },
         onPrescription: function(){
             window.console.log('onPrescription');
-            //window.console.log( JSON.stringify( this.prescription ) );
+            window.console.log( JSON.stringify( this.prescription ) );
 
             this.$store.dispatch('registerNewPrescription', this.prescription );
         }
