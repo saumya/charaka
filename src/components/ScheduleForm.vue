@@ -71,7 +71,7 @@
 
         <div class="field is-size-4">
             <label> Is Attended? </label>
-            <span> {{ schedule.isAttended }} </span>
+            <span class="is-size-6"> {{ schedule.isAttended }} </span>
             <div class="control">
                 <label class="radio"> <input type="radio" value=true v-model="schedule.isAttended"> Yes </label>
                 <label class="radio"> <input type="radio" value=false v-model="schedule.isAttended"> No </label>
@@ -79,7 +79,7 @@
         </div>
         <div class="field is-size-4">
             <label> Is a web consultation? </label>
-            <span> {{ schedule.isWeb }} </span>
+            <span class="is-size-6"> {{ schedule.isWeb }} </span>
             <div class="control">
                 <label class="radio"> <input type="radio" value=true v-model="schedule.isWeb"> Yes </label>
                 <label class="radio"> <input type="radio" value=false v-model="schedule.isWeb"> No </label>
