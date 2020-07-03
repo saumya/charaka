@@ -67,6 +67,19 @@
             </div>
 
             <div class="field">
+                <label> Is Attended </label>
+                <input class="input is-info" type="text" placeholder="Details" value="Details" v-model="prescription.isAttended">
+            </div>
+            <div class="field">
+                <label> Is On Web / In Person </label>
+                <input class="input is-info" type="text" placeholder="Details" value="Details" v-model="prescription.isWeb">
+            </div>
+            <div class="field">
+                <label>Web Conference URL</label>
+                <input class="input is-info" type="text" placeholder="Details" value="Details" v-model="prescription.webURL">
+            </div>
+
+            <div class="field">
                 <button class="button is-info" @click="onPrescription"> Create Prescription </button>
             </div>
 
@@ -95,7 +108,11 @@ export default {
                 advice: 'AdvR',
                 medicines: 'MedR',
                 details : 'detailsX',
-                followupDate: '2020-12-31'
+                followupDate: '2020-12-31',
+
+                isAttended: false,
+                isWeb: false,
+                webURL: 'http://www.findhealth.today'
             }
         })
     },
