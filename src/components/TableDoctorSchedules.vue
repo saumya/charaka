@@ -19,11 +19,52 @@
                         <div class="is-size-4"> {{ selectedSchedule.on_date }} | {{ (selectedSchedule.is_morning? "Morning" : "Evening") }} </div>
                         
                         <div class="field">
-                            <div class="control is-size-3 has-text-weight-bold">
-                                <label>Make it online at</label>
-                                <input class="input is-info" type="text" placeholder="8.00" v-model="selectedSchedule.isWeb"> 
+                            <div class="control is-size-3">
+                                <label class="checkbox has-text-weight-bold"> 
+                                    <input type="checkbox" v-model="selectedSchedule.isAttended"> Done 
+                                </label>
+                                
+                                <div class="tags has-addons">
+                                    <span class="tag is-dark"> Patient Attended </span>
+                                    <span class="tag is-success" v-if="selectedSchedule.isAttended"> Yes </span>
+                                    <span class="tag is-danger" v-else> No </span>
+                                </div>
+                                
                             </div>
                         </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <label class="checkbox is-size-3"> 
+                                    <input type="checkbox" v-model="selectedSchedule.isWeb"> Make it on Web 
+                                </label>
+                                
+                                <div class="tags has-addons">
+                                    <span class="tag is-dark"> On Web </span>
+                                    <span class="tag is-success" v-if="selectedSchedule.isWeb"> Yes </span>
+                                    <span class="tag is-danger" v-else> No </span>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <!--
+                        <label class='is-size-3'> Make it a Web Schedule At </label>
+                        <div class="field has-addons">
+                            <div class="control">
+                                
+                                <input class="input" type="text" placeholder="8.00" v-model="selectedSchedule.isWeb">
+                            </div>
+                            <div class="control">
+                                <button class="button" @click="onResetTheWebSchedule"> Reset </button>
+                            </div>
+                        </div>
+                        -->
+
+                        
+
+
+                        
 
                     </div>
                 </section>
@@ -183,24 +224,40 @@ export default {
         onHideUpdateViewClick: function(){
             this.shouldShowModalForUpdateSchedule = false
         },
+        onResetTheWebSchedule: function(){
+            this.selectedSchedule.isWeb = 0
+            this.selectedSchedule.webURL = ''
+            //window.console.log( this.selectedSchedule )
+            //window.console.log( JSON.stringify(this.selectedSchedule) )
+        },
         onUpdateScheduleClick: function(){
             this.shouldShowModalForUpdateSchedule = false
             // https://meet.jit.si/
             // fht+'#?'+groupId+'#?'+doctorId+'#?'+personId
-            this.selectedSchedule.webURL = 'https://meet.jit.si/'
-                                                +'FindHealthToday_'
-                                                + this.selectedSchedule.groupId + '_'
-                                                + this.selectedSchedule.doctorId + '_'
-                                                + this.selectedSchedule.personId + '_'
-                                                + this.selectedSchedule.isWeb
-            window.console.log( JSON.stringify(this.selectedSchedule)  )
+            const url = 'https://meet.jit.si/'
+                                    +'FindHealthToday_'
+                                    + this.selectedSchedule.groupId + '_'
+                                    + this.selectedSchedule.doctorId + '_'
+                                    + this.selectedSchedule.personId 
+                                    //+ this.selectedSchedule.atWebTime
+            //window.console.log( JSON.stringify(this.selectedSchedule)  )
+            if( this.selectedSchedule.isWeb ){
+                this.selectedSchedule.webURL = url
+            }else{
+                this.selectedSchedule.webURL = ''
+            }
         },
         onJoinWebSchedule: function(url){
             window.console.log('onJoinWebSchedule',url)
+            /*
             const windowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=no,status=no"
             const newWindow = window.open(url, 'FH:WebConferencing', windowFeatures)
             window.console.log('newWindow:', newWindow )
-
+            */
+            // TODO: 
+            // Update for isAttended
+            // Update the Schedule
+            //
         }
         
     }
