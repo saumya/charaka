@@ -6,14 +6,12 @@ A VueJS Application.
 
 Application to use the API from another server and show UI here.
 
-### WIP and Done things
+### status
 
  - [x] UI Administration
  - [x] UI Doctor
  - [x] UI Patient
  - [x] UI Clinic
- - [ ] UX Iterations
- - [ ] UI Iterations
  
 
 ### Code Reference

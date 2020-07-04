@@ -10,6 +10,10 @@
             <input class="input is-info" type="text" placeholder="Name" v-model="newProfile.name">
         </div>
         <div class="field">
+            <label> Password </label>
+            <input class="input is-info" type="text" placeholder="Name" v-model="newProfile.password">
+        </div>
+        <div class="field">
             <label> Email </label>
             <input class="input is-info" type="text" placeholder="Name" v-model="newProfile.email">
         </div>

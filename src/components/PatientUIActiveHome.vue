@@ -38,14 +38,14 @@
                 <div class="field has-addons">
                     <div class="control">
                         <div class="select is-info">
-                            <select v-model="schedule.isMorning">
+                            <select v-model="schedule.is_morning">
                                 <option value="1">is Morning</option>
                                 <option value="0">is Evening</option>
                             </select>
                         </div>
                     </div>
                     <div class="control is-expanded">
-                        <input class="input is-info" type="date" placeholder="Schedule Date" v-model="schedule.sDate"> 
+                        <input class="input is-info" type="date" placeholder="Schedule Date" v-model="schedule.on_date"> 
                     </div>
                 </div>
                 <!--
@@ -109,8 +109,8 @@ export default {
             selectedDoctorId : 0,
             schedule:{
               name: "Appointment",
-              sDate: "2020-07-08",
-              isMorning: "0",
+              on_date: "2020-07-08",
+              is_morning: "0",
             },
             shouldShowUpdateProfileUI : false,
             shouldShowSchedulesUI : false,
