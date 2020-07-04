@@ -4,33 +4,78 @@
         <GeneralMessage :message="get_general_message"></GeneralMessage>
         -->
 
+        
+
+        <div class="modal" v-bind:class="{ 'is-active': shouldShowModalForUpdateSchedule }">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title"> Update This Schedule </p>
+                    <button class="delete" aria-label="close" v-on:click="this.onHideUpdateViewClick"></button>
+                </header>
+                <section class="modal-card-body">
+                    <div style="color:black">
+                        
+                        <div class="is-size-4"> {{ selectedSchedule.on_date }} | {{ (selectedSchedule.is_morning? "Morning" : "Evening") }} </div>
+                        
+                        <div class="field">
+                            <div class="control is-size-3 has-text-weight-bold">
+                                <label>Make it online at</label>
+                                <input class="input is-info" type="text" placeholder="8.00" v-model="selectedSchedule.isWeb"> 
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                <footer class="modal-card-foot">
+                    <button class="button is-success" v-on:click="onUpdateScheduleClick"> Update </button>
+                    <button class="button" v-on:click="onHideUpdateViewClick"> Cancel </button>
+                </footer>
+            </div>
+
+        </div>
+
+        
+
         <label>All Schedules for Doctor | {{doctorName}} | {{tableData.length}}</label>
         <div class="table-container">
         <table class="table is-bordered is-hoverable is-fullwidth">
             <thead>
                 <tr>
                     <th>sl no.</th>
+                    <th>Update</th>
                     <th>id</th>
                     <th>when</th>
                     <th>on Date</th>
-                    <!--
-                    <th>Person Id</th>
-                    <th>Doctor Id</th>
-                    <th>Clinic id</th>
-                    -->
+
+                    <th>On Web</th>
+                    <th>Web Link</th>
+
                     <th> Prescription </th>
                     <th> Bill </th>
                 </tr>
             </thead>
             <tbody>
+                
                 <tr v-for="(item,index) in tableData" :key="item.id">
                     <td>{{index+1}}</td>
+                    <td> <button class="button is-info" @click="showScheduleUpdateView(item)" > Update </button> </td>
                     <td>{{ item.id }}</td>
                     <td>
                         <span class="tag is-light is-success is-medium" v-if="item.is_morning"> Morning </span>
                         <span class="tag is-light is-warning is-medium" v-if="!item.is_morning"> Evening </span> 
                     </td>
                     <td>{{ item.on_date }}</td>
+                    <td> {{item.isWeb}} </td>
+                    <td>
+                        <div v-if="item.isWeb==null" />
+                        <div v-else>
+                            <div v-if="item.isWeb==0" />
+                            <div v-else>
+                                <button class="button is-dark" v-bind:href="item.webURL" @click="onJoinWebSchedule(item.webURL)"> Join </button>
+                            </div>
+                        </div>
+                    </td>
                     <!--
                     <td>{{ item.personId }}</td>
                     <td>{{ item.doctorId }}</td>
@@ -43,14 +88,14 @@
             <tfoot>
                 <tr>
                     <th>sl no.</th>
+                    <th>Update</th>
                     <th>id</th>
                     <th>when</th>
                     <th>on Date</th>
-                    <!--
-                    <th>Person Id</th>
-                    <th>Doctor Id</th>
-                    <th>Clinic Id</th>
-                    -->
+
+                    <th>On Web</th>
+                    <th>Web Link</th>
+
                     <th> Prescription </th>
                     <th> Bill </th>
                 </tr>
@@ -88,6 +133,8 @@ export default {
     name: 'TableDoctorSchedules',
     props: ['doctorName', 'clinicId','tableData'],
     data: ()=>({
+        shouldShowModalForUpdateSchedule: false,
+        selectedSchedule:{},
         shouldShowModalDetails: false,
         shouldShowModalBill: false,
         detailsOfObj: '',
@@ -126,6 +173,35 @@ export default {
         onHideBillThisModalClick: function(){
             this.shouldShowModalBill = !this.shouldShowModalBill
         },
+        showScheduleUpdateView: function(schedule){
+            window.console.log('showScheduleUpdateView')
+            window.console.log( JSON.stringify(schedule) )
+
+            this.selectedSchedule = schedule;
+            this.shouldShowModalForUpdateSchedule = true
+        },
+        onHideUpdateViewClick: function(){
+            this.shouldShowModalForUpdateSchedule = false
+        },
+        onUpdateScheduleClick: function(){
+            this.shouldShowModalForUpdateSchedule = false
+            // https://meet.jit.si/
+            // fht+'#?'+groupId+'#?'+doctorId+'#?'+personId
+            this.selectedSchedule.webURL = 'https://meet.jit.si/'
+                                                +'FindHealthToday_'
+                                                + this.selectedSchedule.groupId + '_'
+                                                + this.selectedSchedule.doctorId + '_'
+                                                + this.selectedSchedule.personId + '_'
+                                                + this.selectedSchedule.isWeb
+            window.console.log( JSON.stringify(this.selectedSchedule)  )
+        },
+        onJoinWebSchedule: function(url){
+            window.console.log('onJoinWebSchedule',url)
+            const windowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=no,status=no"
+            const newWindow = window.open(url, 'FH:WebConferencing', windowFeatures)
+            window.console.log('newWindow:', newWindow )
+
+        }
         
     }
 }

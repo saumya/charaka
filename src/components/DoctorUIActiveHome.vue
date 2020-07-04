@@ -1,7 +1,7 @@
 <template>
     <div>
         
-        <div class="section">
+        <section class="section">
             <span class="title has-text-black is-family-secondary is-size-3"> {{ newProfile.name }} </span>
             <div class="field">
                 <button class="button" @click="onShowUpdateProfileUI"> Update Your Profile </button>
@@ -41,16 +41,16 @@
                 </div>
             </div>
 
-        </div>
+        </section>
         
-        <div class="section">
+        <section class="section">
             
             <div>
                 <TableDoctorSchedules :doctorName='newProfile.name' 
                                         :tableData='getSchedulesForDoctorId' />
 
             </div>
-        </div>
+        </section>
         
     </div>
 </template>
