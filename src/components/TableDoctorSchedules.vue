@@ -35,8 +35,8 @@
 
                         <div class="field">
                             <div class="control">
-                                <label class="checkbox is-size-3"> 
-                                    <input type="checkbox" v-model="selectedSchedule.isWeb"> Make it on Web 
+                                <label class="checkbox"> 
+                                    <input type="checkbox" v-model="selectedSchedule.isWeb"> Make it OnLine 
                                 </label>
                                 
                                 <div class="tags has-addons">
@@ -48,18 +48,13 @@
                             </div>
                         </div>
 
-                        <!--
-                        <label class='is-size-3'> Make it a Web Schedule At </label>
-                        <div class="field has-addons">
+                        <div class="field" v-if="selectedSchedule.isWeb">
                             <div class="control">
-                                
-                                <input class="input" type="text" placeholder="8.00" v-model="selectedSchedule.isWeb">
-                            </div>
-                            <div class="control">
-                                <button class="button" @click="onResetTheWebSchedule"> Reset </button>
+                                <h3> Time of OnLine Schedule </h3>
+                                <input class="input" type="text" placeholder="8.00" v-model="selectedSchedule.web_at">
                             </div>
                         </div>
-                        -->
+                        
 
                         
 
@@ -238,8 +233,8 @@ export default {
                                     +'FindHealthToday_'
                                     + this.selectedSchedule.groupId + '_'
                                     + this.selectedSchedule.doctorId + '_'
-                                    + this.selectedSchedule.personId 
-                                    //+ this.selectedSchedule.atWebTime
+                                    + this.selectedSchedule.personId + '_'
+                                    + this.selectedSchedule.web_at
             //window.console.log( JSON.stringify(this.selectedSchedule)  )
             if( this.selectedSchedule.isWeb ){
                 this.selectedSchedule.webURL = url
