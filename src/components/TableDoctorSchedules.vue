@@ -216,7 +216,7 @@ export default {
         },
         showScheduleUpdateView: function(schedule){
             window.console.log('showScheduleUpdateView')
-            window.console.log( JSON.stringify(schedule) )
+            //window.console.log( JSON.stringify(schedule) )
 
             this.selectedSchedule = schedule;
             this.shouldShowModalForUpdateSchedule = true
@@ -246,18 +246,16 @@ export default {
             }else{
                 this.selectedSchedule.webURL = ''
             }
+            //window.console.log( JSON.stringify(this.selectedSchedule) )
+            
+            this.$store.dispatch('updateSchedule', this.selectedSchedule)
         },
         onJoinWebSchedule: function(url){
             window.console.log('onJoinWebSchedule',url)
-            /*
+            
             const windowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=no,status=no"
             const newWindow = window.open(url, 'FH:WebConferencing', windowFeatures)
             window.console.log('newWindow:', newWindow )
-            */
-            // TODO: 
-            // Update for isAttended
-            // Update the Schedule
-            //
         }
         
     }

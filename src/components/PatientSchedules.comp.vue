@@ -28,8 +28,24 @@
                         <td>{{ item.is_morning }}</td>
                         <td>{{ item.on_date }}</td>
                         <td>{{ item.doctor_name }}</td>
-                        <td>{{ item.isWeb }}</td>
-                        <td>{{ item.webURL }}</td>
+                        <td>
+                            <!-- {{ item.isWeb }} -->
+                            <div class="tags has-addons">
+                                <span class="tag is-dark"> On Web </span>
+                                <span class="tag is-success" v-if="item.isWeb"> Yes </span>
+                                <span class="tag is-danger" v-else> No </span>
+                            </div>
+                        </td>
+                        <td>
+                            <!-- {{ item.webURL }} -->
+                            <div v-if="item.isWeb==null" />
+                            <div v-else>
+                                <div v-if="item.isWeb==0" />
+                                <div v-else>
+                                    <button class="button is-dark" v-bind:href="item.webURL" @click="onJoinWebSchedule(item.webURL)"> Join </button>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
                 <tfoot>
@@ -72,10 +88,11 @@ export default {
                 }else{
                     item.is_morning = "No"
                 }
+                /*
                 if(item.isWeb===null){
                     item.isWeb = 'No'
                 }
-
+                */
                 const doctor_name = doctor.name
                 return {...item, doctor_name}
             })
@@ -88,6 +105,12 @@ export default {
         onGetSchedules: function(){
             window.console.log( 'onGetSchedules', JSON.stringify(this.profileObj) )
             this.$store.dispatch( 'getAllSchedulesByPatientId', this.profileObj.id );
+        },
+        onJoinWebSchedule(url){
+            window.console.log('onJoinWebSchedule',url)
+            const windowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=no,status=no"
+            const newWindow = window.open(url, 'FH:WebConferencing', windowFeatures)
+            window.console.log('newWindow:', newWindow )
         }
     }
 }
