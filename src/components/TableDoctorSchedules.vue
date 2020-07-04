@@ -4,8 +4,6 @@
         <GeneralMessage :message="get_general_message"></GeneralMessage>
         -->
 
-        
-
         <div class="modal" v-bind:class="{ 'is-active': shouldShowModalForUpdateSchedule }">
             <div class="modal-background"></div>
             <div class="modal-card">
@@ -51,15 +49,9 @@
                         <div class="field" v-if="selectedSchedule.isWeb">
                             <div class="control">
                                 <h3> Time of OnLine Schedule </h3>
-                                <input class="input" type="text" placeholder="8.00" v-model="selectedSchedule.web_at">
+                                <input class="input" type="text" placeholder="8.00" v-model="selectedSchedule.web_at_time">
                             </div>
                         </div>
-                        
-
-                        
-
-
-                        
 
                     </div>
                 </section>
@@ -234,7 +226,7 @@ export default {
                                     + this.selectedSchedule.groupId + '_'
                                     + this.selectedSchedule.doctorId + '_'
                                     + this.selectedSchedule.personId + '_'
-                                    + this.selectedSchedule.web_at
+                                    + this.selectedSchedule.web_at_time
             //window.console.log( JSON.stringify(this.selectedSchedule)  )
             if( this.selectedSchedule.isWeb ){
                 this.selectedSchedule.webURL = url

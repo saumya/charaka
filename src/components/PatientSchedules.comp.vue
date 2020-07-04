@@ -9,26 +9,35 @@
         <!-- Table -->
         <section>
             <label>All Schedules | {{profileObj.name}} | {{dataForTheScheduleTable.length}}</label>
+            
             <table class="table is-bordered is-hoverable is-fullwidth">
                 <thead>
                     <tr>
-                        <th>index</th>
-                        <td>id</td>
-                        <td>Is on Morning</td>
-                        <td>on Date</td>
+                        <td></td>
+                        <th>id</th>
+                        <td>Morning</td>
+                        <td>Date</td>
                         <td>Doctor Name</td>
-                        <td>On Web</td>
-                        <td>Web Link</td>
+                        <td>Web</td>
+                        <td>At Time</td>
+                        <td>Link</td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(item,index) in dataForTheScheduleTable" :key="item.id">
-                        <th>{{index+1}}</th>
-                        <td>{{ item.id }}</td>
-                        <td>{{ item.is_morning }}</td>
+                        <td>{{index+1}}</td>
+                        <th>{{ item.id }}</th>
+                        <td style="width:130px;">
+                            <!-- {{ item.is_morning }} -->
+                            <div class="tags has-addons">
+                                <span class="tag is-dark"> Morning </span>
+                                <span class="tag is-success" v-if="item.is_morning"> Yes </span>
+                                <span class="tag is-danger" v-else> No </span>
+                            </div>
+                        </td>
                         <td>{{ item.on_date }}</td>
                         <td>{{ item.doctor_name }}</td>
-                        <td>
+                        <td style="width:130px;">
                             <!-- {{ item.isWeb }} -->
                             <div class="tags has-addons">
                                 <span class="tag is-dark"> On Web </span>
@@ -37,26 +46,38 @@
                             </div>
                         </td>
                         <td>
+                            <div v-if="item.isAttended"> x </div>
+                            <div v-else>  
+                                <span v-if="item.isWeb">{{ item.web_at_time }}</span>
+                            </div>
+                        </td>
+                        <td>
                             <!-- {{ item.webURL }} -->
-                            <div v-if="item.isWeb==null" />
+                            
+                            <div v-if="item.isAttended"> Done </div>
                             <div v-else>
-                                <div v-if="item.isWeb==0" />
+                                <div v-if="item.isWeb==null" />
                                 <div v-else>
-                                    <button class="button is-dark" v-bind:href="item.webURL" @click="onJoinWebSchedule(item.webURL)"> Join </button>
+                                    <div v-if="item.isWeb==0" />
+                                    <div v-else>
+                                        <button class="button is-dark" v-bind:href="item.webURL" @click="onJoinWebSchedule(item.webURL)"> Join </button>
+                                    </div>
                                 </div>
                             </div>
+
                         </td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>index</th>
-                        <td>id</td>
-                        <td>Is on Morning</td>
-                        <td>on Date</td>
+                        <td></td>
+                        <th>id</th>
+                        <td>Morning</td>
+                        <td>Date</td>
                         <td>Doctor Name</td>
-                        <td>On Web</td>
-                        <td>Web Link</td>
+                        <td>Web</td>
+                        <td>At Time</td>
+                        <td>Link</td>
                     </tr>
                 </tfoot>
             </table>
@@ -83,11 +104,13 @@ export default {
                 
                 //const is_On_Morning = item.is_morning ? "Yes" : "No"
                 const doctor = this.getDoctorsForTheClinicId.find( doctor=> (doctor.id===item.doctorId) )
+                /*
                 if(item.is_morning){
                     item.is_morning = "Yes"
                 }else{
                     item.is_morning = "No"
                 }
+                */
                 /*
                 if(item.isWeb===null){
                     item.isWeb = 'No'
