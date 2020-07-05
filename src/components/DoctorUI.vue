@@ -47,8 +47,12 @@ export default {
     computed: {
         ...mapGetters([ 'get_whetherBusy', 'getWhetherLoginSuccess', 'getLoggedInDoctorObj' ])
     },
+    created: function(){
+        window.console.log('CREATED : DoctorUI')
+        this.$store.dispatch('new_appusage','DoctorUI');
+    },
     methods: {
-        ...mapActions([ 'updateBusyStatus' ]),
+        ...mapActions([ 'new_appusage', 'updateBusyStatus' ]),
     }
 }
 </script>

@@ -7,6 +7,7 @@ const apiconfig = {
         version : '/v1',
     },
     post:{
+        new_appusage : '/appusage/',
         create_group : '/createGroup/',
         create_doctor : '/createDoctor/',
         create_patient : '/createPerson/',

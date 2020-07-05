@@ -1,4 +1,6 @@
 //
+import apiconfig from '../../api.js';
+//
 const state = {
     count : 0,
     info_message : 'VueX in action',
@@ -25,6 +27,23 @@ const actions = {
         commit('INCREMENT_COUNT',value);
     },
     updateBusyStatus({commit}, value){ commit('UPDATE_BUSY_STATUS', value) },
+    new_appusage({state},payload){
+        const url_1 = apiconfig.global.uri + apiconfig.global.version + apiconfig.post.new_appusage;
+        window.console.log ( url_1 )
+        window.console.log( state.count ) // simply here to Avoid ERROR! NOT needed.
+        const dataToSend = { ui : payload, user_agent : window.navigator.userAgent }
+        const fetch_data = {
+            method: 'POST', mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' }),
+            body: JSON.stringify( dataToSend )
+        };
+        fetch( url_1, fetch_data ).then(function(resultData){
+            //window.console.log('SUCCESS : new_appusage')
+            resultData.json().then( result=> window.console.log(result) ).catch( err=> window.console.log(err) )
+        }).catch(function(error_2){
+            window.console.log('ERROR : new_appusage');
+            window.console.log(error_2);
+        })
+    },
 };
 const mutations = {
     UPDATE_INFO_MESSAGE (state,message){
