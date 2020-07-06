@@ -2,7 +2,9 @@
 
 A VueJS Application. 
  
- - REST calls, Routers and State engines.
+ - REST API calls
+ - Router
+ - State Engine
 
 Application to use the API from another server and show UI here.
 
