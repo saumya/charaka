@@ -10,6 +10,8 @@ Application to use the API from another server and show UI here.
 
 ### status
 
+A generic application for admin, clinic, doctor and patient.
+
  - [x] UI Administration
  - [x] UI Doctor
  - [x] UI Patient
