@@ -6,7 +6,6 @@ A VueJS Application.
  - Router
  - State Engine
 
-Application to use the API from another server and show UI here.
 
 ### status
 
