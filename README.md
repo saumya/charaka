@@ -1,6 +1,6 @@
 # charaka
 
-A VueJS Application for managing groups. 
+A VueJS Application for managing groups. This is one of the many applications in a group to consume a specific API.
  
  - REST API calls
  - Router
