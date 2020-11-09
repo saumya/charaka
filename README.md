@@ -1,6 +1,7 @@
 # charaka
 
-A VueJS Application for managing groups. This is one of the many applications in a group to consume a specific API.
+A VueJS Application for managing groups. 
+This is one of the many applications in a group to consume a specific API.
  
  - REST API calls
  - Router
@@ -9,7 +10,8 @@ A VueJS Application for managing groups. This is one of the many applications in
 
 ### status
 
-A generic application for admin, clinic, doctor and patient.
+A generic application for admin, clinic, doctor and patient. 
+It could be made separate applications.
 
  - [x] UI Administration
  - [x] UI Doctor
